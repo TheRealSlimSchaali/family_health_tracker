@@ -1,11 +1,28 @@
-default_config:
+# Core Configuration
+http:
+  server_host: 0.0.0.0
+  server_port: 8123
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - ::1
 
+# Enable debug logging
 logger:
   default: info
   logs:
     custom_components.family_health_tracker: debug
+    homeassistant.core: debug
+    homeassistant.setup: debug
+    homeassistant.loader: debug
 
-# Basic configuration entry for our integration
+# Core components needed
+frontend:
+recorder:
+history:
+config:
+
+# Our custom integration
 family_health_tracker:
   name: "Family Health"
   members: "John,Jane"

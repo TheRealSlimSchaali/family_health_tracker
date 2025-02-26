@@ -18,7 +18,6 @@
         "icon": null,
         "id": "f34927acc23f203c96256692d83be946",
         "has_entity_name": true,
-        "labels": [],
         "name": null,
         "options": {
           "conversation": {
@@ -26,7 +25,7 @@
           }
         },
         "original_device_class": "timestamp",
-        "original_icon": null,
+        "original_icon": "mdi:sun-clock",
         "original_name": "Next dawn",
         "platform": "sun",
         "supported_features": 0,
@@ -49,7 +48,6 @@
         "icon": null,
         "id": "de5af1bf1adb313365385ab55a4b7c30",
         "has_entity_name": true,
-        "labels": [],
         "name": null,
         "options": {
           "conversation": {
@@ -57,7 +55,7 @@
           }
         },
         "original_device_class": "timestamp",
-        "original_icon": null,
+        "original_icon": "mdi:sun-clock",
         "original_name": "Next dusk",
         "platform": "sun",
         "supported_features": 0,
@@ -80,7 +78,6 @@
         "icon": null,
         "id": "4ab8da1cca353ae1c2eda965332be12f",
         "has_entity_name": true,
-        "labels": [],
         "name": null,
         "options": {
           "conversation": {
@@ -88,7 +85,7 @@
           }
         },
         "original_device_class": "timestamp",
-        "original_icon": null,
+        "original_icon": "mdi:sun-clock",
         "original_name": "Next midnight",
         "platform": "sun",
         "supported_features": 0,
@@ -111,7 +108,6 @@
         "icon": null,
         "id": "e73ee29d86f3a0de0eb0f3bb58b5218c",
         "has_entity_name": true,
-        "labels": [],
         "name": null,
         "options": {
           "conversation": {
@@ -119,7 +115,7 @@
           }
         },
         "original_device_class": "timestamp",
-        "original_icon": null,
+        "original_icon": "mdi:sun-clock",
         "original_name": "Next noon",
         "platform": "sun",
         "supported_features": 0,
@@ -142,7 +138,6 @@
         "icon": null,
         "id": "cbbc1e9de2ea81252714c4f50b2f4025",
         "has_entity_name": true,
-        "labels": [],
         "name": null,
         "options": {
           "conversation": {
@@ -150,7 +145,7 @@
           }
         },
         "original_device_class": "timestamp",
-        "original_icon": null,
+        "original_icon": "mdi:sun-clock",
         "original_name": "Next rising",
         "platform": "sun",
         "supported_features": 0,
@@ -173,7 +168,6 @@
         "icon": null,
         "id": "3162d83ed2e060c5b3f736daa8b63c6e",
         "has_entity_name": true,
-        "labels": [],
         "name": null,
         "options": {
           "conversation": {
@@ -181,7 +175,7 @@
           }
         },
         "original_device_class": "timestamp",
-        "original_icon": null,
+        "original_icon": "mdi:sun-clock",
         "original_name": "Next setting",
         "platform": "sun",
         "supported_features": 0,
@@ -206,11 +200,14 @@
         "icon": null,
         "id": "101ddf8db1ca64fa527a062a326b5d57",
         "has_entity_name": true,
-        "labels": [],
         "name": null,
-        "options": {},
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
         "original_device_class": null,
-        "original_icon": null,
+        "original_icon": "mdi:theme-light-dark",
         "original_name": "Solar elevation",
         "platform": "sun",
         "supported_features": 0,
@@ -235,11 +232,14 @@
         "icon": null,
         "id": "c72169ded17fd4d564e3ee0a7a5b7086",
         "has_entity_name": true,
-        "labels": [],
         "name": null,
-        "options": {},
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
         "original_device_class": null,
-        "original_icon": null,
+        "original_icon": "mdi:sun-angle",
         "original_name": "Solar azimuth",
         "platform": "sun",
         "supported_features": 0,
@@ -262,11 +262,14 @@
         "icon": null,
         "id": "8a140d8c6245dff98644b13b709a6c6b",
         "has_entity_name": true,
-        "labels": [],
         "name": null,
-        "options": {},
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
         "original_device_class": null,
-        "original_icon": null,
+        "original_icon": "mdi:sun-clock",
         "original_name": "Solar rising",
         "platform": "sun",
         "supported_features": 0,

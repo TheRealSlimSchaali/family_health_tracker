@@ -4,6 +4,8 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.11"
 dependencies = [
+    "flask-login>=0.6.3",
+    "flask-wtf>=1.2.2",
     "fnv-hash-fast==0.5.0",
     "homeassistant==2023.12.1",
     "psutil-home-assistant==0.0.1",

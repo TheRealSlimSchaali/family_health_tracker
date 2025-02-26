@@ -11,15 +11,14 @@ frontend:
 
 # Debug logging
 logger:
-  default: debug
+  default: info
   logs:
     custom_components.family_health_tracker: debug
-    homeassistant.core: debug
-    homeassistant.bootstrap: debug
     homeassistant.components.http: debug
-    homeassistant.loader: debug
+    homeassistant.setup: debug
+    homeassistant.core: debug
 
 # Our integration
 family_health_tracker:
   name: "Family Health"
-  members: "John,Jane"
+  members: "John"

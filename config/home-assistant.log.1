@@ -1,132 +1,180 @@
-2025-02-26 20:40:45.279 WARNING (SyncWorker_3) [homeassistant.loader] We found a custom integration family_health_tracker which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
-2025-02-26 20:40:45.280 WARNING (SyncWorker_3) [homeassistant.loader] We found a custom integration family_health_tracker which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
-2025-02-26 20:40:45.329 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event logging_changed[L]>
-2025-02-26 20:40:45.330 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event logging_changed[L]>
-2025-02-26 20:40:45.330 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=logger, service=set_default_level>
-2025-02-26 20:40:45.330 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=logger, service=set_level>
-2025-02-26 20:40:45.330 INFO (MainThread) [homeassistant.setup] Setup of domain logger took 0.0 seconds
-2025-02-26 20:40:45.330 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=logger>
-2025-02-26 20:40:45.330 INFO (MainThread) [homeassistant.bootstrap] Setting up frontend: {'frontend'}
-2025-02-26 20:40:45.331 DEBUG (MainThread) [homeassistant.setup] Dependency frontend will wait for dependencies ['api', 'auth', 'config', 'device_automation', 'diagnostics', 'file_upload', 'http', 'lovelace', 'onboarding', 'repairs', 'search', 'websocket_api']
-2025-02-26 20:40:45.331 DEBUG (MainThread) [homeassistant.setup] Dependency api will wait for dependencies ['http']
-2025-02-26 20:40:45.331 DEBUG (MainThread) [homeassistant.setup] Dependency auth will wait for dependencies ['http']
-2025-02-26 20:40:45.331 DEBUG (MainThread) [homeassistant.setup] Dependency config will wait for dependencies ['http']
-2025-02-26 20:40:45.343 INFO (MainThread) [homeassistant.setup] Setting up device_automation
-2025-02-26 20:40:45.343 INFO (MainThread) [homeassistant.setup] Setup of domain device_automation took 0.0 seconds
-2025-02-26 20:40:45.343 DEBUG (MainThread) [homeassistant.setup] Dependency diagnostics will wait for dependencies ['http']
-2025-02-26 20:40:45.343 DEBUG (MainThread) [homeassistant.setup] Dependency file_upload will wait for dependencies ['http']
-2025-02-26 20:40:45.406 INFO (MainThread) [homeassistant.setup] Setting up lovelace
-2025-02-26 20:40:45.406 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:40:45.407 DEBUG (MainThread) [homeassistant.setup] Dependency onboarding will wait for dependencies ['analytics', 'auth', 'http', 'person']
-2025-02-26 20:40:45.407 DEBUG (MainThread) [homeassistant.setup] Dependency repairs will wait for dependencies ['http']
-2025-02-26 20:40:45.407 DEBUG (MainThread) [homeassistant.setup] Dependency search will wait for dependencies ['websocket_api']
-2025-02-26 20:40:45.407 DEBUG (MainThread) [homeassistant.setup] Dependency websocket_api will wait for dependencies ['http']
-2025-02-26 20:40:45.407 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=device_automation>
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.config] Invalid config for 'http' at configuration.yaml, line 5: some but not all values in the same group of inclusion 'proxy' 'http-><proxy>', got None, please check the docs at https://www.home-assistant.io/integrations/http
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Setup failed for 'http': Invalid config.
-2025-02-26 20:40:45.408 DEBUG (MainThread) [homeassistant.setup] Dependency analytics will wait for dependencies ['api', 'websocket_api']
-2025-02-26 20:40:45.408 DEBUG (MainThread) [homeassistant.setup] Dependency person will wait for dependencies ['image_upload', 'http']
-2025-02-26 20:40:45.408 DEBUG (MainThread) [homeassistant.setup] Dependency image_upload will wait for dependencies ['http']
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'api'. Setup failed for dependencies: http
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Setup failed for 'api': (DependencyError(...), 'Could not setup dependencies: http')
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'auth'. Setup failed for dependencies: http
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Setup failed for 'auth': (DependencyError(...), 'Could not setup dependencies: http')
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'config'. Setup failed for dependencies: http
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Setup failed for 'config': (DependencyError(...), 'Could not setup dependencies: http')
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'diagnostics'. Setup failed for dependencies: http
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Setup failed for 'diagnostics': (DependencyError(...), 'Could not setup dependencies: http')
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'file_upload'. Setup failed for dependencies: http
-2025-02-26 20:40:45.408 ERROR (MainThread) [homeassistant.setup] Setup failed for 'file_upload': (DependencyError(...), 'Could not setup dependencies: http')
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'repairs'. Setup failed for dependencies: http
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Setup failed for 'repairs': (DependencyError(...), 'Could not setup dependencies: http')
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'websocket_api'. Setup failed for dependencies: http
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Setup failed for 'websocket_api': (DependencyError(...), 'Could not setup dependencies: http')
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'image_upload'. Setup failed for dependencies: http
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Setup failed for 'image_upload': (DependencyError(...), 'Could not setup dependencies: http')
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'search'. Setup failed for dependencies: websocket_api
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Setup failed for 'search': (DependencyError(...), 'Could not setup dependencies: websocket_api')
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'analytics'. Setup failed for dependencies: api, websocket_api
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Setup failed for 'analytics': (DependencyError(...), 'Could not setup dependencies: api, websocket_api')
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'person'. Setup failed for dependencies: image_upload, http
-2025-02-26 20:40:45.409 ERROR (MainThread) [homeassistant.setup] Setup failed for 'person': (DependencyError(...), 'Could not setup dependencies: image_upload, http')
-2025-02-26 20:40:45.410 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'onboarding'. Setup failed for dependencies: analytics, auth, http, person
-2025-02-26 20:40:45.410 ERROR (MainThread) [homeassistant.setup] Setup failed for 'onboarding': (DependencyError(...), 'Could not setup dependencies: analytics, auth, http, person')
-2025-02-26 20:40:45.410 DEBUG (SyncWorker_1) [homeassistant.util.json] JSON file not found: /home/runner/workspace/config/.storage/lovelace_dashboards
-2025-02-26 20:40:45.411 INFO (MainThread) [homeassistant.setup] Setup of domain lovelace took 0.0 seconds
-2025-02-26 20:40:45.411 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=lovelace>
-2025-02-26 20:40:45.411 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'frontend'. Setup failed for dependencies: api, auth, config, diagnostics, file_upload, http, onboarding, repairs, search, websocket_api
-2025-02-26 20:40:45.411 ERROR (MainThread) [homeassistant.setup] Setup failed for 'frontend': (DependencyError(...), 'Could not setup dependencies: api, auth, config, diagnostics, file_upload, http, onboarding, repairs, search, websocket_api')
-2025-02-26 20:40:45.411 INFO (MainThread) [homeassistant.bootstrap] Setting up recorder: {'recorder'}
-2025-02-26 20:40:45.738 INFO (MainThread) [homeassistant.setup] Setting up recorder
-2025-02-26 20:40:45.738 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=purge>
-2025-02-26 20:40:45.739 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=purge_entities>
-2025-02-26 20:40:45.739 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=enable>
-2025-02-26 20:40:45.739 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=disable>
-2025-02-26 20:40:45.740 DEBUG (Recorder) [homeassistant.components.recorder.util] The last run ended at: 2025-02-26 20:37:17.316556+00:00 (now: 2025-02-26 20:40:45.740511+00:00)
-2025-02-26 20:40:45.740 DEBUG (Recorder) [homeassistant.components.recorder.util] The system was restarted cleanly and passed the basic sanity check
-2025-02-26 20:40:45.742 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Created new connection <sqlite3.Connection object at 0x7f4f3b7164d0>
-2025-02-26 20:40:45.743 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> checked out from pool
-2025-02-26 20:40:45.745 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> being returned to pool
-2025-02-26 20:40:45.745 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> rollback-on-return
-2025-02-26 20:40:45.745 DEBUG (Recorder) [homeassistant.components.recorder.core] Connected to recorder database
-2025-02-26 20:40:45.745 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> checked out from pool
-2025-02-26 20:40:45.748 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> being returned to pool
-2025-02-26 20:40:45.748 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> rollback-on-return
-2025-02-26 20:40:45.748 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> checked out from pool
-2025-02-26 20:40:45.748 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> being returned to pool
-2025-02-26 20:40:45.748 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> rollback-on-return
-2025-02-26 20:40:45.749 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> checked out from pool
-2025-02-26 20:40:45.805 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> being returned to pool
-2025-02-26 20:40:45.805 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> rollback-on-return
-2025-02-26 20:40:45.807 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> checked out from pool
-2025-02-26 20:40:45.813 DEBUG (Recorder) [homeassistant.components.recorder.core] Activating event_types manager as all data is migrated
-2025-02-26 20:40:45.814 DEBUG (Recorder) [homeassistant.components.recorder.core] Activating states_meta manager as all data is migrated
-2025-02-26 20:40:45.815 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> being returned to pool
-2025-02-26 20:40:45.815 DEBUG (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Connection <sqlite3.Connection object at 0x7f4f3b7164d0> rollback-on-return
-2025-02-26 20:40:45.816 INFO (MainThread) [homeassistant.setup] Setup of domain recorder took 0.1 seconds
-2025-02-26 20:40:45.816 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=recorder>
-2025-02-26 20:40:45.816 INFO (MainThread) [homeassistant.bootstrap] Setting up stage 1: {'webhook', 'api', 'network', 'websocket_api', 'usb', 'zeroconf', 'cloud', 'bluetooth', 'dhcp', 'http', 'ssdp'}
-2025-02-26 20:40:45.817 DEBUG (MainThread) [homeassistant.setup] Dependency webhook will wait for dependencies ['http']
-2025-02-26 20:40:45.817 DEBUG (MainThread) [homeassistant.setup] Dependency network will wait for dependencies ['websocket_api']
-2025-02-26 20:40:45.817 DEBUG (MainThread) [homeassistant.setup] Dependency usb will wait for dependencies ['websocket_api']
-2025-02-26 20:40:45.817 DEBUG (MainThread) [homeassistant.setup] Dependency zeroconf will wait for dependencies ['network', 'api']
-2025-02-26 20:40:45.817 DEBUG (MainThread) [homeassistant.setup] Dependency cloud will wait for dependencies ['http', 'webhook']
-2025-02-26 20:40:45.817 DEBUG (MainThread) [homeassistant.setup] Dependency bluetooth will wait for dependencies ['usb']
-2025-02-26 20:40:45.817 DEBUG (MainThread) [homeassistant.setup] Dependency ssdp will wait for dependencies ['network']
-2025-02-26 20:40:45.817 DEBUG (MainThread) [homeassistant.setup] Dependency ssdp will wait for after dependencies ['zeroconf']
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'webhook'. Setup failed for dependencies: http
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Setup failed for 'webhook': (DependencyError(...), 'Could not setup dependencies: http')
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'network'. Setup failed for dependencies: websocket_api
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Setup failed for 'network': (DependencyError(...), 'Could not setup dependencies: websocket_api')
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'usb'. Setup failed for dependencies: websocket_api
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Setup failed for 'usb': (DependencyError(...), 'Could not setup dependencies: websocket_api')
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'cloud'. Setup failed for dependencies: http, webhook
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Setup failed for 'cloud': (DependencyError(...), 'Could not setup dependencies: http, webhook')
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'zeroconf'. Setup failed for dependencies: network, api
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Setup failed for 'zeroconf': (DependencyError(...), 'Could not setup dependencies: network, api')
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'bluetooth'. Setup failed for dependencies: usb
-2025-02-26 20:40:45.818 ERROR (MainThread) [homeassistant.setup] Setup failed for 'bluetooth': (DependencyError(...), 'Could not setup dependencies: usb')
-2025-02-26 20:40:45.819 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'ssdp'. Setup failed for dependencies: network
-2025-02-26 20:40:45.819 ERROR (MainThread) [homeassistant.setup] Setup failed for 'ssdp': (DependencyError(...), 'Could not setup dependencies: network')
-2025-02-26 20:40:45.822 INFO (SyncWorker_3) [homeassistant.util.package] Attempting install of scapy==2.5.0
-2025-02-26 20:40:45.822 DEBUG (SyncWorker_3) [homeassistant.util.package] Running pip command: args=['/home/runner/workspace/.pythonlibs/bin/python', '-m', 'pip', 'install', '--quiet', 'scapy==2.5.0', '--timeout', '60', '--upgrade', '--constraint', '/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/package_constraints.txt']
-2025-02-26 20:40:46.309 DEBUG (MainThread) [homeassistant.bootstrap] Running timeout Zones: {'dhcp': <dhcp: 0 / 1>}
-2025-02-26 20:40:46.310 DEBUG (MainThread) [homeassistant.bootstrap] Integration remaining: {}
-2025-02-26 20:40:47.318 DEBUG (MainThread) [homeassistant.bootstrap] Running timeout Zones: {'dhcp': <dhcp: 0 / 1>}
-2025-02-26 20:40:47.319 DEBUG (MainThread) [homeassistant.bootstrap] Integration remaining: {}
-2025-02-26 20:40:48.319 DEBUG (MainThread) [homeassistant.bootstrap] Running timeout Zones: {'dhcp': <dhcp: 0 / 1>}
-2025-02-26 20:40:48.319 DEBUG (MainThread) [homeassistant.bootstrap] Integration remaining: {}
-2025-02-26 20:40:49.320 DEBUG (MainThread) [homeassistant.bootstrap] Running timeout Zones: {'dhcp': <dhcp: 0 / 1>}
-2025-02-26 20:40:49.320 DEBUG (MainThread) [homeassistant.bootstrap] Integration remaining: {}
-2025-02-26 20:40:50.321 DEBUG (MainThread) [homeassistant.bootstrap] Running timeout Zones: {'dhcp': <dhcp: 0 / 1>}
-2025-02-26 20:40:50.321 DEBUG (MainThread) [homeassistant.bootstrap] Integration remaining: {}
-2025-02-26 20:40:51.322 DEBUG (MainThread) [homeassistant.bootstrap] Running timeout Zones: {'dhcp': <dhcp: 0 / 1>}
-2025-02-26 20:40:51.322 DEBUG (MainThread) [homeassistant.bootstrap] Integration remaining: {}
-2025-02-26 20:40:52.323 DEBUG (MainThread) [homeassistant.bootstrap] Running timeout Zones: {'dhcp': <dhcp: 0 / 1>}
-2025-02-26 20:40:52.323 DEBUG (MainThread) [homeassistant.bootstrap] Integration remaining: {}
-2025-02-26 20:40:52.776 INFO (SyncWorker_3) [homeassistant.util.package] Attempting install of aiodiscover==1.5.1
-2025-02-26 20:40:52.776 DEBUG (SyncWorker_3) [homeassistant.util.package] Running pip command: args=['/home/runner/workspace/.pythonlibs/bin/python', '-m', 'pip', 'install', '--quiet', 'aiodiscover==1.5.1', '--timeout', '60', '--upgrade', '--constraint', '/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/package_constraints.txt']
-2025-02-26 20:40:53.324 DEBUG (MainThread) [homeassistant.bootstrap] Running timeout Zones: {'dhcp': <dhcp: 0 / 1>}
-2025-02-26 20:40:53.324 DEBUG (MainThread) [homeassistant.bootstrap] Integration remaining: {}
-2025-02-26 20:40:54.325 DEBUG (MainThread) [homeassistant.bootstrap] Running timeout Zones: {'dhcp': <dhcp: 0 / 1>}
-2025-02-26 20:40:54.325 DEBUG (MainThread) [homeassistant.bootstrap] Integration remaining: {}
+2025-02-26 20:43:02.426 WARNING (SyncWorker_3) [homeassistant.loader] We found a custom integration family_health_tracker which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-02-26 20:43:02.426 WARNING (SyncWorker_3) [homeassistant.loader] We found a custom integration family_health_tracker which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-02-26 20:43:02.472 INFO (MainThread) [homeassistant.setup] Setup of domain logger took 0.0 seconds
+2025-02-26 20:43:02.473 INFO (MainThread) [homeassistant.bootstrap] Setting up frontend: {'frontend'}
+2025-02-26 20:43:02.482 INFO (MainThread) [homeassistant.setup] Setting up device_automation
+2025-02-26 20:43:02.482 INFO (MainThread) [homeassistant.setup] Setup of domain device_automation took 0.0 seconds
+2025-02-26 20:43:02.534 INFO (MainThread) [homeassistant.setup] Setting up lovelace
+2025-02-26 20:43:02.535 INFO (MainThread) [homeassistant.setup] Setting up http
+2025-02-26 20:43:02.537 INFO (MainThread) [homeassistant.setup] Setup of domain lovelace took 0.0 seconds
+2025-02-26 20:43:02.541 INFO (MainThread) [homeassistant.setup] Setup of domain http took 0.0 seconds
+2025-02-26 20:43:02.548 INFO (MainThread) [homeassistant.setup] Setting up api
+2025-02-26 20:43:02.549 INFO (MainThread) [homeassistant.setup] Setup of domain api took 0.0 seconds
+2025-02-26 20:43:02.550 INFO (MainThread) [homeassistant.setup] Setting up auth
+2025-02-26 20:43:02.550 INFO (MainThread) [homeassistant.setup] Setup of domain auth took 0.0 seconds
+2025-02-26 20:43:02.556 INFO (MainThread) [homeassistant.setup] Setting up config
+2025-02-26 20:43:02.562 INFO (MainThread) [homeassistant.setup] Setting up diagnostics
+2025-02-26 20:43:02.568 INFO (MainThread) [homeassistant.setup] Setting up repairs
+2025-02-26 20:43:02.569 INFO (MainThread) [homeassistant.setup] Setup of domain repairs took 0.0 seconds
+2025-02-26 20:43:02.622 INFO (MainThread) [homeassistant.setup] Setup of domain config took 0.1 seconds
+2025-02-26 20:43:02.623 INFO (MainThread) [homeassistant.setup] Setup of domain diagnostics took 0.1 seconds
+2025-02-26 20:43:02.632 INFO (MainThread) [homeassistant.setup] Setting up file_upload
+2025-02-26 20:43:02.633 INFO (MainThread) [homeassistant.setup] Setup of domain file_upload took 0.0 seconds
+2025-02-26 20:43:02.636 ERROR (SyncWorker_1) [homeassistant.util.package] Installed version for SQLAlchemy resolved to None
+2025-02-26 20:43:02.636 INFO (SyncWorker_1) [homeassistant.util.package] Attempting install of SQLAlchemy==2.0.23
+2025-02-26 20:43:02.669 INFO (MainThread) [homeassistant.setup] Setting up image_upload
+2025-02-26 20:43:02.670 INFO (MainThread) [homeassistant.setup] Setup of domain image_upload took 0.0 seconds
+2025-02-26 20:43:02.672 INFO (SyncWorker_0) [homeassistant.loader] Loaded device_tracker from homeassistant.components.device_tracker
+2025-02-26 20:43:02.673 INFO (MainThread) [homeassistant.setup] Setting up person
+2025-02-26 20:43:02.674 INFO (MainThread) [homeassistant.setup] Setup of domain person took 0.0 seconds
+2025-02-26 20:43:05.777 INFO (MainThread) [homeassistant.setup] Setting up websocket_api
+2025-02-26 20:43:05.778 INFO (MainThread) [homeassistant.setup] Setup of domain websocket_api took 0.0 seconds
+2025-02-26 20:43:05.779 INFO (SyncWorker_2) [homeassistant.loader] Loaded group from homeassistant.components.group
+2025-02-26 20:43:06.628 INFO (MainThread) [homeassistant.setup] Setting up analytics
+2025-02-26 20:43:06.653 INFO (MainThread) [homeassistant.setup] Setting up search
+2025-02-26 20:43:06.653 INFO (MainThread) [homeassistant.setup] Setup of domain search took 0.0 seconds
+2025-02-26 20:43:06.654 INFO (MainThread) [homeassistant.setup] Setup of domain analytics took 0.0 seconds
+2025-02-26 20:43:06.654 INFO (SyncWorker_3) [homeassistant.loader] Loaded hassio from homeassistant.components.hassio
+2025-02-26 20:43:06.655 INFO (MainThread) [homeassistant.setup] Setting up onboarding
+2025-02-26 20:43:06.656 INFO (MainThread) [homeassistant.setup] Setup of domain onboarding took 0.0 seconds
+2025-02-26 20:43:06.658 INFO (MainThread) [homeassistant.setup] Setting up frontend
+2025-02-26 20:43:06.660 INFO (MainThread) [homeassistant.setup] Setup of domain frontend took 0.0 seconds
+2025-02-26 20:43:06.660 INFO (MainThread) [homeassistant.bootstrap] Setting up recorder: {'recorder'}
+2025-02-26 20:43:06.661 INFO (MainThread) [homeassistant.setup] Setting up recorder
+2025-02-26 20:43:06.665 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //home/runner/workspace/config/home-assistant_v2.db was shutdown cleanly
+2025-02-26 20:43:06.677 INFO (MainThread) [homeassistant.components.http] Now listening on port 5000
+2025-02-26 20:43:06.733 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=6 from 2025-02-26 20:41:09.512318)
+2025-02-26 20:43:06.751 INFO (MainThread) [homeassistant.setup] Setup of domain recorder took 0.1 seconds
+2025-02-26 20:43:06.752 INFO (MainThread) [homeassistant.bootstrap] Setting up stage 1: {'webhook', 'network', 'dhcp', 'cloud', 'websocket_api', 'ssdp', 'bluetooth', 'usb', 'http', 'zeroconf', 'api'}
+2025-02-26 20:43:06.758 INFO (MainThread) [homeassistant.setup] Setting up webhook
+2025-02-26 20:43:06.759 INFO (MainThread) [homeassistant.setup] Setup of domain webhook took 0.0 seconds
+2025-02-26 20:43:06.762 INFO (MainThread) [homeassistant.setup] Setting up network
+2025-02-26 20:43:06.762 INFO (MainThread) [homeassistant.setup] Setup of domain network took 0.0 seconds
+2025-02-26 20:43:06.799 INFO (MainThread) [homeassistant.setup] Setting up dhcp
+2025-02-26 20:43:06.799 INFO (MainThread) [homeassistant.setup] Setup of domain dhcp took 0.0 seconds
+2025-02-26 20:43:06.815 INFO (MainThread) [homeassistant.setup] Setting up usb
+2025-02-26 20:43:06.816 INFO (MainThread) [homeassistant.setup] Setup of domain usb took 0.0 seconds
+2025-02-26 20:43:06.817 INFO (SyncWorker_1) [homeassistant.loader] Loaded google_assistant from homeassistant.components.google_assistant
+2025-02-26 20:43:06.819 INFO (SyncWorker_2) [homeassistant.loader] Loaded alexa from homeassistant.components.alexa
+2025-02-26 20:43:06.820 INFO (SyncWorker_1) [homeassistant.loader] Loaded matter from homeassistant.components.matter
+2025-02-26 20:43:06.821 INFO (SyncWorker_3) [homeassistant.loader] Loaded camera from homeassistant.components.camera
+2025-02-26 20:43:06.850 INFO (MainThread) [homeassistant.setup] Setting up zeroconf
+2025-02-26 20:43:06.852 INFO (MainThread) [homeassistant.setup] Setup of domain zeroconf took 0.0 seconds
+2025-02-26 20:43:06.856 INFO (SyncWorker_2) [homeassistant.util.package] Attempting install of bleak==0.21.1
+2025-02-26 20:43:06.856 INFO (MainThread) [homeassistant.components.zeroconf] Starting Zeroconf broadcast
+2025-02-26 20:43:09.133 INFO (SyncWorker_2) [homeassistant.util.package] Attempting install of bleak-retry-connector==3.3.0
+2025-02-26 20:43:12.269 INFO (SyncWorker_2) [homeassistant.util.package] Attempting install of bluetooth-auto-recovery==1.2.3
+2025-02-26 20:43:14.778 INFO (SyncWorker_2) [homeassistant.util.package] Attempting install of bluetooth-data-tools==1.15.0
+2025-02-26 20:43:16.739 INFO (SyncWorker_0) [homeassistant.util.package] Attempting install of python-matter-server==5.0.0
+2025-02-26 20:43:16.827 INFO (MainThread) [homeassistant.setup] Setting up bluetooth
+2025-02-26 20:43:16.858 INFO (MainThread) [homeassistant.setup] Setup of domain bluetooth took 0.0 seconds
+2025-02-26 20:43:18.997 ERROR (MainThread) [aiohttp.server] Error handling request
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_middlewares.py", line 114, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/security_filter.py", line 85, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/forwarded.py", line 82, in forwarded_middleware
+    from hass_nabucasa import (  # pylint: disable=import-outside-toplevel
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 27, in <module>
+    from .remote import RemoteUI
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
+    from .acme import AcmeClientError, AcmeHandler
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/acme.py", line 13, in <module>
+    from acme import challenges, client, crypto_util, errors, messages
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/challenges.py", line 24, in <module>
+    from acme import crypto_util
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/crypto_util.py", line 435, in <module>
+    def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
+                                               ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'josepy' has no attribute 'ComparableX509'
+2025-02-26 20:43:19.704 INFO (SyncWorker_0) [homeassistant.loader] Loaded media_player from homeassistant.components.media_player
+2025-02-26 20:43:19.705 INFO (SyncWorker_2) [homeassistant.util.package] Attempting install of hassil==1.5.1
+2025-02-26 20:43:25.007 INFO (SyncWorker_2) [homeassistant.util.package] Attempting install of home-assistant-intents==2023.12.05
+2025-02-26 20:43:26.676 INFO (SyncWorker_0) [homeassistant.util.package] Attempting install of async-upnp-client==0.36.2
+2025-02-26 20:43:35.592 INFO (MainThread) [homeassistant.setup] Setting up ssdp
+2025-02-26 20:43:35.594 INFO (MainThread) [homeassistant.setup] Setup of domain ssdp took 0.0 seconds
+2025-02-26 20:43:35.601 ERROR (MainThread) [homeassistant.loader] Unexpected exception importing component homeassistant.components.cloud
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 814, in get_component
+    ComponentProtocol, importlib.import_module(self.pkg_path)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 9, in <module>
+    from hass_nabucasa import Cloud
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 27, in <module>
+    from .remote import RemoteUI
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
+    from .acme import AcmeClientError, AcmeHandler
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/acme.py", line 13, in <module>
+    from acme import challenges, client, crypto_util, errors, messages
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/challenges.py", line 24, in <module>
+    from acme import crypto_util
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/crypto_util.py", line 435, in <module>
+    def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
+                                               ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'josepy' has no attribute 'ComparableX509'
+2025-02-26 20:43:35.605 ERROR (MainThread) [homeassistant.setup] Setup failed for 'cloud': Unable to import component: Exception importing homeassistant.components.cloud
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 814, in get_component
+    ComponentProtocol, importlib.import_module(self.pkg_path)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 9, in <module>
+    from hass_nabucasa import Cloud
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 27, in <module>
+    from .remote import RemoteUI
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
+    from .acme import AcmeClientError, AcmeHandler
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/acme.py", line 13, in <module>
+    from acme import challenges, client, crypto_util, errors, messages
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/challenges.py", line 24, in <module>
+    from acme import crypto_util
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/crypto_util.py", line 435, in <module>
+    def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
+                                               ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'josepy' has no attribute 'ComparableX509'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/setup.py", line 251, in _async_setup_component
+    component = integration.get_component()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 822, in get_component
+    raise ImportError(f"Exception importing {self.pkg_path}") from err
+ImportError: Exception importing homeassistant.components.cloud
+2025-02-26 20:43:35.609 INFO (MainThread) [homeassistant.bootstrap] Setting up stage 2: {'stt', 'tts', 'input_boolean', 'assist_pipeline', 'input_number', 'search', 'homeassistant_alerts', 'onboarding', 'lovelace', 'input_select', 'application_credentials', 'energy', 'automation', 'history', 'script', 'ffmpeg', 'scene', 'repairs', 'tag', 'image_upload', 'media_source', 'person', 'input_text', 'trace', 'wake_word', 'diagnostics', 'family_health_tracker', 'analytics', 'schedule', 'input_button', 'hardware', 'map', 'input_datetime', 'device_automation', 'system_health', 'file_upload', 'sun', 'conversation', 'my', 'config', 'stream', 'auth', 'logbook', 'counter', 'blueprint', 'default_config', 'zone', 'timer', 'mobile_app'}
+2025-02-26 20:43:35.636 INFO (MainThread) [homeassistant.setup] Setting up stt
+2025-02-26 20:43:35.637 INFO (MainThread) [homeassistant.setup] Setup of domain stt took 0.0 seconds
+2025-02-26 20:43:35.641 INFO (MainThread) [homeassistant.setup] Setting up input_boolean
+2025-02-26 20:43:35.647 INFO (MainThread) [homeassistant.setup] Setting up input_number
+2025-02-26 20:43:35.662 INFO (MainThread) [homeassistant.setup] Setting up homeassistant_alerts
+2025-02-26 20:43:35.662 INFO (MainThread) [homeassistant.setup] Setup of domain homeassistant_alerts took 0.0 seconds
+2025-02-26 20:43:35.671 INFO (MainThread) [homeassistant.setup] Setting up input_select
+2025-02-26 20:43:35.715 INFO (MainThread) [homeassistant.setup] Setting up history
+2025-02-26 20:43:35.716 INFO (MainThread) [homeassistant.setup] Setup of domain history took 0.0 seconds

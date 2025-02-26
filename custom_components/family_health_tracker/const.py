@@ -5,7 +5,6 @@ VERSION = "1.0.0"
 
 CONF_MEMBERS = "members"
 
-# Medication options
 MEDICATION_NONE = "none"
 MEDICATION_PARACETAMOL = "paracetamol"
 MEDICATION_IBUPROFEN = "ibuprofen"
@@ -20,5 +19,3 @@ DEFAULT_NAME = "Health Tracker"
 
 ATTR_TEMPERATURE = "temperature"
 ATTR_MEDICATION = "medication"
-ATTR_TIMESTAMP = "timestamp"
-ATTR_HISTORY = "history"

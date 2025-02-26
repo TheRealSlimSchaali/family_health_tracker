@@ -1,0 +1,11 @@
+default_config:
+
+logger:
+  default: info
+  logs:
+    custom_components.family_health_tracker: debug
+
+# Basic configuration entry for our integration
+family_health_tracker:
+  name: "Family Health"
+  members: "John,Jane"

@@ -1,0 +1,24 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Family Health Tracker",
+        "description": "Set up family health tracking",
+        "data": {
+          "name": "Name",
+          "members": "Family Members (comma-separated)"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Family Health Tracker Options",
+        "data": {
+          "members": "Family Members (comma-separated)"
+        }
+      }
+    }
+  }
+}

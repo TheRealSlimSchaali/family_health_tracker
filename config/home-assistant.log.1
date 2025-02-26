@@ -1,166 +1,304 @@
-2025-02-26 20:31:50.408 WARNING (SyncWorker_1) [homeassistant.loader] We found a custom integration family_health_tracker which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
-2025-02-26 20:31:50.465 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event logging_changed[L]>
-2025-02-26 20:31:50.465 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=logger, service=set_default_level>
-2025-02-26 20:31:50.465 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=logger, service=set_level>
-2025-02-26 20:31:50.465 INFO (MainThread) [homeassistant.setup] Setup of domain logger took 0.0 seconds
-2025-02-26 20:31:50.472 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=logger>
-2025-02-26 20:31:50.472 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=system_log>
-2025-02-26 20:31:50.472 INFO (MainThread) [homeassistant.bootstrap] Setting up frontend: {'frontend'}
-2025-02-26 20:31:50.473 DEBUG (MainThread) [homeassistant.setup] Dependency frontend will wait for dependencies dict_keys(['api', 'auth', 'config', 'device_automation', 'diagnostics', 'file_upload', 'http', 'lovelace', 'onboarding', 'repairs', 'search', 'websocket_api'])
-2025-02-26 20:31:50.473 DEBUG (MainThread) [homeassistant.setup] Dependency api will wait for dependencies dict_keys(['http'])
-2025-02-26 20:31:50.473 DEBUG (MainThread) [homeassistant.setup] Dependency auth will wait for dependencies dict_keys(['http'])
-2025-02-26 20:31:50.473 DEBUG (MainThread) [homeassistant.setup] Dependency config will wait for dependencies dict_keys(['http'])
-2025-02-26 20:31:50.482 DEBUG (MainThread) [homeassistant.loader] Component device_automation import took 0.009 seconds (loaded_executor=False)
-2025-02-26 20:31:50.482 INFO (MainThread) [homeassistant.setup] Setting up device_automation
-2025-02-26 20:31:50.482 INFO (MainThread) [homeassistant.setup] Setup of domain device_automation took 0.0 seconds
-2025-02-26 20:31:50.482 DEBUG (MainThread) [homeassistant.setup] Dependency diagnostics will wait for dependencies dict_keys(['http'])
-2025-02-26 20:31:50.482 DEBUG (MainThread) [homeassistant.setup] Dependency file_upload will wait for dependencies dict_keys(['http'])
-2025-02-26 20:31:50.482 DEBUG (MainThread) [homeassistant.loader] Component lovelace import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:50.483 INFO (MainThread) [homeassistant.setup] Setting up lovelace
-2025-02-26 20:31:50.483 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:50.484 DEBUG (MainThread) [homeassistant.setup] Dependency onboarding will wait for dependencies dict_keys(['analytics', 'auth', 'http', 'person'])
-2025-02-26 20:31:50.484 DEBUG (MainThread) [homeassistant.setup] Dependency repairs will wait for dependencies dict_keys(['http'])
-2025-02-26 20:31:50.484 DEBUG (MainThread) [homeassistant.setup] Dependency search will wait for dependencies dict_keys(['websocket_api'])
-2025-02-26 20:31:50.484 DEBUG (MainThread) [homeassistant.setup] Dependency websocket_api will wait for dependencies dict_keys(['http'])
-2025-02-26 20:31:50.484 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=device_automation>
-2025-02-26 20:31:50.484 DEBUG (MainThread) [homeassistant.setup] Dependency analytics will wait for dependencies dict_keys(['api', 'websocket_api'])
-2025-02-26 20:31:50.484 DEBUG (MainThread) [homeassistant.setup] Dependency person will wait for dependencies dict_keys(['image_upload', 'http'])
-2025-02-26 20:31:50.484 DEBUG (MainThread) [homeassistant.setup] Dependency image_upload will wait for dependencies dict_keys(['http'])
-2025-02-26 20:31:50.485 INFO (MainThread) [homeassistant.setup] Setup of domain lovelace took 0.0 seconds
-2025-02-26 20:31:50.485 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=lovelace>
-2025-02-26 20:31:50.493 DEBUG (MainThread) [homeassistant.loader] Component http import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:50.494 INFO (MainThread) [homeassistant.setup] Setting up http
-2025-02-26 20:31:50.506 INFO (MainThread) [homeassistant.setup] Setup of domain http took 0.0 seconds
-2025-02-26 20:31:50.506 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=http>
-2025-02-26 20:31:50.513 DEBUG (MainThread) [homeassistant.loader] Component repairs import took 0.007 seconds (loaded_executor=False)
-2025-02-26 20:31:50.514 INFO (MainThread) [homeassistant.setup] Setting up repairs
-2025-02-26 20:31:50.515 INFO (MainThread) [homeassistant.setup] Setup of domain repairs took 0.0 seconds
-2025-02-26 20:31:50.515 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=repairs>
-2025-02-26 20:31:50.515 DEBUG (MainThread) [homeassistant.loader] Component api import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:50.516 INFO (MainThread) [homeassistant.setup] Setting up api
-2025-02-26 20:31:50.517 INFO (MainThread) [homeassistant.setup] Setup of domain api took 0.0 seconds
-2025-02-26 20:31:50.517 DEBUG (MainThread) [homeassistant.loader] Component auth import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:50.517 INFO (MainThread) [homeassistant.setup] Setting up auth
-2025-02-26 20:31:50.518 INFO (MainThread) [homeassistant.setup] Setup of domain auth took 0.0 seconds
-2025-02-26 20:31:50.518 DEBUG (MainThread) [homeassistant.loader] Component config import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:50.522 INFO (MainThread) [homeassistant.setup] Setting up config
-2025-02-26 20:31:50.522 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:50.524 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.area_registry>
-2025-02-26 20:31:50.525 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.auth>
-2025-02-26 20:31:50.526 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.auth_provider_homeassistant>
-2025-02-26 20:31:50.543 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.automation>
-2025-02-26 20:31:50.545 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.config_entries>
-2025-02-26 20:31:50.547 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.core>
-2025-02-26 20:31:50.548 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.device_registry>
-2025-02-26 20:31:50.550 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.entity_registry>
-2025-02-26 20:31:50.550 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.floor_registry>
-2025-02-26 20:31:50.551 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.label_registry>
-2025-02-26 20:31:50.555 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.script>
-2025-02-26 20:31:50.555 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.scene>
-2025-02-26 20:31:50.555 INFO (MainThread) [homeassistant.setup] Setup of domain config took 0.0 seconds
-2025-02-26 20:31:50.558 DEBUG (MainThread) [homeassistant.loader] Component diagnostics import took 0.003 seconds (loaded_executor=False)
-2025-02-26 20:31:50.558 INFO (MainThread) [homeassistant.setup] Setting up diagnostics
-2025-02-26 20:31:50.560 INFO (MainThread) [homeassistant.setup] Setup of domain diagnostics took 0.0 seconds
-2025-02-26 20:31:50.560 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=api>
-2025-02-26 20:31:50.560 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=auth>
-2025-02-26 20:31:50.560 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config>
-2025-02-26 20:31:50.560 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=diagnostics>
-2025-02-26 20:31:50.561 DEBUG (MainThread) [homeassistant.loader] Component websocket_api import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:50.561 INFO (MainThread) [homeassistant.setup] Setting up websocket_api
-2025-02-26 20:31:50.561 INFO (MainThread) [homeassistant.setup] Setup of domain websocket_api took 0.0 seconds
-2025-02-26 20:31:50.588 DEBUG (MainThread) [homeassistant.loader] Component image_upload import took 0.027 seconds (loaded_executor=False)
-2025-02-26 20:31:50.588 INFO (MainThread) [homeassistant.setup] Setting up image_upload
-2025-02-26 20:31:50.589 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=websocket_api>
-2025-02-26 20:31:50.592 DEBUG (MainThread) [homeassistant.loader] Component file_upload import took 0.003 seconds (loaded_executor=False)
-2025-02-26 20:31:50.593 INFO (MainThread) [homeassistant.setup] Setting up file_upload
-2025-02-26 20:31:50.593 INFO (MainThread) [homeassistant.setup] Setup of domain file_upload took 0.0 seconds
-2025-02-26 20:31:50.593 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=file_upload>
-2025-02-26 20:31:50.610 DEBUG (MainThread) [homeassistant.loader] Component search import took 0.015 seconds (loaded_executor=False)
-2025-02-26 20:31:50.612 INFO (MainThread) [homeassistant.setup] Setting up search
-2025-02-26 20:31:50.612 INFO (MainThread) [homeassistant.setup] Setup of domain search took 0.0 seconds
-2025-02-26 20:31:50.613 INFO (MainThread) [homeassistant.setup] Setup of domain image_upload took 0.0 seconds
-2025-02-26 20:31:50.613 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=search>
-2025-02-26 20:31:50.613 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=image_upload>
-2025-02-26 20:31:50.616 DEBUG (MainThread) [homeassistant.loader] Component person import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:50.616 INFO (MainThread) [homeassistant.setup] Setting up person
-2025-02-26 20:31:50.620 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=person, service=reload>
-2025-02-26 20:31:50.620 INFO (MainThread) [homeassistant.setup] Setup of domain person took 0.0 seconds
-2025-02-26 20:31:50.620 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=person>
-2025-02-26 20:31:51.094 DEBUG (MainThread) [homeassistant.loader] Component analytics import took 0.501 seconds (loaded_executor=True)
-2025-02-26 20:31:51.095 INFO (MainThread) [homeassistant.setup] Setting up analytics
-2025-02-26 20:31:51.096 INFO (MainThread) [homeassistant.setup] Setup of domain analytics took 0.0 seconds
-2025-02-26 20:31:51.096 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=analytics>
-2025-02-26 20:31:51.096 DEBUG (MainThread) [homeassistant.loader] Component onboarding import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:51.096 INFO (MainThread) [homeassistant.setup] Setting up onboarding
-2025-02-26 20:31:51.097 INFO (MainThread) [homeassistant.setup] Setup of domain onboarding took 0.0 seconds
-2025-02-26 20:31:51.097 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=onboarding>
-2025-02-26 20:31:51.098 DEBUG (MainThread) [homeassistant.loader] Component frontend import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:51.098 INFO (MainThread) [homeassistant.setup] Setting up frontend
-2025-02-26 20:31:51.101 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:51.101 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:51.101 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=frontend, service=set_theme>
-2025-02-26 20:31:51.102 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=frontend, service=reload_themes>
-2025-02-26 20:31:51.102 INFO (MainThread) [homeassistant.setup] Setup of domain frontend took 0.0 seconds
-2025-02-26 20:31:51.102 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=frontend>
-2025-02-26 20:31:51.102 INFO (MainThread) [homeassistant.bootstrap] Setting up recorder: {'recorder'}
-2025-02-26 20:31:51.103 DEBUG (MainThread) [homeassistant.loader] Component recorder import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:51.103 INFO (MainThread) [homeassistant.setup] Setting up recorder
-2025-02-26 20:31:51.103 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=purge>
-2025-02-26 20:31:51.103 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=purge_entities>
-2025-02-26 20:31:51.104 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=enable>
-2025-02-26 20:31:51.104 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=disable>
-2025-02-26 20:31:51.107 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //home/runner/workspace/config/home-assistant_v2.db was shutdown cleanly
-2025-02-26 20:31:51.109 INFO (MainThread) [homeassistant.components.http] Now listening on port 8123
-2025-02-26 20:31:51.692 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=1 from 2025-02-26 20:30:19.579308)
-2025-02-26 20:31:51.784 INFO (MainThread) [homeassistant.setup] Setup of domain recorder took 0.7 seconds
-2025-02-26 20:31:51.784 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=recorder>
-2025-02-26 20:31:51.785 INFO (MainThread) [homeassistant.bootstrap] Setting up stage 1: {'network', 'cloud', 'bluetooth', 'dhcp', 'zeroconf', 'http', 'webhook', 'websocket_api', 'ssdp', 'api', 'usb'}
-2025-02-26 20:31:51.785 DEBUG (MainThread) [homeassistant.loader] Component network import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:51.786 INFO (MainThread) [homeassistant.setup] Setting up network
-2025-02-26 20:31:51.786 INFO (MainThread) [homeassistant.setup] Setup of domain network took 0.0 seconds
-2025-02-26 20:31:51.786 DEBUG (MainThread) [homeassistant.setup] Dependency cloud will wait for dependencies dict_keys(['webhook'])
-2025-02-26 20:31:51.786 DEBUG (MainThread) [homeassistant.setup] Dependency bluetooth will wait for dependencies dict_keys(['usb'])
-2025-02-26 20:31:51.786 DEBUG (MainThread) [homeassistant.setup] Dependency zeroconf will wait for dependencies dict_keys(['network'])
-2025-02-26 20:31:51.788 DEBUG (MainThread) [homeassistant.loader] Component webhook import took 0.001 seconds (loaded_executor=False)
-2025-02-26 20:31:51.788 INFO (MainThread) [homeassistant.setup] Setting up webhook
-2025-02-26 20:31:51.788 INFO (MainThread) [homeassistant.setup] Setup of domain webhook took 0.0 seconds
-2025-02-26 20:31:51.788 DEBUG (MainThread) [homeassistant.setup] Dependency ssdp will wait for dependencies dict_keys(['network'])
-2025-02-26 20:31:51.788 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=network>
-2025-02-26 20:31:51.789 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=webhook>
-2025-02-26 20:31:51.789 INFO (SyncWorker_0) [homeassistant.loader] Loaded matter from homeassistant.components.matter
-2025-02-26 20:31:51.885 DEBUG (MainThread) [homeassistant.loader] Component dhcp import took 0.099 seconds (loaded_executor=True)
-2025-02-26 20:31:51.886 INFO (MainThread) [homeassistant.setup] Setting up dhcp
-2025-02-26 20:31:51.886 INFO (MainThread) [homeassistant.setup] Setup of domain dhcp took 0.0 seconds
-2025-02-26 20:31:51.886 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=dhcp>
-2025-02-26 20:31:51.895 DEBUG (MainThread) [homeassistant.loader] Component usb import took 0.107 seconds (loaded_executor=True)
-2025-02-26 20:31:51.895 INFO (MainThread) [homeassistant.setup] Setting up usb
-2025-02-26 20:31:51.905 INFO (MainThread) [homeassistant.setup] Setup of domain usb took 0.0 seconds
-2025-02-26 20:31:51.905 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=usb>
-2025-02-26 20:31:51.925 DEBUG (MainThread) [homeassistant.loader] Component zeroconf import took 0.136 seconds (loaded_executor=True)
-2025-02-26 20:31:51.925 INFO (MainThread) [homeassistant.setup] Setting up zeroconf
-2025-02-26 20:31:51.927 INFO (MainThread) [homeassistant.setup] Setup of domain zeroconf took 0.0 seconds
-2025-02-26 20:31:51.927 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=zeroconf>
-2025-02-26 20:31:51.934 INFO (MainThread) [homeassistant.components.zeroconf] Starting Zeroconf broadcast
-2025-02-26 20:31:51.958 DEBUG (MainThread) [homeassistant.loader] Component ssdp import took 0.169 seconds (loaded_executor=True)
-2025-02-26 20:31:51.959 INFO (MainThread) [homeassistant.setup] Setting up ssdp
-2025-02-26 20:31:51.962 INFO (MainThread) [homeassistant.setup] Setup of domain ssdp took 0.0 seconds
-2025-02-26 20:31:51.962 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=ssdp>
-2025-02-26 20:31:52.101 ERROR (ImportExecutor_0) [homeassistant.loader] Unexpected exception importing component homeassistant.components.cloud
+2025-02-26 20:32:32.918 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration family_health_tracker which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-02-26 20:32:32.978 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event logging_changed[L]>
+2025-02-26 20:32:32.978 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=logger, service=set_default_level>
+2025-02-26 20:32:32.978 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=logger, service=set_level>
+2025-02-26 20:32:32.978 INFO (MainThread) [homeassistant.setup] Setup of domain logger took 0.0 seconds
+2025-02-26 20:32:32.984 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=system_log>
+2025-02-26 20:32:32.984 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=logger>
+2025-02-26 20:32:32.984 INFO (MainThread) [homeassistant.bootstrap] Setting up frontend: {'frontend'}
+2025-02-26 20:32:32.985 DEBUG (MainThread) [homeassistant.setup] Dependency frontend will wait for dependencies dict_keys(['api', 'auth', 'config', 'device_automation', 'diagnostics', 'file_upload', 'http', 'lovelace', 'onboarding', 'repairs', 'search', 'websocket_api'])
+2025-02-26 20:32:32.985 DEBUG (MainThread) [homeassistant.setup] Dependency api will wait for dependencies dict_keys(['http'])
+2025-02-26 20:32:32.985 DEBUG (MainThread) [homeassistant.setup] Dependency auth will wait for dependencies dict_keys(['http'])
+2025-02-26 20:32:32.985 DEBUG (MainThread) [homeassistant.setup] Dependency config will wait for dependencies dict_keys(['http'])
+2025-02-26 20:32:32.989 DEBUG (MainThread) [homeassistant.loader] Component device_automation import took 0.004 seconds (loaded_executor=False)
+2025-02-26 20:32:32.990 INFO (MainThread) [homeassistant.setup] Setting up device_automation
+2025-02-26 20:32:32.990 INFO (MainThread) [homeassistant.setup] Setup of domain device_automation took 0.0 seconds
+2025-02-26 20:32:32.990 DEBUG (MainThread) [homeassistant.setup] Dependency diagnostics will wait for dependencies dict_keys(['http'])
+2025-02-26 20:32:32.990 DEBUG (MainThread) [homeassistant.setup] Dependency file_upload will wait for dependencies dict_keys(['http'])
+2025-02-26 20:32:32.990 DEBUG (MainThread) [homeassistant.loader] Component lovelace import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:32.991 INFO (MainThread) [homeassistant.setup] Setting up lovelace
+2025-02-26 20:32:32.991 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
+2025-02-26 20:32:32.991 DEBUG (MainThread) [homeassistant.setup] Dependency onboarding will wait for dependencies dict_keys(['analytics', 'auth', 'http', 'person'])
+2025-02-26 20:32:32.991 DEBUG (MainThread) [homeassistant.setup] Dependency repairs will wait for dependencies dict_keys(['http'])
+2025-02-26 20:32:32.991 DEBUG (MainThread) [homeassistant.setup] Dependency search will wait for dependencies dict_keys(['websocket_api'])
+2025-02-26 20:32:32.991 DEBUG (MainThread) [homeassistant.setup] Dependency websocket_api will wait for dependencies dict_keys(['http'])
+2025-02-26 20:32:32.991 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=device_automation>
+2025-02-26 20:32:32.992 DEBUG (MainThread) [homeassistant.setup] Dependency analytics will wait for dependencies dict_keys(['api', 'websocket_api'])
+2025-02-26 20:32:32.992 DEBUG (MainThread) [homeassistant.setup] Dependency person will wait for dependencies dict_keys(['image_upload', 'http'])
+2025-02-26 20:32:32.992 DEBUG (MainThread) [homeassistant.setup] Dependency image_upload will wait for dependencies dict_keys(['http'])
+2025-02-26 20:32:32.993 INFO (MainThread) [homeassistant.setup] Setup of domain lovelace took 0.0 seconds
+2025-02-26 20:32:32.993 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=lovelace>
+2025-02-26 20:32:32.995 DEBUG (MainThread) [homeassistant.loader] Component http import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:32.996 INFO (MainThread) [homeassistant.setup] Setting up http
+2025-02-26 20:32:33.001 INFO (MainThread) [homeassistant.setup] Setup of domain http took 0.0 seconds
+2025-02-26 20:32:33.002 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=http>
+2025-02-26 20:32:33.004 DEBUG (MainThread) [homeassistant.loader] Component repairs import took 0.002 seconds (loaded_executor=False)
+2025-02-26 20:32:33.004 INFO (MainThread) [homeassistant.setup] Setting up repairs
+2025-02-26 20:32:33.005 INFO (MainThread) [homeassistant.setup] Setup of domain repairs took 0.0 seconds
+2025-02-26 20:32:33.005 DEBUG (MainThread) [homeassistant.loader] Component websocket_api import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.005 INFO (MainThread) [homeassistant.setup] Setting up websocket_api
+2025-02-26 20:32:33.005 INFO (MainThread) [homeassistant.setup] Setup of domain websocket_api took 0.0 seconds
+2025-02-26 20:32:33.032 DEBUG (MainThread) [homeassistant.loader] Component image_upload import took 0.026 seconds (loaded_executor=False)
+2025-02-26 20:32:33.032 INFO (MainThread) [homeassistant.setup] Setting up image_upload
+2025-02-26 20:32:33.032 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=repairs>
+2025-02-26 20:32:33.032 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=websocket_api>
+2025-02-26 20:32:33.032 DEBUG (MainThread) [homeassistant.loader] Component api import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.033 INFO (MainThread) [homeassistant.setup] Setting up api
+2025-02-26 20:32:33.034 INFO (MainThread) [homeassistant.setup] Setup of domain api took 0.0 seconds
+2025-02-26 20:32:33.034 DEBUG (MainThread) [homeassistant.loader] Component auth import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.034 INFO (MainThread) [homeassistant.setup] Setting up auth
+2025-02-26 20:32:33.035 INFO (MainThread) [homeassistant.setup] Setup of domain auth took 0.0 seconds
+2025-02-26 20:32:33.035 DEBUG (MainThread) [homeassistant.loader] Component config import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.035 INFO (MainThread) [homeassistant.setup] Setting up config
+2025-02-26 20:32:33.035 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
+2025-02-26 20:32:33.036 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.area_registry>
+2025-02-26 20:32:33.037 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.auth>
+2025-02-26 20:32:33.038 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.auth_provider_homeassistant>
+2025-02-26 20:32:33.059 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.automation>
+2025-02-26 20:32:33.061 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.config_entries>
+2025-02-26 20:32:33.063 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.core>
+2025-02-26 20:32:33.064 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.device_registry>
+2025-02-26 20:32:33.065 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.entity_registry>
+2025-02-26 20:32:33.066 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.floor_registry>
+2025-02-26 20:32:33.066 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.label_registry>
+2025-02-26 20:32:33.070 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.script>
+2025-02-26 20:32:33.071 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config.scene>
+2025-02-26 20:32:33.071 INFO (MainThread) [homeassistant.setup] Setup of domain config took 0.0 seconds
+2025-02-26 20:32:33.073 DEBUG (MainThread) [homeassistant.loader] Component diagnostics import took 0.002 seconds (loaded_executor=False)
+2025-02-26 20:32:33.074 INFO (MainThread) [homeassistant.setup] Setting up diagnostics
+2025-02-26 20:32:33.075 INFO (MainThread) [homeassistant.setup] Setup of domain diagnostics took 0.0 seconds
+2025-02-26 20:32:33.079 DEBUG (MainThread) [homeassistant.loader] Component file_upload import took 0.003 seconds (loaded_executor=False)
+2025-02-26 20:32:33.079 INFO (MainThread) [homeassistant.setup] Setting up file_upload
+2025-02-26 20:32:33.079 INFO (MainThread) [homeassistant.setup] Setup of domain file_upload took 0.0 seconds
+2025-02-26 20:32:33.079 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=api>
+2025-02-26 20:32:33.079 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=auth>
+2025-02-26 20:32:33.079 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=config>
+2025-02-26 20:32:33.080 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=diagnostics>
+2025-02-26 20:32:33.080 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=file_upload>
+2025-02-26 20:32:33.090 DEBUG (MainThread) [homeassistant.loader] Component search import took 0.009 seconds (loaded_executor=False)
+2025-02-26 20:32:33.090 INFO (MainThread) [homeassistant.setup] Setting up search
+2025-02-26 20:32:33.090 INFO (MainThread) [homeassistant.setup] Setup of domain search took 0.0 seconds
+2025-02-26 20:32:33.091 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=search>
+2025-02-26 20:32:33.093 INFO (MainThread) [homeassistant.setup] Setup of domain image_upload took 0.1 seconds
+2025-02-26 20:32:33.093 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=image_upload>
+2025-02-26 20:32:33.093 DEBUG (MainThread) [homeassistant.loader] Component person import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.094 INFO (MainThread) [homeassistant.setup] Setting up person
+2025-02-26 20:32:33.096 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=person, service=reload>
+2025-02-26 20:32:33.096 INFO (MainThread) [homeassistant.setup] Setup of domain person took 0.0 seconds
+2025-02-26 20:32:33.097 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=person>
+2025-02-26 20:32:33.514 DEBUG (MainThread) [homeassistant.loader] Component analytics import took 0.424 seconds (loaded_executor=True)
+2025-02-26 20:32:33.514 INFO (MainThread) [homeassistant.setup] Setting up analytics
+2025-02-26 20:32:33.515 INFO (MainThread) [homeassistant.setup] Setup of domain analytics took 0.0 seconds
+2025-02-26 20:32:33.516 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=analytics>
+2025-02-26 20:32:33.516 DEBUG (MainThread) [homeassistant.loader] Component onboarding import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.517 INFO (MainThread) [homeassistant.setup] Setting up onboarding
+2025-02-26 20:32:33.518 INFO (MainThread) [homeassistant.setup] Setup of domain onboarding took 0.0 seconds
+2025-02-26 20:32:33.518 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=onboarding>
+2025-02-26 20:32:33.518 DEBUG (MainThread) [homeassistant.loader] Component frontend import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.518 INFO (MainThread) [homeassistant.setup] Setting up frontend
+2025-02-26 20:32:33.521 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
+2025-02-26 20:32:33.521 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
+2025-02-26 20:32:33.522 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=frontend, service=set_theme>
+2025-02-26 20:32:33.522 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=frontend, service=reload_themes>
+2025-02-26 20:32:33.522 INFO (MainThread) [homeassistant.setup] Setup of domain frontend took 0.0 seconds
+2025-02-26 20:32:33.522 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=frontend>
+2025-02-26 20:32:33.522 INFO (MainThread) [homeassistant.bootstrap] Setting up recorder: {'recorder'}
+2025-02-26 20:32:33.523 DEBUG (MainThread) [homeassistant.loader] Component recorder import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.523 INFO (MainThread) [homeassistant.setup] Setting up recorder
+2025-02-26 20:32:33.524 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=purge>
+2025-02-26 20:32:33.524 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=purge_entities>
+2025-02-26 20:32:33.524 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=enable>
+2025-02-26 20:32:33.524 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=recorder, service=disable>
+2025-02-26 20:32:33.530 INFO (MainThread) [homeassistant.components.http] Now listening on port 8123
+2025-02-26 20:32:33.560 INFO (MainThread) [homeassistant.setup] Setup of domain recorder took 0.0 seconds
+2025-02-26 20:32:33.560 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=recorder>
+2025-02-26 20:32:33.560 INFO (MainThread) [homeassistant.bootstrap] Setting up stage 2: {'repairs', 'websocket_api', 'person', 'backup', 'input_text', 'history', 'zone', 'script', 'application_credentials', 'family_health_tracker', 'counter', 'config', 'input_number', 'blueprint', 'schedule', 'scene', 'hardware', 'tag', 'onboarding', 'network', 'sun', 'auth', 'search', 'http', 'lovelace', 'system_health', 'analytics', 'file_upload', 'image_upload', 'device_automation', 'input_boolean', 'api', 'input_datetime', 'input_select', 'timer', 'trace', 'input_button', 'automation', 'diagnostics'}
+2025-02-26 20:32:33.564 DEBUG (MainThread) [homeassistant.loader] Component input_text import took 0.003 seconds (loaded_executor=False)
+2025-02-26 20:32:33.564 INFO (MainThread) [homeassistant.setup] Setting up input_text
+2025-02-26 20:32:33.565 DEBUG (MainThread) [homeassistant.setup] Dependency script will wait for dependencies dict_keys(['blueprint', 'trace'])
+2025-02-26 20:32:33.573 DEBUG (MainThread) [homeassistant.loader] Component history import took 0.008 seconds (loaded_executor=False)
+2025-02-26 20:32:33.573 INFO (MainThread) [homeassistant.setup] Setting up history
+2025-02-26 20:32:33.574 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
+2025-02-26 20:32:33.574 INFO (MainThread) [homeassistant.setup] Setup of domain history took 0.0 seconds
+2025-02-26 20:32:33.574 DEBUG (MainThread) [homeassistant.loader] Component zone import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.574 INFO (MainThread) [homeassistant.setup] Setting up zone
+2025-02-26 20:32:33.576 DEBUG (MainThread) [homeassistant.loader] Component application_credentials import took 0.002 seconds (loaded_executor=False)
+2025-02-26 20:32:33.576 INFO (MainThread) [homeassistant.setup] Setting up application_credentials
+2025-02-26 20:32:33.578 DEBUG (MainThread) [homeassistant.loader] Component family_health_tracker import took 0.001 seconds (loaded_executor=False)
+2025-02-26 20:32:33.578 ERROR (MainThread) [homeassistant.config] Invalid config for 'family_health_tracker' at configuration.yaml, line 27: 'name' is an invalid option for 'family_health_tracker', check: family_health_tracker->name, please check the docs at https://github.com/your_username/family_health_tracker
+Invalid config for 'family_health_tracker' at configuration.yaml, line 28: 'members' is an invalid option for 'family_health_tracker', check: family_health_tracker->members, please check the docs at https://github.com/your_username/family_health_tracker
+2025-02-26 20:32:33.579 ERROR (MainThread) [homeassistant.setup] Setup failed for custom integration 'family_health_tracker': Invalid config.
+2025-02-26 20:32:33.580 DEBUG (MainThread) [homeassistant.loader] Component counter import took 0.001 seconds (loaded_executor=False)
+2025-02-26 20:32:33.580 INFO (MainThread) [homeassistant.setup] Setting up counter
+2025-02-26 20:32:33.581 DEBUG (MainThread) [homeassistant.loader] Component input_number import took 0.001 seconds (loaded_executor=False)
+2025-02-26 20:32:33.582 INFO (MainThread) [homeassistant.setup] Setting up input_number
+2025-02-26 20:32:33.582 DEBUG (MainThread) [homeassistant.loader] Component blueprint import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.582 INFO (MainThread) [homeassistant.setup] Setting up blueprint
+2025-02-26 20:32:33.582 INFO (MainThread) [homeassistant.setup] Setup of domain blueprint took 0.0 seconds
+2025-02-26 20:32:33.585 DEBUG (MainThread) [homeassistant.loader] Component schedule import took 0.003 seconds (loaded_executor=False)
+2025-02-26 20:32:33.586 INFO (MainThread) [homeassistant.setup] Setting up schedule
+2025-02-26 20:32:33.586 DEBUG (MainThread) [homeassistant.loader] Component scene import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.587 INFO (MainThread) [homeassistant.setup] Setting up scene
+2025-02-26 20:32:33.587 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-02-26 20:32:33.590 DEBUG (MainThread) [homeassistant.loader] Component tag import took 0.003 seconds (loaded_executor=False)
+2025-02-26 20:32:33.590 INFO (MainThread) [homeassistant.setup] Setting up tag
+2025-02-26 20:32:33.591 DEBUG (MainThread) [homeassistant.loader] Component network import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.591 INFO (MainThread) [homeassistant.setup] Setting up network
+2025-02-26 20:32:33.595 INFO (MainThread) [homeassistant.setup] Setup of domain network took 0.0 seconds
+2025-02-26 20:32:33.595 DEBUG (MainThread) [homeassistant.loader] Component sun import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.595 INFO (MainThread) [homeassistant.setup] Setting up sun
+2025-02-26 20:32:33.595 INFO (MainThread) [homeassistant.setup] Setup of domain sun took 0.0 seconds
+2025-02-26 20:32:33.595 DEBUG (MainThread) [homeassistant.loader] Component system_health import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.596 INFO (MainThread) [homeassistant.setup] Setting up system_health
+2025-02-26 20:32:33.599 INFO (MainThread) [homeassistant.setup] Setup of domain system_health took 0.0 seconds
+2025-02-26 20:32:33.600 DEBUG (MainThread) [homeassistant.loader] Component input_boolean import took 0.001 seconds (loaded_executor=False)
+2025-02-26 20:32:33.600 INFO (MainThread) [homeassistant.setup] Setting up input_boolean
+2025-02-26 20:32:33.601 DEBUG (MainThread) [homeassistant.loader] Component input_datetime import took 0.001 seconds (loaded_executor=False)
+2025-02-26 20:32:33.602 INFO (MainThread) [homeassistant.setup] Setting up input_datetime
+2025-02-26 20:32:33.605 DEBUG (MainThread) [homeassistant.loader] Component input_select import took 0.003 seconds (loaded_executor=False)
+2025-02-26 20:32:33.605 INFO (MainThread) [homeassistant.setup] Setting up input_select
+2025-02-26 20:32:33.606 DEBUG (MainThread) [homeassistant.loader] Component timer import took 0.001 seconds (loaded_executor=False)
+2025-02-26 20:32:33.606 INFO (MainThread) [homeassistant.setup] Setting up timer
+2025-02-26 20:32:33.607 DEBUG (MainThread) [homeassistant.loader] Component trace import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.607 INFO (MainThread) [homeassistant.setup] Setting up trace
+2025-02-26 20:32:33.607 INFO (MainThread) [homeassistant.setup] Setup of domain trace took 0.0 seconds
+2025-02-26 20:32:33.610 DEBUG (MainThread) [homeassistant.loader] Component input_button import took 0.003 seconds (loaded_executor=False)
+2025-02-26 20:32:33.610 INFO (MainThread) [homeassistant.setup] Setting up input_button
+2025-02-26 20:32:33.610 DEBUG (MainThread) [homeassistant.setup] Dependency automation will wait for dependencies dict_keys(['blueprint', 'trace'])
+2025-02-26 20:32:33.611 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=history>
+2025-02-26 20:32:33.611 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=blueprint>
+2025-02-26 20:32:33.611 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=reload>
+2025-02-26 20:32:33.612 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=apply>
+2025-02-26 20:32:33.612 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=create>
+2025-02-26 20:32:33.612 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=delete>
+2025-02-26 20:32:33.612 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=network>
+2025-02-26 20:32:33.612 DEBUG (MainThread) [homeassistant.loader] Importing platform sun.config_flow took 0.00s (loaded_executor=False)
+2025-02-26 20:32:33.613 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=system_health>
+2025-02-26 20:32:33.613 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=trace>
+2025-02-26 20:32:33.613 DEBUG (MainThread) [homeassistant.loader] Component backup import took 0.052 seconds (loaded_executor=True)
+2025-02-26 20:32:33.613 INFO (MainThread) [homeassistant.setup] Setting up backup
+2025-02-26 20:32:33.613 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=backup, service=create>
+2025-02-26 20:32:33.613 INFO (MainThread) [homeassistant.setup] Setup of domain backup took 0.0 seconds
+2025-02-26 20:32:33.614 DEBUG (MainThread) [homeassistant.loader] Component hardware import took 0.027 seconds (loaded_executor=True)
+2025-02-26 20:32:33.614 INFO (MainThread) [homeassistant.setup] Setting up hardware
+2025-02-26 20:32:33.619 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sun.sun, old_state=None, new_state=<state sun.sun=below_horizon; next_dawn=2025-02-27T05:48:13.253832+00:00, next_dusk=2025-02-27T18:37:03.454295+00:00, next_midnight=2025-02-27T00:12:38+00:00, next_noon=2025-02-27T12:12:44+00:00, next_rising=2025-02-27T06:09:30.093412+00:00, next_setting=2025-02-27T18:15:47.269705+00:00, elevation=-34.51, azimuth=259.81, rising=False, friendly_name=Sun @ 2025-02-26T20:32:33.619858+00:00>>
+2025-02-26 20:32:33.621 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=backup>
+2025-02-26 20:32:33.621 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=turn_on>
+2025-02-26 20:32:33.621 INFO (MainThread) [homeassistant.setup] Setup of domain scene took 0.0 seconds
+2025-02-26 20:32:33.621 DEBUG (MainThread) [homeassistant.loader] Component sensor import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.621 INFO (MainThread) [homeassistant.setup] Setting up sensor
+2025-02-26 20:32:33.622 INFO (MainThread) [homeassistant.setup] Setup of domain sensor took 0.0 seconds
+2025-02-26 20:32:33.622 DEBUG (MainThread) [homeassistant.loader] Component automation import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.622 INFO (MainThread) [homeassistant.setup] Setting up automation
+2025-02-26 20:32:33.622 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=scene>
+2025-02-26 20:32:33.622 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=sensor>
+2025-02-26 20:32:33.626 INFO (MainThread) [homeassistant.components.sensor] Setting up sun.sensor
+2025-02-26 20:32:33.626 DEBUG (MainThread) [homeassistant.loader] Component script import took 0.000 seconds (loaded_executor=False)
+2025-02-26 20:32:33.626 INFO (MainThread) [homeassistant.setup] Setting up script
+2025-02-26 20:32:33.630 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=zone, service=reload>
+2025-02-26 20:32:33.630 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=zone.home, old_state=None, new_state=<state zone.home=0; latitude=0, longitude=0, radius=100, passive=False, persons=[], editable=True, icon=mdi:home, friendly_name=Home @ 2025-02-26T20:32:33.630328+00:00>>
+2025-02-26 20:32:33.630 INFO (MainThread) [homeassistant.setup] Setup of domain zone took 0.1 seconds
+2025-02-26 20:32:33.631 INFO (MainThread) [homeassistant.setup] Setup of domain application_credentials took 0.1 seconds
+2025-02-26 20:32:33.632 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=counter, service=increment>
+2025-02-26 20:32:33.632 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=counter, service=decrement>
+2025-02-26 20:32:33.632 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=counter, service=reset>
+2025-02-26 20:32:33.632 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=counter, service=set_value>
+2025-02-26 20:32:33.632 INFO (MainThread) [homeassistant.setup] Setup of domain counter took 0.1 seconds
+2025-02-26 20:32:33.633 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_text, service=reload>
+2025-02-26 20:32:33.633 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_text, service=set_value>
+2025-02-26 20:32:33.633 INFO (MainThread) [homeassistant.setup] Setup of domain input_text took 0.1 seconds
+2025-02-26 20:32:33.638 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=zone>
+2025-02-26 20:32:33.638 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=application_credentials>
+2025-02-26 20:32:33.638 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=counter>
+2025-02-26 20:32:33.638 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_text>
+2025-02-26 20:32:33.638 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=trigger>
+2025-02-26 20:32:33.639 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=toggle>
+2025-02-26 20:32:33.640 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=turn_on>
+2025-02-26 20:32:33.640 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=turn_off>
+2025-02-26 20:32:33.640 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=reload>
+2025-02-26 20:32:33.640 INFO (MainThread) [homeassistant.setup] Setup of domain automation took 0.0 seconds
+2025-02-26 20:32:33.640 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_dawn, old_state=None, new_state=<state sensor.sun_next_dawn=2025-02-27T05:48:13+00:00; device_class=timestamp, friendly_name=Sun Next dawn @ 2025-02-26T20:32:33.640831+00:00>>
+2025-02-26 20:32:33.641 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_dusk, old_state=None, new_state=<state sensor.sun_next_dusk=2025-02-27T18:37:03+00:00; device_class=timestamp, friendly_name=Sun Next dusk @ 2025-02-26T20:32:33.641153+00:00>>
+2025-02-26 20:32:33.641 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_midnight, old_state=None, new_state=<state sensor.sun_next_midnight=2025-02-27T00:12:38+00:00; device_class=timestamp, friendly_name=Sun Next midnight @ 2025-02-26T20:32:33.641654+00:00>>
+2025-02-26 20:32:33.641 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_noon, old_state=None, new_state=<state sensor.sun_next_noon=2025-02-27T12:12:44+00:00; device_class=timestamp, friendly_name=Sun Next noon @ 2025-02-26T20:32:33.641888+00:00>>
+2025-02-26 20:32:33.642 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_rising, old_state=None, new_state=<state sensor.sun_next_rising=2025-02-27T06:09:30+00:00; device_class=timestamp, friendly_name=Sun Next rising @ 2025-02-26T20:32:33.642199+00:00>>
+2025-02-26 20:32:33.642 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_setting, old_state=None, new_state=<state sensor.sun_next_setting=2025-02-27T18:15:47+00:00; device_class=timestamp, friendly_name=Sun Next setting @ 2025-02-26T20:32:33.642535+00:00>>
+2025-02-26 20:32:33.642 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=script, service=reload>
+2025-02-26 20:32:33.642 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=script, service=turn_on>
+2025-02-26 20:32:33.642 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=script, service=turn_off>
+2025-02-26 20:32:33.643 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=script, service=toggle>
+2025-02-26 20:32:33.643 INFO (MainThread) [homeassistant.setup] Setup of domain script took 0.0 seconds
+2025-02-26 20:32:33.645 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=automation>
+2025-02-26 20:32:33.645 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=script>
+2025-02-26 20:32:33.646 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=schedule, service=reload>
+2025-02-26 20:32:33.646 INFO (MainThread) [homeassistant.setup] Setup of domain schedule took 0.1 seconds
+2025-02-26 20:32:33.647 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_boolean, service=reload>
+2025-02-26 20:32:33.647 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_boolean, service=turn_on>
+2025-02-26 20:32:33.647 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_boolean, service=turn_off>
+2025-02-26 20:32:33.647 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_boolean, service=toggle>
+2025-02-26 20:32:33.647 INFO (MainThread) [homeassistant.setup] Setup of domain input_boolean took 0.0 seconds
+2025-02-26 20:32:33.648 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_number, service=reload>
+2025-02-26 20:32:33.648 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_number, service=set_value>
+2025-02-26 20:32:33.648 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_number, service=increment>
+2025-02-26 20:32:33.648 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_number, service=decrement>
+2025-02-26 20:32:33.648 INFO (MainThread) [homeassistant.setup] Setup of domain input_number took 0.1 seconds
+2025-02-26 20:32:33.648 INFO (MainThread) [homeassistant.setup] Setup of domain tag took 0.1 seconds
+2025-02-26 20:32:33.649 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=schedule>
+2025-02-26 20:32:33.649 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_boolean>
+2025-02-26 20:32:33.649 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_number>
+2025-02-26 20:32:33.650 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=tag>
+2025-02-26 20:32:33.658 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_datetime, service=reload>
+2025-02-26 20:32:33.658 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_datetime, service=set_datetime>
+2025-02-26 20:32:33.658 INFO (MainThread) [homeassistant.setup] Setup of domain input_datetime took 0.1 seconds
+2025-02-26 20:32:33.659 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=reload>
+2025-02-26 20:32:33.659 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_first>
+2025-02-26 20:32:33.659 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_last>
+2025-02-26 20:32:33.659 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_next>
+2025-02-26 20:32:33.659 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_option>
+2025-02-26 20:32:33.659 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_previous>
+2025-02-26 20:32:33.660 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=set_options>
+2025-02-26 20:32:33.660 INFO (MainThread) [homeassistant.setup] Setup of domain input_select took 0.1 seconds
+2025-02-26 20:32:33.660 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=reload>
+2025-02-26 20:32:33.660 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=start>
+2025-02-26 20:32:33.660 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=pause>
+2025-02-26 20:32:33.660 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=cancel>
+2025-02-26 20:32:33.660 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=finish>
+2025-02-26 20:32:33.661 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=change>
+2025-02-26 20:32:33.661 INFO (MainThread) [homeassistant.setup] Setup of domain timer took 0.1 seconds
+2025-02-26 20:32:33.661 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_button, service=reload>
+2025-02-26 20:32:33.661 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_button, service=press>
+2025-02-26 20:32:33.661 INFO (MainThread) [homeassistant.setup] Setup of domain input_button took 0.1 seconds
+2025-02-26 20:32:33.661 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_datetime>
+2025-02-26 20:32:33.661 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_select>
+2025-02-26 20:32:33.661 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=timer>
+2025-02-26 20:32:33.661 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_button>
+2025-02-26 20:32:33.667 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=sun>
+2025-02-26 20:32:33.731 INFO (MainThread) [homeassistant.setup] Setup of domain hardware took 0.1 seconds
+2025-02-26 20:32:33.731 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=hardware>
+2025-02-26 20:32:33.732 INFO (MainThread) [homeassistant.bootstrap] Home Assistant initialized in 0.82s
+2025-02-26 20:32:33.732 WARNING (MainThread) [homeassistant.bootstrap] Support for the running Python version 3.11.10 is deprecated and will be removed in Home Assistant 2024.4; Please upgrade Python to 3.12
+2025-02-26 20:32:33.732 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event repairs_issue_registry_updated[L]: action=update, domain=homeassistant, issue_id=python_version>
+2025-02-26 20:32:33.732 INFO (MainThread) [homeassistant.core] Starting Home Assistant
+2025-02-26 20:32:33.733 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event core_config_updated[L]>
+2025-02-26 20:32:33.733 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_start[L]>
+2025-02-26 20:32:33.733 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event core_config_updated[L]>
+2025-02-26 20:32:33.733 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_started[L]>
+2025-02-26 20:32:34.574 ERROR (MainThread) [aiohttp.server] Error handling request
 Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_middlewares.py", line 114, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/security_filter.py", line 91, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/forwarded.py", line 82, in forwarded_middleware
+    from hass_nabucasa import (  # pylint: disable=import-outside-toplevel
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
     from .remote import RemoteUI
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
@@ -173,22 +311,22 @@ Traceback (most recent call last):
     def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
                                                ^^^^^^^^^^^^^^^^^^^
 AttributeError: module 'josepy' has no attribute 'ComparableX509'
-2025-02-26 20:31:52.107 DEBUG (MainThread) [homeassistant.loader] Failed to import cloud in executor
+2025-02-26 20:32:34.693 ERROR (MainThread) [aiohttp.server] Error handling request
 Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_middlewares.py", line 114, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/security_filter.py", line 91, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/forwarded.py", line 82, in forwarded_middleware
+    from hass_nabucasa import (  # pylint: disable=import-outside-toplevel
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
     from .remote import RemoteUI
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
@@ -201,35 +339,22 @@ Traceback (most recent call last):
     def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
                                                ^^^^^^^^^^^^^^^^^^^
 AttributeError: module 'josepy' has no attribute 'ComparableX509'
-
-The above exception was the direct cause of the following exception:
-
+2025-02-26 20:32:56.025 ERROR (MainThread) [aiohttp.server] Error handling request
 Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 886, in async_get_component
-    comp = await self.hass.async_add_import_executor_job(self.get_component)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/concurrent/futures/thread.py", line 58, in run
-    result = self.fn(*self.args, **self.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 932, in get_component
-    raise ImportError(f"Exception importing {self.pkg_path}") from err
-ImportError: Exception importing homeassistant.components.cloud
-2025-02-26 20:31:52.120 ERROR (MainThread) [homeassistant.loader] Unexpected exception importing component homeassistant.components.cloud
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_middlewares.py", line 114, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/security_filter.py", line 91, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/forwarded.py", line 82, in forwarded_middleware
+    from hass_nabucasa import (  # pylint: disable=import-outside-toplevel
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
     from .remote import RemoteUI
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
@@ -242,37 +367,22 @@ Traceback (most recent call last):
     def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
                                                ^^^^^^^^^^^^^^^^^^^
 AttributeError: module 'josepy' has no attribute 'ComparableX509'
-
-The above exception was the direct cause of the following exception:
-
+2025-02-26 20:33:26.963 ERROR (MainThread) [aiohttp.server] Error handling request
 Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 886, in async_get_component
-    comp = await self.hass.async_add_import_executor_job(self.get_component)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/concurrent/futures/thread.py", line 58, in run
-    result = self.fn(*self.args, **self.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 932, in get_component
-    raise ImportError(f"Exception importing {self.pkg_path}") from err
-ImportError: Exception importing homeassistant.components.cloud
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_middlewares.py", line 114, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/security_filter.py", line 91, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/forwarded.py", line 82, in forwarded_middleware
+    from hass_nabucasa import (  # pylint: disable=import-outside-toplevel
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
     from .remote import RemoteUI
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
@@ -285,22 +395,22 @@ Traceback (most recent call last):
     def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
                                                ^^^^^^^^^^^^^^^^^^^
 AttributeError: module 'josepy' has no attribute 'ComparableX509'
-2025-02-26 20:31:52.125 ERROR (MainThread) [homeassistant.setup] Setup failed for 'cloud': Unable to import component: Exception importing homeassistant.components.cloud
+2025-02-26 20:33:27.220 ERROR (MainThread) [aiohttp.server] Error handling request
 Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_middlewares.py", line 114, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/security_filter.py", line 91, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/forwarded.py", line 82, in forwarded_middleware
+    from hass_nabucasa import (  # pylint: disable=import-outside-toplevel
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
     from .remote import RemoteUI
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
@@ -313,37 +423,22 @@ Traceback (most recent call last):
     def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
                                                ^^^^^^^^^^^^^^^^^^^
 AttributeError: module 'josepy' has no attribute 'ComparableX509'
-
-The above exception was the direct cause of the following exception:
-
+2025-02-26 20:34:04.252 ERROR (MainThread) [aiohttp.server] Error handling request
 Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 886, in async_get_component
-    comp = await self.hass.async_add_import_executor_job(self.get_component)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/concurrent/futures/thread.py", line 58, in run
-    result = self.fn(*self.args, **self.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 932, in get_component
-    raise ImportError(f"Exception importing {self.pkg_path}") from err
-ImportError: Exception importing homeassistant.components.cloud
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_protocol.py", line 452, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_app.py", line 543, in _handle
+    resp = await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/aiohttp/web_middlewares.py", line 114, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/security_filter.py", line 91, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/http/forwarded.py", line 82, in forwarded_middleware
+    from hass_nabucasa import (  # pylint: disable=import-outside-toplevel
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
     from .remote import RemoteUI
   File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
@@ -356,546 +451,7 @@ Traceback (most recent call last):
     def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
                                                ^^^^^^^^^^^^^^^^^^^
 AttributeError: module 'josepy' has no attribute 'ComparableX509'
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/setup.py", line 296, in _async_setup_component
-    component = await integration.async_get_component()
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 892, in async_get_component
-    comp = self.get_component()
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 932, in get_component
-    raise ImportError(f"Exception importing {self.pkg_path}") from err
-ImportError: Exception importing homeassistant.components.cloud
-2025-02-26 20:31:52.168 DEBUG (MainThread) [homeassistant.loader] Component bluetooth import took 0.259 seconds (loaded_executor=True)
-2025-02-26 20:31:52.168 INFO (MainThread) [homeassistant.setup] Setting up bluetooth
-2025-02-26 20:31:52.194 INFO (MainThread) [homeassistant.setup] Setup of domain bluetooth took 0.0 seconds
-2025-02-26 20:31:52.194 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=bluetooth>
-2025-02-26 20:31:52.196 INFO (MainThread) [homeassistant.bootstrap] Setting up stage 2: {'input_text', 'person', 'search', 'diagnostics', 'sun', 'lovelace', 'input_number', 'application_credentials', 'assist_pipeline', 'energy', 'default_config', 'wake_word', 'analytics', 'input_datetime', 'map', 'tts', 'mobile_app', 'backup', 'input_boolean', 'device_automation', 'counter', 'logbook', 'tag', 'script', 'trace', 'config', 'family_health_tracker', 'input_button', 'scene', 'input_select', 'onboarding', 'timer', 'blueprint', 'auth', 'hardware', 'file_upload', 'stt', 'history', 'image_upload', 'media_source', 'stream', 'repairs', 'ffmpeg', 'homeassistant_alerts', 'automation', 'zone', 'system_health', 'conversation', 'my', 'schedule'}
-2025-02-26 20:31:52.199 DEBUG (MainThread) [homeassistant.loader] Component input_text import took 0.002 seconds (loaded_executor=False)
-2025-02-26 20:31:52.199 INFO (MainThread) [homeassistant.setup] Setting up input_text
-2025-02-26 20:31:52.201 DEBUG (MainThread) [homeassistant.loader] Component tag import took 0.002 seconds (loaded_executor=False)
-2025-02-26 20:31:52.201 INFO (MainThread) [homeassistant.setup] Setting up tag
-2025-02-26 20:31:52.201 DEBUG (MainThread) [homeassistant.setup] Dependency script will wait for dependencies dict_keys(['blueprint', 'trace'])
-2025-02-26 20:31:52.202 DEBUG (MainThread) [homeassistant.loader] Component trace import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.202 INFO (MainThread) [homeassistant.setup] Setting up trace
-2025-02-26 20:31:52.202 INFO (MainThread) [homeassistant.setup] Setup of domain trace took 0.0 seconds
-2025-02-26 20:31:52.204 DEBUG (MainThread) [homeassistant.loader] Component family_health_tracker import took 0.002 seconds (loaded_executor=False)
-2025-02-26 20:31:52.204 ERROR (MainThread) [homeassistant.config] Invalid config for 'family_health_tracker' at configuration.yaml, line 23: 'name' is an invalid option for 'family_health_tracker', check: family_health_tracker->name, please check the docs at https://github.com/your_username/family_health_tracker
-Invalid config for 'family_health_tracker' at configuration.yaml, line 24: 'members' is an invalid option for 'family_health_tracker', check: family_health_tracker->members, please check the docs at https://github.com/your_username/family_health_tracker
-2025-02-26 20:31:52.204 ERROR (MainThread) [homeassistant.setup] Setup failed for custom integration 'family_health_tracker': Invalid config.
-2025-02-26 20:31:52.209 DEBUG (MainThread) [homeassistant.loader] Component input_button import took 0.004 seconds (loaded_executor=False)
-2025-02-26 20:31:52.209 INFO (MainThread) [homeassistant.setup] Setting up input_button
-2025-02-26 20:31:52.209 DEBUG (MainThread) [homeassistant.loader] Component scene import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.210 INFO (MainThread) [homeassistant.setup] Setting up scene
-2025-02-26 20:31:52.210 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
-2025-02-26 20:31:52.214 DEBUG (MainThread) [homeassistant.loader] Component input_select import took 0.004 seconds (loaded_executor=False)
-2025-02-26 20:31:52.215 INFO (MainThread) [homeassistant.setup] Setting up input_select
-2025-02-26 20:31:52.215 DEBUG (MainThread) [homeassistant.loader] Component sun import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.215 INFO (MainThread) [homeassistant.setup] Setting up sun
-2025-02-26 20:31:52.216 INFO (MainThread) [homeassistant.setup] Setup of domain sun took 0.0 seconds
-2025-02-26 20:31:52.216 DEBUG (MainThread) [homeassistant.loader] Component timer import took 0.001 seconds (loaded_executor=False)
-2025-02-26 20:31:52.217 INFO (MainThread) [homeassistant.setup] Setting up timer
-2025-02-26 20:31:52.217 DEBUG (MainThread) [homeassistant.loader] Component blueprint import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.217 INFO (MainThread) [homeassistant.setup] Setting up blueprint
-2025-02-26 20:31:52.217 INFO (MainThread) [homeassistant.setup] Setup of domain blueprint took 0.0 seconds
-2025-02-26 20:31:52.218 DEBUG (MainThread) [homeassistant.loader] Component input_number import took 0.001 seconds (loaded_executor=False)
-2025-02-26 20:31:52.219 INFO (MainThread) [homeassistant.setup] Setting up input_number
-2025-02-26 20:31:52.221 DEBUG (MainThread) [homeassistant.loader] Component application_credentials import took 0.002 seconds (loaded_executor=False)
-2025-02-26 20:31:52.221 INFO (MainThread) [homeassistant.setup] Setting up application_credentials
-2025-02-26 20:31:52.221 DEBUG (MainThread) [homeassistant.setup] Dependency assist_pipeline will wait for dependencies dict_keys(['conversation', 'stt', 'tts', 'wake_word'])
-2025-02-26 20:31:52.222 DEBUG (MainThread) [homeassistant.setup] Dependency energy will wait for dependencies dict_keys(['history'])
-2025-02-26 20:31:52.222 DEBUG (MainThread) [homeassistant.setup] Dependency default_config will wait for dependencies dict_keys(['assist_pipeline', 'cloud', 'conversation', 'energy', 'history', 'homeassistant_alerts', 'logbook', 'map', 'media_source', 'mobile_app', 'my', 'stream', 'sun'])
-2025-02-26 20:31:52.228 DEBUG (MainThread) [homeassistant.loader] Component wake_word import took 0.007 seconds (loaded_executor=False)
-2025-02-26 20:31:52.229 INFO (MainThread) [homeassistant.setup] Setting up wake_word
-2025-02-26 20:31:52.229 INFO (MainThread) [homeassistant.setup] Setup of domain wake_word took 0.0 seconds
-2025-02-26 20:31:52.234 DEBUG (MainThread) [homeassistant.loader] Component stt import took 0.005 seconds (loaded_executor=False)
-2025-02-26 20:31:52.235 INFO (MainThread) [homeassistant.setup] Setting up stt
-2025-02-26 20:31:52.235 INFO (MainThread) [homeassistant.setup] Setup of domain stt took 0.0 seconds
-2025-02-26 20:31:52.239 DEBUG (MainThread) [homeassistant.loader] Component history import took 0.003 seconds (loaded_executor=False)
-2025-02-26 20:31:52.239 INFO (MainThread) [homeassistant.setup] Setting up history
-2025-02-26 20:31:52.239 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:52.239 INFO (MainThread) [homeassistant.setup] Setup of domain history took 0.0 seconds
-2025-02-26 20:31:52.241 DEBUG (MainThread) [homeassistant.loader] Component input_datetime import took 0.001 seconds (loaded_executor=False)
-2025-02-26 20:31:52.241 INFO (MainThread) [homeassistant.setup] Setting up input_datetime
-2025-02-26 20:31:52.242 DEBUG (MainThread) [homeassistant.loader] Component map import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.242 INFO (MainThread) [homeassistant.setup] Setting up map
-2025-02-26 20:31:52.242 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:52.242 INFO (MainThread) [homeassistant.setup] Setup of domain map took 0.0 seconds
-2025-02-26 20:31:52.242 DEBUG (MainThread) [homeassistant.setup] Dependency tts will wait for dependencies dict_keys(['ffmpeg'])
-2025-02-26 20:31:52.254 DEBUG (MainThread) [homeassistant.loader] Component media_source import took 0.012 seconds (loaded_executor=False)
-2025-02-26 20:31:52.254 INFO (MainThread) [homeassistant.setup] Setting up media_source
-2025-02-26 20:31:52.254 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:52.258 INFO (MainThread) [homeassistant.setup] Setup of domain media_source took 0.0 seconds
-2025-02-26 20:31:52.345 DEBUG (MainThread) [homeassistant.loader] Component stream import took 0.087 seconds (loaded_executor=False)
-2025-02-26 20:31:52.345 INFO (MainThread) [homeassistant.setup] Setting up stream
-2025-02-26 20:31:52.396 INFO (MainThread) [homeassistant.setup] Setup of domain stream took 0.1 seconds
-2025-02-26 20:31:52.396 DEBUG (MainThread) [homeassistant.setup] Dependency mobile_app will wait for dependencies dict_keys(['tag'])
-2025-02-26 20:31:52.396 DEBUG (MainThread) [homeassistant.setup] Dependency mobile_app will wait for after dependencies dict_keys(['conversation'])
-2025-02-26 20:31:52.401 DEBUG (MainThread) [homeassistant.loader] Component ffmpeg import took 0.005 seconds (loaded_executor=False)
-2025-02-26 20:31:52.402 INFO (MainThread) [homeassistant.setup] Setting up ffmpeg
-2025-02-26 20:31:52.404 DEBUG (MainThread) [homeassistant.loader] Component homeassistant_alerts import took 0.002 seconds (loaded_executor=False)
-2025-02-26 20:31:52.405 INFO (MainThread) [homeassistant.setup] Setting up homeassistant_alerts
-2025-02-26 20:31:52.405 INFO (MainThread) [homeassistant.setup] Setup of domain homeassistant_alerts took 0.0 seconds
-2025-02-26 20:31:52.407 DEBUG (MainThread) [homeassistant.loader] Component input_boolean import took 0.002 seconds (loaded_executor=False)
-2025-02-26 20:31:52.408 INFO (MainThread) [homeassistant.setup] Setting up input_boolean
-2025-02-26 20:31:52.408 DEBUG (MainThread) [homeassistant.setup] Dependency automation will wait for dependencies dict_keys(['blueprint', 'trace'])
-2025-02-26 20:31:52.408 DEBUG (MainThread) [homeassistant.loader] Component zone import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.408 INFO (MainThread) [homeassistant.setup] Setting up zone
-2025-02-26 20:31:52.409 DEBUG (MainThread) [homeassistant.loader] Component system_health import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.411 INFO (MainThread) [homeassistant.setup] Setting up system_health
-2025-02-26 20:31:52.415 INFO (MainThread) [homeassistant.setup] Setup of domain system_health took 0.0 seconds
-2025-02-26 20:31:52.443 DEBUG (MainThread) [homeassistant.loader] Component conversation import took 0.027 seconds (loaded_executor=False)
-2025-02-26 20:31:52.443 INFO (MainThread) [homeassistant.setup] Setting up conversation
-2025-02-26 20:31:52.443 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=conversation, service=process>
-2025-02-26 20:31:52.443 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=conversation, service=reload>
-2025-02-26 20:31:52.444 INFO (MainThread) [homeassistant.setup] Setup of domain conversation took 0.0 seconds
-2025-02-26 20:31:52.444 DEBUG (MainThread) [homeassistant.loader] Component my import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.444 INFO (MainThread) [homeassistant.setup] Setting up my
-2025-02-26 20:31:52.444 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:52.445 INFO (MainThread) [homeassistant.setup] Setup of domain my took 0.0 seconds
-2025-02-26 20:31:52.446 DEBUG (MainThread) [homeassistant.loader] Component counter import took 0.002 seconds (loaded_executor=False)
-2025-02-26 20:31:52.447 INFO (MainThread) [homeassistant.setup] Setting up counter
-2025-02-26 20:31:52.449 DEBUG (MainThread) [homeassistant.loader] Component schedule import took 0.002 seconds (loaded_executor=False)
-2025-02-26 20:31:52.450 INFO (MainThread) [homeassistant.setup] Setting up schedule
-2025-02-26 20:31:52.458 DEBUG (MainThread) [homeassistant.loader] Component logbook import took 0.008 seconds (loaded_executor=False)
-2025-02-26 20:31:52.458 INFO (MainThread) [homeassistant.setup] Setting up logbook
-2025-02-26 20:31:52.459 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:52.459 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=logbook, service=log>
-2025-02-26 20:31:52.461 INFO (MainThread) [homeassistant.setup] Setup of domain logbook took 0.0 seconds
-2025-02-26 20:31:52.461 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=trace>
-2025-02-26 20:31:52.461 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=reload>
-2025-02-26 20:31:52.462 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=apply>
-2025-02-26 20:31:52.462 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=create>
-2025-02-26 20:31:52.462 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=delete>
-2025-02-26 20:31:52.463 DEBUG (MainThread) [homeassistant.loader] Importing platform sun.config_flow took 0.00s (loaded_executor=False)
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=blueprint>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=wake_word>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=stt>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=history>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=map>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=media_source>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=stream>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=homeassistant_alerts>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=system_health>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=conversation>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=my>
-2025-02-26 20:31:52.464 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=logbook>
-2025-02-26 20:31:52.467 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sun.sun, old_state=None, new_state=<state sun.sun=below_horizon; next_dawn=2025-02-27T05:48:13.253832+00:00, next_dusk=2025-02-27T18:37:03.454295+00:00, next_midnight=2025-02-27T00:12:38+00:00, next_noon=2025-02-27T12:12:44+00:00, next_rising=2025-02-27T06:09:30.093412+00:00, next_setting=2025-02-27T18:15:47.269705+00:00, elevation=-34.34, azimuth=259.83, rising=False, friendly_name=Sun @ 2025-02-26T20:31:52.467360+00:00>>
-2025-02-26 20:31:52.468 DEBUG (MainThread) [homeassistant.loader] Component hardware import took 0.247 seconds (loaded_executor=True)
-2025-02-26 20:31:52.468 INFO (MainThread) [homeassistant.setup] Setting up hardware
-2025-02-26 20:31:52.470 ERROR (MainThread) [haffmpeg.core] FFmpeg fails [Errno 2] No such file or directory: 'ffmpeg'
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/haffmpeg/core.py", line 137, in open
-    self._proc = await self._loop.run_in_executor(None, proc_func)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/concurrent/futures/thread.py", line 58, in run
-    result = self.fn(*self.args, **self.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/subprocess.py", line 1026, in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/subprocess.py", line 1955, in _execute_child
-    raise child_exception_type(errno_num, err_msg, err_filename)
-FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
-2025-02-26 20:31:52.488 WARNING (MainThread) [haffmpeg.tools] Error starting FFmpeg.
-2025-02-26 20:31:52.488 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=ffmpeg, service=start>
-2025-02-26 20:31:52.488 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=ffmpeg, service=stop>
-2025-02-26 20:31:52.488 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=ffmpeg, service=restart>
-2025-02-26 20:31:52.489 INFO (MainThread) [homeassistant.setup] Setup of domain ffmpeg took 0.1 seconds
-2025-02-26 20:31:52.489 DEBUG (MainThread) [homeassistant.loader] Component backup import took 0.084 seconds (loaded_executor=True)
-2025-02-26 20:31:52.489 INFO (MainThread) [homeassistant.setup] Setting up backup
-2025-02-26 20:31:52.489 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=backup, service=create>
-2025-02-26 20:31:52.490 INFO (MainThread) [homeassistant.setup] Setup of domain backup took 0.0 seconds
-2025-02-26 20:31:52.492 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=scene, service=turn_on>
-2025-02-26 20:31:52.492 INFO (MainThread) [homeassistant.setup] Setup of domain scene took 0.3 seconds
-2025-02-26 20:31:52.492 DEBUG (MainThread) [homeassistant.loader] Component sensor import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.492 INFO (MainThread) [homeassistant.setup] Setting up sensor
-2025-02-26 20:31:52.492 INFO (MainThread) [homeassistant.setup] Setup of domain sensor took 0.0 seconds
-2025-02-26 20:31:52.492 DEBUG (MainThread) [homeassistant.loader] Component automation import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.493 INFO (MainThread) [homeassistant.setup] Setting up automation
-2025-02-26 20:31:52.493 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=ffmpeg>
-2025-02-26 20:31:52.493 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=backup>
-2025-02-26 20:31:52.496 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=scene>
-2025-02-26 20:31:52.497 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_button, service=reload>
-2025-02-26 20:31:52.497 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_button, service=press>
-2025-02-26 20:31:52.497 INFO (MainThread) [homeassistant.setup] Setup of domain input_button took 0.3 seconds
-2025-02-26 20:31:52.498 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=reload>
-2025-02-26 20:31:52.498 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_first>
-2025-02-26 20:31:52.498 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_last>
-2025-02-26 20:31:52.498 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_next>
-2025-02-26 20:31:52.498 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_option>
-2025-02-26 20:31:52.498 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=select_previous>
-2025-02-26 20:31:52.498 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_select, service=set_options>
-2025-02-26 20:31:52.498 INFO (MainThread) [homeassistant.setup] Setup of domain input_select took 0.3 seconds
-2025-02-26 20:31:52.499 INFO (MainThread) [homeassistant.setup] Setup of domain tag took 0.3 seconds
-2025-02-26 20:31:52.499 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_text, service=reload>
-2025-02-26 20:31:52.499 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_text, service=set_value>
-2025-02-26 20:31:52.499 INFO (MainThread) [homeassistant.setup] Setup of domain input_text took 0.3 seconds
-2025-02-26 20:31:52.499 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=sensor>
-2025-02-26 20:31:52.503 INFO (MainThread) [homeassistant.components.sensor] Setting up sun.sensor
-2025-02-26 20:31:52.504 DEBUG (MainThread) [homeassistant.loader] Component script import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.504 INFO (MainThread) [homeassistant.setup] Setting up script
-2025-02-26 20:31:52.504 DEBUG (MainThread) [homeassistant.loader] Component energy import took 0.000 seconds (loaded_executor=False)
-2025-02-26 20:31:52.504 INFO (MainThread) [homeassistant.setup] Setting up energy
-2025-02-26 20:31:52.504 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event panels_updated[L]>
-2025-02-26 20:31:52.504 INFO (MainThread) [homeassistant.setup] Setup of domain energy took 0.0 seconds
-2025-02-26 20:31:52.506 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_button>
-2025-02-26 20:31:52.506 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_select>
-2025-02-26 20:31:52.506 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=tag>
-2025-02-26 20:31:52.506 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_text>
-2025-02-26 20:31:52.508 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=energy>
-2025-02-26 20:31:52.508 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=trigger>
-2025-02-26 20:31:52.508 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=toggle>
-2025-02-26 20:31:52.508 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=turn_on>
-2025-02-26 20:31:52.508 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=turn_off>
-2025-02-26 20:31:52.508 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=automation, service=reload>
-2025-02-26 20:31:52.508 INFO (MainThread) [homeassistant.setup] Setup of domain automation took 0.0 seconds
-2025-02-26 20:31:52.510 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event device_registry_updated[L]: action=create, device_id=8e6b3204a37a12fc4e9d17243135d733>
-2025-02-26 20:31:52.510 INFO (MainThread) [homeassistant.helpers.entity_registry] Registered new sensor.sun entity: sensor.sun_next_dawn
-2025-02-26 20:31:52.510 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=create, entity_id=sensor.sun_next_dawn>
-2025-02-26 20:31:52.510 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_dawn, old_state=None, new_state=<state sensor.sun_next_dawn=2025-02-27T05:48:13+00:00; device_class=timestamp, friendly_name=Sun Next dawn @ 2025-02-26T20:31:52.510819+00:00>>
-2025-02-26 20:31:52.511 INFO (MainThread) [homeassistant.helpers.entity_registry] Registered new sensor.sun entity: sensor.sun_next_dusk
-2025-02-26 20:31:52.511 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=create, entity_id=sensor.sun_next_dusk>
-2025-02-26 20:31:52.511 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_dusk, old_state=None, new_state=<state sensor.sun_next_dusk=2025-02-27T18:37:03+00:00; device_class=timestamp, friendly_name=Sun Next dusk @ 2025-02-26T20:31:52.511237+00:00>>
-2025-02-26 20:31:52.511 INFO (MainThread) [homeassistant.helpers.entity_registry] Registered new sensor.sun entity: sensor.sun_next_midnight
-2025-02-26 20:31:52.511 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=create, entity_id=sensor.sun_next_midnight>
-2025-02-26 20:31:52.511 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_midnight, old_state=None, new_state=<state sensor.sun_next_midnight=2025-02-27T00:12:38+00:00; device_class=timestamp, friendly_name=Sun Next midnight @ 2025-02-26T20:31:52.511655+00:00>>
-2025-02-26 20:31:52.511 INFO (MainThread) [homeassistant.helpers.entity_registry] Registered new sensor.sun entity: sensor.sun_next_noon
-2025-02-26 20:31:52.511 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=create, entity_id=sensor.sun_next_noon>
-2025-02-26 20:31:52.511 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_noon, old_state=None, new_state=<state sensor.sun_next_noon=2025-02-27T12:12:44+00:00; device_class=timestamp, friendly_name=Sun Next noon @ 2025-02-26T20:31:52.511971+00:00>>
-2025-02-26 20:31:52.512 INFO (MainThread) [homeassistant.helpers.entity_registry] Registered new sensor.sun entity: sensor.sun_next_rising
-2025-02-26 20:31:52.512 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=create, entity_id=sensor.sun_next_rising>
-2025-02-26 20:31:52.512 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_rising, old_state=None, new_state=<state sensor.sun_next_rising=2025-02-27T06:09:30+00:00; device_class=timestamp, friendly_name=Sun Next rising @ 2025-02-26T20:31:52.512266+00:00>>
-2025-02-26 20:31:52.512 INFO (MainThread) [homeassistant.helpers.entity_registry] Registered new sensor.sun entity: sensor.sun_next_setting
-2025-02-26 20:31:52.512 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=create, entity_id=sensor.sun_next_setting>
-2025-02-26 20:31:52.512 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=sensor.sun_next_setting, old_state=None, new_state=<state sensor.sun_next_setting=2025-02-27T18:15:47+00:00; device_class=timestamp, friendly_name=Sun Next setting @ 2025-02-26T20:31:52.512538+00:00>>
-2025-02-26 20:31:52.512 INFO (MainThread) [homeassistant.helpers.entity_registry] Registered new sensor.sun entity: sensor.sun_solar_elevation
-2025-02-26 20:31:52.512 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=create, entity_id=sensor.sun_solar_elevation>
-2025-02-26 20:31:52.512 INFO (MainThread) [homeassistant.helpers.entity_registry] Registered new sensor.sun entity: sensor.sun_solar_azimuth
-2025-02-26 20:31:52.512 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=create, entity_id=sensor.sun_solar_azimuth>
-2025-02-26 20:31:52.513 INFO (MainThread) [homeassistant.helpers.entity_registry] Registered new sensor.sun entity: sensor.sun_solar_rising
-2025-02-26 20:31:52.513 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=create, entity_id=sensor.sun_solar_rising>
-2025-02-26 20:31:52.514 INFO (MainThread) [homeassistant.components.sensor] Setting up energy.sensor
-2025-02-26 20:31:52.616 DEBUG (MainThread) [homeassistant.loader] Component tts import took 0.100 seconds (loaded_executor=False)
-2025-02-26 20:31:52.616 INFO (MainThread) [homeassistant.setup] Setting up tts
-2025-02-26 20:31:52.617 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=automation>
-2025-02-26 20:31:52.617 INFO (MainThread) [homeassistant.setup] Setup of domain hardware took 0.1 seconds
-2025-02-26 20:31:52.617 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=script, service=reload>
-2025-02-26 20:31:52.617 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=script, service=turn_on>
-2025-02-26 20:31:52.617 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=script, service=turn_off>
-2025-02-26 20:31:52.617 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=script, service=toggle>
-2025-02-26 20:31:52.617 INFO (MainThread) [homeassistant.setup] Setup of domain script took 0.1 seconds
-2025-02-26 20:31:52.618 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_number, service=reload>
-2025-02-26 20:31:52.618 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_number, service=set_value>
-2025-02-26 20:31:52.618 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_number, service=increment>
-2025-02-26 20:31:52.618 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_number, service=decrement>
-2025-02-26 20:31:52.618 INFO (MainThread) [homeassistant.setup] Setup of domain input_number took 0.4 seconds
-2025-02-26 20:31:52.619 INFO (MainThread) [homeassistant.setup] Setup of domain application_credentials took 0.4 seconds
-2025-02-26 20:31:52.619 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=reload>
-2025-02-26 20:31:52.619 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=start>
-2025-02-26 20:31:52.619 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=pause>
-2025-02-26 20:31:52.619 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=cancel>
-2025-02-26 20:31:52.619 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=finish>
-2025-02-26 20:31:52.620 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=timer, service=change>
-2025-02-26 20:31:52.620 INFO (MainThread) [homeassistant.setup] Setup of domain timer took 0.4 seconds
-2025-02-26 20:31:52.620 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_datetime, service=reload>
-2025-02-26 20:31:52.620 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_datetime, service=set_datetime>
-2025-02-26 20:31:52.620 INFO (MainThread) [homeassistant.setup] Setup of domain input_datetime took 0.4 seconds
-2025-02-26 20:31:52.623 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=hardware>
-2025-02-26 20:31:52.623 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=script>
-2025-02-26 20:31:52.623 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_number>
-2025-02-26 20:31:52.623 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=application_credentials>
-2025-02-26 20:31:52.623 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=timer>
-2025-02-26 20:31:52.623 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_datetime>
-2025-02-26 20:31:52.635 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_boolean, service=reload>
-2025-02-26 20:31:52.635 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_boolean, service=turn_on>
-2025-02-26 20:31:52.635 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_boolean, service=turn_off>
-2025-02-26 20:31:52.635 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=input_boolean, service=toggle>
-2025-02-26 20:31:52.635 INFO (MainThread) [homeassistant.setup] Setup of domain input_boolean took 0.2 seconds
-2025-02-26 20:31:52.636 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=zone, service=reload>
-2025-02-26 20:31:52.636 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event state_changed[L]: entity_id=zone.home, old_state=None, new_state=<state zone.home=0; latitude=0, longitude=0, radius=100, passive=False, persons=[], editable=True, icon=mdi:home, friendly_name=Home @ 2025-02-26T20:31:52.636712+00:00>>
-2025-02-26 20:31:52.637 INFO (MainThread) [homeassistant.setup] Setup of domain zone took 0.2 seconds
-2025-02-26 20:31:52.638 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=counter, service=increment>
-2025-02-26 20:31:52.639 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=counter, service=decrement>
-2025-02-26 20:31:52.639 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=counter, service=reset>
-2025-02-26 20:31:52.639 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=counter, service=set_value>
-2025-02-26 20:31:52.639 INFO (MainThread) [homeassistant.setup] Setup of domain counter took 0.2 seconds
-2025-02-26 20:31:52.640 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=schedule, service=reload>
-2025-02-26 20:31:52.640 INFO (MainThread) [homeassistant.setup] Setup of domain schedule took 0.2 seconds
-2025-02-26 20:31:52.643 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=input_boolean>
-2025-02-26 20:31:52.643 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=zone>
-2025-02-26 20:31:52.643 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=counter>
-2025-02-26 20:31:52.643 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=schedule>
-2025-02-26 20:31:52.651 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=sun>
-2025-02-26 20:31:52.650 ERROR (ImportExecutor_0) [homeassistant.loader] Unexpected exception importing component homeassistant.components.mobile_app
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/mobile_app/__init__.py", line 5, in <module>
-    from homeassistant.components import cloud, notify as hass_notify
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
-    from .remote import RemoteUI
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
-    from .acme import AcmeClientError, AcmeHandler
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/acme.py", line 13, in <module>
-    from acme import challenges, client, crypto_util, errors, messages
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/challenges.py", line 24, in <module>
-    from acme import crypto_util
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/crypto_util.py", line 435, in <module>
-    def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
-                                               ^^^^^^^^^^^^^^^^^^^
-AttributeError: module 'josepy' has no attribute 'ComparableX509'
-2025-02-26 20:31:52.654 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=tts, service=speak>
-2025-02-26 20:31:52.654 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event service_registered[L]: domain=tts, service=clear_cache>
-2025-02-26 20:31:52.654 INFO (MainThread) [homeassistant.setup] Setup of domain tts took 0.0 seconds
-2025-02-26 20:31:52.654 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=tts>
-2025-02-26 20:31:52.675 DEBUG (MainThread) [homeassistant.loader] Component assist_pipeline import took 0.020 seconds (loaded_executor=False)
-2025-02-26 20:31:52.675 INFO (MainThread) [homeassistant.setup] Setting up assist_pipeline
-2025-02-26 20:31:52.676 DEBUG (MainThread) [homeassistant.loader] Failed to import mobile_app in executor
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/mobile_app/__init__.py", line 5, in <module>
-    from homeassistant.components import cloud, notify as hass_notify
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
-    from .remote import RemoteUI
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
-    from .acme import AcmeClientError, AcmeHandler
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/acme.py", line 13, in <module>
-    from acme import challenges, client, crypto_util, errors, messages
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/challenges.py", line 24, in <module>
-    from acme import crypto_util
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/crypto_util.py", line 435, in <module>
-    def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
-                                               ^^^^^^^^^^^^^^^^^^^
-AttributeError: module 'josepy' has no attribute 'ComparableX509'
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 886, in async_get_component
-    comp = await self.hass.async_add_import_executor_job(self.get_component)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/concurrent/futures/thread.py", line 58, in run
-    result = self.fn(*self.args, **self.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 932, in get_component
-    raise ImportError(f"Exception importing {self.pkg_path}") from err
-ImportError: Exception importing homeassistant.components.mobile_app
-2025-02-26 20:31:52.680 ERROR (MainThread) [homeassistant.loader] Unexpected exception importing component homeassistant.components.mobile_app
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/mobile_app/__init__.py", line 5, in <module>
-    from homeassistant.components import cloud, notify as hass_notify
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
-    from .remote import RemoteUI
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
-    from .acme import AcmeClientError, AcmeHandler
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/acme.py", line 13, in <module>
-    from acme import challenges, client, crypto_util, errors, messages
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/challenges.py", line 24, in <module>
-    from acme import crypto_util
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/crypto_util.py", line 435, in <module>
-    def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
-                                               ^^^^^^^^^^^^^^^^^^^
-AttributeError: module 'josepy' has no attribute 'ComparableX509'
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 886, in async_get_component
-    comp = await self.hass.async_add_import_executor_job(self.get_component)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/concurrent/futures/thread.py", line 58, in run
-    result = self.fn(*self.args, **self.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 932, in get_component
-    raise ImportError(f"Exception importing {self.pkg_path}") from err
-ImportError: Exception importing homeassistant.components.mobile_app
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/mobile_app/__init__.py", line 5, in <module>
-    from homeassistant.components import cloud, notify as hass_notify
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
-    from .remote import RemoteUI
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
-    from .acme import AcmeClientError, AcmeHandler
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/acme.py", line 13, in <module>
-    from acme import challenges, client, crypto_util, errors, messages
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/challenges.py", line 24, in <module>
-    from acme import crypto_util
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/crypto_util.py", line 435, in <module>
-    def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
-                                               ^^^^^^^^^^^^^^^^^^^
-AttributeError: module 'josepy' has no attribute 'ComparableX509'
-2025-02-26 20:31:52.685 ERROR (MainThread) [homeassistant.setup] Setup failed for 'mobile_app': Unable to import component: Exception importing homeassistant.components.mobile_app
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/mobile_app/__init__.py", line 5, in <module>
-    from homeassistant.components import cloud, notify as hass_notify
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
-    from .remote import RemoteUI
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
-    from .acme import AcmeClientError, AcmeHandler
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/acme.py", line 13, in <module>
-    from acme import challenges, client, crypto_util, errors, messages
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/challenges.py", line 24, in <module>
-    from acme import crypto_util
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/crypto_util.py", line 435, in <module>
-    def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
-                                               ^^^^^^^^^^^^^^^^^^^
-AttributeError: module 'josepy' has no attribute 'ComparableX509'
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 886, in async_get_component
-    comp = await self.hass.async_add_import_executor_job(self.get_component)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/concurrent/futures/thread.py", line 58, in run
-    result = self.fn(*self.args, **self.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 932, in get_component
-    raise ImportError(f"Exception importing {self.pkg_path}") from err
-ImportError: Exception importing homeassistant.components.mobile_app
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 921, in get_component
-    ComponentProtocol, importlib.import_module(self.pkg_path)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/mobile_app/__init__.py", line 5, in <module>
-    from homeassistant.components import cloud, notify as hass_notify
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/components/cloud/__init__.py", line 10, in <module>
-    from hass_nabucasa import Cloud
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/__init__.py", line 29, in <module>
-    from .remote import RemoteUI
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/remote.py", line 21, in <module>
-    from .acme import AcmeClientError, AcmeHandler
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/hass_nabucasa/acme.py", line 13, in <module>
-    from acme import challenges, client, crypto_util, errors, messages
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/challenges.py", line 24, in <module>
-    from acme import crypto_util
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/acme/crypto_util.py", line 435, in <module>
-    def dump_pyopenssl_chain(chain: Union[List[jose.ComparableX509], List[crypto.X509]],
-                                               ^^^^^^^^^^^^^^^^^^^
-AttributeError: module 'josepy' has no attribute 'ComparableX509'
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/setup.py", line 296, in _async_setup_component
-    component = await integration.async_get_component()
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 892, in async_get_component
-    comp = self.get_component()
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/homeassistant/loader.py", line 932, in get_component
-    raise ImportError(f"Exception importing {self.pkg_path}") from err
-ImportError: Exception importing homeassistant.components.mobile_app
-2025-02-26 20:31:52.689 INFO (SyncWorker_4) [homeassistant.loader] Loaded intent from homeassistant.components.intent
-2025-02-26 20:31:52.696 DEBUG (MainThread) [homeassistant.loader] Component intent import took 0.007 seconds (loaded_executor=False)
-2025-02-26 20:31:52.696 INFO (MainThread) [homeassistant.setup] Setting up intent
-2025-02-26 20:31:52.700 INFO (MainThread) [homeassistant.setup] Setup of domain intent took 0.0 seconds
-2025-02-26 20:31:52.701 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=intent>
-2025-02-26 20:31:52.701 INFO (MainThread) [homeassistant.setup] Setup of domain assist_pipeline took 0.0 seconds
-2025-02-26 20:31:52.702 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event component_loaded[L]: component=assist_pipeline>
-2025-02-26 20:31:52.703 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'default_config'. Setup failed for dependencies: ['cloud', 'mobile_app']
-2025-02-26 20:31:52.703 ERROR (MainThread) [homeassistant.setup] Setup failed for 'default_config': (DependencyError(...), 'Could not setup dependencies: cloud, mobile_app')
-2025-02-26 20:31:52.703 INFO (MainThread) [homeassistant.bootstrap] Home Assistant initialized in 2.30s
-2025-02-26 20:31:52.704 WARNING (MainThread) [homeassistant.bootstrap] Support for the running Python version 3.11.10 is deprecated and will be removed in Home Assistant 2024.4; Please upgrade Python to 3.12
-2025-02-26 20:31:52.704 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event repairs_issue_registry_updated[L]: action=create, domain=homeassistant, issue_id=python_version>
-2025-02-26 20:31:52.704 INFO (MainThread) [homeassistant.core] Starting Home Assistant
-2025-02-26 20:31:52.704 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event core_config_updated[L]>
-2025-02-26 20:31:52.704 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_start[L]>
-2025-02-26 20:31:52.705 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event core_config_updated[L]>
-2025-02-26 20:31:52.705 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_started[L]>
-2025-02-26 20:31:52.708 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=update, entity_id=sensor.sun_next_dawn, changes=options=>
-2025-02-26 20:31:52.708 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=update, entity_id=sensor.sun_next_dusk, changes=options=>
-2025-02-26 20:31:52.708 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=update, entity_id=sensor.sun_next_midnight, changes=options=>
-2025-02-26 20:31:52.708 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=update, entity_id=sensor.sun_next_noon, changes=options=>
-2025-02-26 20:31:52.709 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=update, entity_id=sensor.sun_next_rising, changes=options=>
-2025-02-26 20:31:52.709 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event entity_registry_updated[L]: action=update, entity_id=sensor.sun_next_setting, changes=options=>
-2025-02-26 20:31:53.151 ERROR (MainThread) [aiodhcpwatcher] Cannot watch for dhcp packets without a functional packet filter: libpcap is not available. Cannot compile filter !
-2025-02-26 20:32:31.403 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_stop[L]>
-2025-02-26 20:32:31.659 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_final_write[L]>
-2025-02-26 20:32:31.695 INFO (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Pool recreating
-2025-02-26 20:32:31.696 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_close[L]>
+2025-02-26 20:34:43.597 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_stop[L]>
+2025-02-26 20:34:43.601 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_final_write[L]>
+2025-02-26 20:34:43.636 INFO (Recorder) [homeassistant.components.recorder.pool.RecorderPool] Pool recreating
+2025-02-26 20:34:43.637 DEBUG (MainThread) [homeassistant.core] Bus:Handling <Event homeassistant_close[L]>

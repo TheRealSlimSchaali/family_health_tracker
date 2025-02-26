@@ -22,7 +22,12 @@ from .const import (
 
 _LOGGER = logging.getLogger(__name__)
 
-CONFIG_SCHEMA = vol.Schema({DOMAIN: vol.Schema({})}, extra=vol.ALLOW_EXTRA)
+CONFIG_SCHEMA = vol.Schema({
+    DOMAIN: vol.Schema({
+        vol.Required(CONF_NAME): cv.string,
+        vol.Required(CONF_MEMBERS): cv.string,
+    })
+}, extra=vol.ALLOW_EXTRA)
 
 PLATFORMS = ["sensor"]
 

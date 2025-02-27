@@ -87,34 +87,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data[DOMAIN][entry.entry_id] = {}
 
     _LOGGER.debug("Starting platform setup for: %s", PLATFORMS)
-
-    # Set up all platforms for this device/entry
-    for platform in PLATFORMS:
-        try:
-            _LOGGER.debug("Setting up platform: %s", platform)
-            await hass.config_entries.async_forward_entry_setup(entry, platform)
-            _LOGGER.debug("Successfully set up platform: %s", platform)
-        except Exception as ex:
-            _LOGGER.error("Error setting up platform %s: %s", platform, str(ex))
-            return False
+    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     return True
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
-    unload_ok = True
+    _LOGGER.debug("Unloading entry %s", entry.entry_id)
 
-    for platform in PLATFORMS:
-        try:
-            unloaded = await hass.config_entries.async_forward_entry_unload(entry, platform)
-            if not unloaded:
-                _LOGGER.error("Failed to unload platform: %s", platform)
-                unload_ok = False
-        except Exception as ex:
-            _LOGGER.error("Error unloading platform %s: %s", platform, str(ex))
-            unload_ok = False
+    unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
 
     if unload_ok:
         hass.data[DOMAIN].pop(entry.entry_id)
+        _LOGGER.debug("Successfully unloaded entry %s", entry.entry_id)
 
     return unload_ok

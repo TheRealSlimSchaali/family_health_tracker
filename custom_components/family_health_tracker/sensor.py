@@ -11,7 +11,7 @@ from homeassistant.components.sensor import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.const import TEMP_CELSIUS, CONF_NAME
+from homeassistant.const import CONF_NAME, UnitOfTemperature
 
 from .const import (
     DOMAIN,
@@ -71,7 +71,7 @@ class TemperatureSensor(SensorEntity):
         # Set required attributes for proper entity setup
         self._attr_device_class = SensorDeviceClass.TEMPERATURE
         self._attr_state_class = SensorStateClass.MEASUREMENT
-        self._attr_native_unit_of_measurement = TEMP_CELSIUS
+        self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{DOMAIN}_{name.lower()}_temperature"
         self._attr_has_entity_name = True
         self._attr_name = f"{name} Temperature"

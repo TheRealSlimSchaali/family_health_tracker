@@ -36,8 +36,19 @@ Each family member will have two sensor entities:
 
 ### Service Calls
 
-To add a new measurement, call the following service:
+You can add new measurements using the service call in two ways:
 
+#### Method 1: Using Developer Tools
+1. Go to Developer Tools -> Services
+2. Search for "Family Health Tracker: Add Measurement"
+3. Fill in the service data:
+```yaml
+name: "John"  # The family member's name
+temperature: 37.5  # Temperature in Celsius
+medication: "paracetamol"  # The medication given
+```
+
+#### Method 2: Using Service Call in Automations
 ```yaml
 service: family_health_tracker.add_measurement
 data:
@@ -46,11 +57,31 @@ data:
   medication: "none"  # Options: "none", "paracetamol", "ibuprofen"
 ```
 
-### Supported Medication Options
+### Available Medication Options
+The following medication options are supported:
+- `none`: No medication given
+- `paracetamol`: Paracetamol was administered
+- `ibuprofen`: Ibuprofen was administered
 
-- none
-- paracetamol
-- ibuprofen
+### Examples
+
+1. Recording temperature without medication:
+```yaml
+service: family_health_tracker.add_measurement
+data:
+  name: "John"
+  temperature: 37.2
+  medication: "none"
+```
+
+2. Recording temperature with medication:
+```yaml
+service: family_health_tracker.add_measurement
+data:
+  name: "John"
+  temperature: 38.5
+  medication: "paracetamol"
+```
 
 ## Development
 

@@ -68,7 +68,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
     def __init__(self, config_entry):
         """Initialize options flow."""
-        self.config_entry = config_entry
+        super().__init__(config_entry)
         _LOGGER.debug("Initializing options flow for entry: %s", config_entry.entry_id)
 
     async def async_step_init(self, user_input=None):
@@ -103,7 +103,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
             data_schema=vol.Schema({
                 vol.Required(
                     CONF_MEMBERS,
-                    default=self.config_entry.data.get(CONF_MEMBERS, ""),
+                    default=self._config_entry.data.get(CONF_MEMBERS, ""),
                 ): str,
             })
         )
@@ -136,7 +136,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                 # Show success and return to menu
                 return self.async_show_progress_done(next_step_id="menu")
 
-        members = [m.strip() for m in self.config_entry.data[CONF_MEMBERS].split(",")]
+        members = [m.strip() for m in self._config_entry.data[CONF_MEMBERS].split(",")]
         measurement_schema = vol.Schema({
             vol.Required("selected_member"): vol.In(members),
             vol.Required(ATTR_TEMPERATURE, description="Enter temperature between 35-42°C"): vol.Coerce(float),

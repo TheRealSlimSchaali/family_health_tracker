@@ -43,6 +43,17 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
 
     hass.data.setdefault(DOMAIN, {})
 
+    return True
+
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+    """Set up Family Health Tracker from a config entry."""
+    _LOGGER.debug("Setting up config entry: %s", entry.data)
+
+    hass.data.setdefault(DOMAIN, {})
+    hass.data[DOMAIN][entry.entry_id] = {}
+
+    _LOGGER.debug("Starting platform setup for: %s", PLATFORMS)
+
     async def handle_add_measurement(call: ServiceCall) -> None:
         """Handle the service call."""
         name = call.data.get(CONF_NAME)
@@ -80,6 +91,7 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
                 str(hass.data[DOMAIN])
             )
 
+    # Register the service
     hass.services.async_register(
         DOMAIN,
         "add_measurement",
@@ -87,16 +99,6 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
         schema=MEASUREMENT_SERVICE_SCHEMA
     )
 
-    return True
-
-async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up Family Health Tracker from a config entry."""
-    _LOGGER.debug("Setting up config entry: %s", entry.data)
-
-    hass.data.setdefault(DOMAIN, {})
-    hass.data[DOMAIN][entry.entry_id] = {}
-
-    _LOGGER.debug("Starting platform setup for: %s", PLATFORMS)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     return True
@@ -104,6 +106,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
     _LOGGER.debug("Unloading entry %s", entry.entry_id)
+
+    # Remove the service when the last config entry is unloaded
+    if len(hass.data[DOMAIN]) == 1:
+        hass.services.async_remove(DOMAIN, "add_measurement")
 
     unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
 

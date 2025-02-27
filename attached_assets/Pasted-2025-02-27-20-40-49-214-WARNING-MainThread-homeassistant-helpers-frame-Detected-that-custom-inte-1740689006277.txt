@@ -1,0 +1,37 @@
+2025-02-27 20:40:49.214 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'family_health_tracker' calls async_forward_entry_setup for integration, family_health_tracker with title: Health Tracker and entry_id: 01JN4J7Y91Q8R39XHWEB7Y990V, which is deprecated, await async_forward_entry_setups instead at custom_components/family_health_tracker/__init__.py, line 95: await hass.config_entries.async_forward_entry_setup(entry, platform). This will stop working in Home Assistant 2025.6, please create a bug report at https://github.com/TheRealSlimSchaali/family_health_tracker/issues
+2025-02-27 20:40:49.229 WARNING (MainThread) [homeassistant.util.loop] Detected blocking call to import_module with args ('custom_components.family_health_tracker.sensor',) inside the event loop by custom integration 'family_health_tracker' at custom_components/family_health_tracker/__init__.py, line 95: await hass.config_entries.async_forward_entry_setup(entry, platform) (offender: /workspaces/home-assistant-core/homeassistant/loader.py, line 1303: return importlib.import_module(f"{self.pkg_path}.{platform_name}")), please create a bug report at https://github.com/TheRealSlimSchaali/family_health_tracker/issues
+For developers, please see https://developers.home-assistant.io/docs/asyncio_blocking_operations/#import_module
+Traceback (most recent call last):
+  File "/home/vscode/.local/ha-venv/bin/hass", line 10, in <module>
+    sys.exit(main())
+  File "/workspaces/home-assistant-core/homeassistant/__main__.py", line 213, in main
+    exit_code = runner.run(runtime_conf)
+  File "/workspaces/home-assistant-core/homeassistant/runner.py", line 154, in run
+    return loop.run_until_complete(setup_and_run_hass(runtime_config))
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 707, in run_until_complete
+    self.run_forever()
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 678, in run_forever
+    self._run_once()
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 2025, in _run_once
+    handle._run()
+  File "/usr/local/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/workspaces/home-assistant-core/homeassistant/config_entries.py", line 898, in async_setup_locked
+    await self.async_setup(hass, integration=integration)
+  File "/workspaces/home-assistant-core/homeassistant/config_entries.py", line 664, in async_setup
+    await self.__async_setup_with_context(hass, integration)
+  File "/workspaces/home-assistant-core/homeassistant/config_entries.py", line 753, in __async_setup_with_context
+    result = await component.async_setup_entry(hass, self)
+  File "/workspaces/home-assistant-core/config/custom_components/family_health_tracker/__init__.py", line 95, in async_setup_entry
+    await hass.config_entries.async_forward_entry_setup(entry, platform)
+
+2025-02-27 20:40:49.230 ERROR (MainThread) [custom_components.family_health_tracker] Error setting up platform sensor: cannot import name 'TEMP_CELSIUS' from 'homeassistant.const' (/workspaces/home-assistant-core/homeassistant/const.py)
+2025-02-27 20:40:56.978 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'family_health_tracker' sets option flow config_entry explicitly, which is deprecated at custom_components/family_health_tracker/config_flow.py, line 64: self.config_entry = config_entry. This will stop working in Home Assistant 2025.12, please create a bug report at https://github.com/TheRealSlimSchaali/family_health_tracker/issues
+2025-02-27 20:41:08.150 ERROR (MainThread) [custom_components.family_health_tracker] Error setting up platform sensor: cannot import name 'TEMP_CELSIUS' from 'homeassistant.const' (/workspaces/home-assistant-core/homeassistant/const.py)
+2025-02-27 20:41:37.838 DEBUG (MainThread) [custom_components.family_health_tracker.config_flow] Starting config flow user step with input: None
+2025-02-27 20:41:40.608 DEBUG (MainThread) [custom_components.family_health_tracker.config_flow] Starting config flow user step with input: {'name': 'Health Tracker', 'members': 'Florian,Tobias'}
+2025-02-27 20:41:40.608 DEBUG (MainThread) [custom_components.family_health_tracker.config_flow] Creating entry with data: {'name': 'Health Tracker', 'members': 'Florian,Tobias'}
+2025-02-27 20:41:40.609 DEBUG (MainThread) [custom_components.family_health_tracker] Setting up config entry: {'name': 'Health Tracker', 'members': 'Florian,Tobias'}
+2025-02-27 20:41:40.609 DEBUG (MainThread) [custom_components.family_health_tracker] Starting platform setup for: ['sensor']
+2025-02-27 20:41:40.609 DEBUG (MainThread) [custom_components.family_health_tracker] Setting up platform: sensor
+2025-02-27 20:41:40.624 ERROR (MainThread) [custom_components.family_health_tracker] Error setting up platform sensor: cannot import name 'TEMP_CELSIUS' from 'homeassistant.const' (/workspaces/home-assistant-core/homeassistant/const.py)

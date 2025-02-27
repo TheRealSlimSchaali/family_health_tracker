@@ -68,7 +68,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
     def __init__(self, config_entry):
         """Initialize options flow."""
-        super().__init__(config_entry)
+        self._config_entry = config_entry
         _LOGGER.debug("Initializing options flow for entry: %s", config_entry.entry_id)
 
     async def async_step_init(self, user_input=None):
@@ -114,8 +114,8 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
         if user_input is not None:
             temperature = user_input[ATTR_TEMPERATURE]
-            # Validate temperature is in a reasonable range (35-42°C)
-            if temperature < 35 or temperature > 42:
+            # Validate temperature is in a reasonable range (34-43°C)
+            if temperature < 34.0 or temperature > 43.0:
                 errors[ATTR_TEMPERATURE] = "temperature_invalid"
             else:
                 # Process the measurement
@@ -128,7 +128,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                     "add_measurement",
                     {
                         CONF_NAME: selected_member,
-                        ATTR_TEMPERATURE: temperature,
+                        ATTR_TEMPERATURE: float(temperature),  # Ensure float conversion
                         ATTR_MEDICATION: medication,
                     },
                 )
@@ -139,7 +139,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         members = [m.strip() for m in self._config_entry.data[CONF_MEMBERS].split(",")]
         measurement_schema = vol.Schema({
             vol.Required("selected_member"): vol.In(members),
-            vol.Required(ATTR_TEMPERATURE, description="Enter temperature between 35-42°C"): vol.Coerce(float),
+            vol.Required(ATTR_TEMPERATURE, description="Enter temperature between 34-43°C"): vol.Coerce(float),
             vol.Required(ATTR_MEDICATION): vol.In({
                 "none": "No medication given",
                 "paracetamol": "Paracetamol administered",

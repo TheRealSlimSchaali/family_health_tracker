@@ -39,7 +39,7 @@
           "medication": "Select Medication"
         },
         "error": {
-          "temperature_invalid": "Temperature must be between 35°C and 42°C"
+          "temperature_invalid": "Temperature must be between 34°C and 43°C"
         }
       }
     }

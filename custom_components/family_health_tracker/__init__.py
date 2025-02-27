@@ -36,6 +36,8 @@ MEASUREMENT_SERVICE_SCHEMA = vol.Schema({
 
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     """Set up the Family Health Tracker component."""
+    _LOGGER.debug("Setting up Family Health Tracker integration")
+
     if DOMAIN not in config:
         return True
 
@@ -49,6 +51,8 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
 
         temp_entity_id = f"sensor.health_tracker_{name.lower()}_temperature"
         med_entity_id = f"sensor.health_tracker_{name.lower()}_medication"
+
+        _LOGGER.debug("Looking for sensors: %s and %s", temp_entity_id, med_entity_id)
 
         for entry_id in hass.data[DOMAIN]:
             if temp_entity_id in hass.data[DOMAIN][entry_id]:
@@ -77,22 +81,38 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Family Health Tracker from a config entry."""
+    _LOGGER.debug("Setting up config entry: %s", entry.data)
+
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = {}
 
+    _LOGGER.debug("Starting platform setup for: %s", PLATFORMS)
+
+    # Set up all platforms for this device/entry
     for platform in PLATFORMS:
-        hass.async_create_task(
-            hass.config_entries.async_forward_entry_setup(entry, platform)
-        )
+        try:
+            _LOGGER.debug("Setting up platform: %s", platform)
+            await hass.config_entries.async_forward_entry_setup(entry, platform)
+            _LOGGER.debug("Successfully set up platform: %s", platform)
+        except Exception as ex:
+            _LOGGER.error("Error setting up platform %s: %s", platform, str(ex))
+            return False
 
     return True
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
-    unload_ok = all(
-        await hass.config_entries.async_forward_entry_unload(entry, platform)
-        for platform in PLATFORMS
-    )
+    unload_ok = True
+
+    for platform in PLATFORMS:
+        try:
+            unloaded = await hass.config_entries.async_forward_entry_unload(entry, platform)
+            if not unloaded:
+                _LOGGER.error("Failed to unload platform: %s", platform)
+                unload_ok = False
+        except Exception as ex:
+            _LOGGER.error("Error unloading platform %s: %s", platform, str(ex))
+            unload_ok = False
 
     if unload_ok:
         hass.data[DOMAIN].pop(entry.entry_id)

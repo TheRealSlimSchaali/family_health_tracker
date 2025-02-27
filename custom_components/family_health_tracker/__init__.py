@@ -47,16 +47,24 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
         temperature = call.data.get(ATTR_TEMPERATURE)
         medication = call.data.get(ATTR_MEDICATION)
 
-        entity_id = f"sensor.health_tracker_{name.lower()}"
+        temp_entity_id = f"sensor.health_tracker_{name.lower()}_temperature"
+        med_entity_id = f"sensor.health_tracker_{name.lower()}_medication"
 
         for entry_id in hass.data[DOMAIN]:
-            if entity_id in hass.data[DOMAIN][entry_id]:
-                sensor = hass.data[DOMAIN][entry_id][entity_id]
-                sensor.add_measurement(temperature)
-                _LOGGER.debug("Added measurement for %s: temp=%f", name, temperature)
+            if temp_entity_id in hass.data[DOMAIN][entry_id]:
+                temp_sensor = hass.data[DOMAIN][entry_id][temp_entity_id]
+                med_sensor = hass.data[DOMAIN][entry_id][med_entity_id]
+
+                temp_sensor.update_temperature(temperature)
+                med_sensor.update_medication(medication)
+
+                _LOGGER.debug(
+                    "Updated measurements for %s: temp=%f, med=%s",
+                    name, temperature, medication
+                )
                 return
 
-        _LOGGER.error("No sensor found for %s", name)
+        _LOGGER.error("No sensors found for %s", name)
 
     hass.services.async_register(
         DOMAIN,

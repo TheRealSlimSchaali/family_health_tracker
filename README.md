@@ -6,6 +6,8 @@ A Home Assistant custom integration for tracking family members' temperature and
 
 - Track temperature measurements for multiple family members
 - Record medication administration (Paracetamol/Ibuprofen)
+- Timestamp tracking for all measurements
+- Individual entities for temperature and medication
 - Easy configuration through Home Assistant UI
 
 ## Installation
@@ -27,6 +29,10 @@ A Home Assistant custom integration for tracking family members' temperature and
    - Family Members: Comma-separated list of family members to track
 
 ## Usage
+
+Each family member will have two sensor entities:
+1. Temperature sensor: Shows the latest temperature measurement with timestamp
+2. Medication sensor: Shows the latest medication administered with timestamp
 
 ### Service Calls
 

@@ -49,26 +49,36 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
         temperature = call.data.get(ATTR_TEMPERATURE)
         medication = call.data.get(ATTR_MEDICATION)
 
-        temp_entity_id = f"sensor.health_tracker_{name.lower()}_temperature"
-        med_entity_id = f"sensor.health_tracker_{name.lower()}_medication"
+        # Convert name to lowercase for consistent matching
+        name_lower = name.lower()
+        temp_entity_id = f"sensor.health_tracker_{name_lower}_temperature"
+        med_entity_id = f"sensor.health_tracker_{name_lower}_medication"
 
         _LOGGER.debug("Looking for sensors: %s and %s", temp_entity_id, med_entity_id)
 
-        for entry_id in hass.data[DOMAIN]:
-            if temp_entity_id in hass.data[DOMAIN][entry_id]:
-                temp_sensor = hass.data[DOMAIN][entry_id][temp_entity_id]
-                med_sensor = hass.data[DOMAIN][entry_id][med_entity_id]
+        # Search through all config entries
+        found = False
+        for entry_id, entry_data in hass.data[DOMAIN].items():
+            if temp_entity_id in entry_data and med_entity_id in entry_data:
+                temp_sensor = entry_data[temp_entity_id]
+                med_sensor = entry_data[med_entity_id]
 
-                temp_sensor.update_temperature(temperature)
-                med_sensor.update_medication(medication)
+                await temp_sensor.update_temperature(temperature)
+                await med_sensor.update_medication(medication)
 
                 _LOGGER.debug(
                     "Updated measurements for %s: temp=%f, med=%s",
                     name, temperature, medication
                 )
-                return
+                found = True
+                break
 
-        _LOGGER.error("No sensors found for %s", name)
+        if not found:
+            _LOGGER.error(
+                "No sensors found for %s. Available sensors: %s",
+                name,
+                str(hass.data[DOMAIN])
+            )
 
     hass.services.async_register(
         DOMAIN,

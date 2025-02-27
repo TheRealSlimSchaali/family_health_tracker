@@ -92,13 +92,13 @@ class TemperatureSensor(SensorEntity):
         """Return the state attributes."""
         return self._attributes
 
-    def update_temperature(self, temperature: float) -> None:
+    async def update_temperature(self, temperature: float) -> None:
         """Update temperature measurement."""
         self._state = temperature
         self._last_updated = datetime.now().isoformat()
         self._attributes["last_measurement"] = temperature
         self._attributes["last_updated"] = self._last_updated
-        self.schedule_update_ha_state()
+        self.async_schedule_update_ha_state()
         _LOGGER.debug(
             "Updated temperature for %s: %f %s at %s",
             self._name,
@@ -139,13 +139,13 @@ class MedicationSensor(SensorEntity):
         """Return the state attributes."""
         return self._attributes
 
-    def update_medication(self, medication: str) -> None:
+    async def update_medication(self, medication: str) -> None:
         """Update medication status."""
         self._state = medication
         self._last_updated = datetime.now().isoformat()
         self._attributes["last_medication"] = medication
         self._attributes["last_updated"] = self._last_updated
-        self.schedule_update_ha_state()
+        self.async_schedule_update_ha_state()
         _LOGGER.debug(
             "Updated medication for %s: %s at %s",
             self._name,

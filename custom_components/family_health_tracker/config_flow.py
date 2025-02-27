@@ -21,10 +21,15 @@ class FamilyHealthTrackerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         errors = {}
 
         if user_input is not None:
-            return self.async_create_entry(
-                title=user_input.get(CONF_NAME, DEFAULT_NAME),
-                data=user_input
-            )
+            # Validate members input
+            members = [m.strip() for m in user_input[CONF_MEMBERS].split(",")]
+            if not members:
+                errors[CONF_MEMBERS] = "no_members"
+            else:
+                return self.async_create_entry(
+                    title=user_input.get(CONF_NAME, DEFAULT_NAME),
+                    data=user_input
+                )
 
         data_schema = vol.Schema(
             {

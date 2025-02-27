@@ -5,8 +5,11 @@
         "title": "Family Health Tracker",
         "description": "Set up family health tracking",
         "data": {
-          "name": "Name",
-          "members": "Family Members (comma-separated)"
+          "name": "Name for this tracker",
+          "members": "Family Members (comma-separated list of names)"
+        },
+        "error": {
+          "no_members": "At least one family member must be specified"
         }
       }
     }
@@ -15,8 +18,9 @@
     "step": {
       "init": {
         "title": "Family Health Tracker Options",
+        "description": "Modify your family members list",
         "data": {
-          "members": "Family Members (comma-separated)"
+          "members": "Family Members (comma-separated list of names)"
         }
       }
     }

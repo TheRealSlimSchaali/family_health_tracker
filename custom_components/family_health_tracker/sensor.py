@@ -28,17 +28,22 @@ async def async_setup_entry(
 
     sensors = []
     for member in members:
-        sensor = HealthTrackerSensor(member)
+        sensor = HealthTrackerSensor(hass, member, config_entry.entry_id)
         sensors.append(sensor)
+        # Store sensor reference for service calls
+        entity_id = f"sensor.health_tracker_{member.lower()}"
+        hass.data[DOMAIN][config_entry.entry_id][entity_id] = sensor
 
     async_add_entities(sensors, True)
 
 class HealthTrackerSensor(SensorEntity):
     """Representation of a Health Tracker Sensor."""
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, hass: HomeAssistant, name: str, entry_id: str) -> None:
         """Initialize the sensor."""
+        self._hass = hass
         self._name = name
+        self._entry_id = entry_id
         self._state = None
         self._attributes = {
             ATTR_TEMPERATURE: None,
@@ -75,3 +80,9 @@ class HealthTrackerSensor(SensorEntity):
         self._state = temperature
         self._attributes[ATTR_TEMPERATURE] = temperature
         self.schedule_update_ha_state()
+        _LOGGER.debug(
+            "Updated temperature for %s: %f %s",
+            self._name,
+            temperature,
+            self.unit_of_measurement
+        )

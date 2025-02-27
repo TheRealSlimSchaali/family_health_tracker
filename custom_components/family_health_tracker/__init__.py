@@ -48,12 +48,15 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
         medication = call.data.get(ATTR_MEDICATION)
 
         entity_id = f"sensor.health_tracker_{name.lower()}"
-        sensor = hass.data[DOMAIN].get(entity_id)
 
-        if sensor:
-            sensor.add_measurement(temperature, medication)
-        else:
-            _LOGGER.error("No sensor found for %s", name)
+        for entry_id in hass.data[DOMAIN]:
+            if entity_id in hass.data[DOMAIN][entry_id]:
+                sensor = hass.data[DOMAIN][entry_id][entity_id]
+                sensor.add_measurement(temperature)
+                _LOGGER.debug("Added measurement for %s: temp=%f", name, temperature)
+                return
+
+        _LOGGER.error("No sensor found for %s", name)
 
     hass.services.async_register(
         DOMAIN,
@@ -67,6 +70,7 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Family Health Tracker from a config entry."""
     hass.data.setdefault(DOMAIN, {})
+    hass.data[DOMAIN][entry.entry_id] = {}
 
     for platform in PLATFORMS:
         hass.async_create_task(
@@ -83,6 +87,6 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     )
 
     if unload_ok:
-        hass.data[DOMAIN] = {}
+        hass.data[DOMAIN].pop(entry.entry_id)
 
     return unload_ok

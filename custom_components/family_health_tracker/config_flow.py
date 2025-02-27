@@ -7,7 +7,14 @@ from homeassistant import config_entries
 from homeassistant.core import callback
 from homeassistant.const import CONF_NAME
 
-from .const import DOMAIN, CONF_MEMBERS, DEFAULT_NAME
+from .const import (
+    DOMAIN,
+    CONF_MEMBERS,
+    DEFAULT_NAME,
+    ATTR_TEMPERATURE,
+    ATTR_MEDICATION,
+    MEDICATION_OPTIONS,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -65,19 +72,83 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         _LOGGER.debug("Initializing options flow for entry: %s", config_entry.entry_id)
 
     async def async_step_init(self, user_input=None):
-        """Handle options flow."""
+        """Handle options flow initial step."""
+        return await self.async_step_menu()
+
+    async def async_step_menu(self, user_input=None):
+        """Show the menu for options flow."""
         if user_input is not None:
-            _LOGGER.debug("Creating options entry with data: %s", user_input)
+            if user_input["menu_option"] == "update_members":
+                return await self.async_step_update_members()
+            else:
+                return await self.async_step_record_measurement()
+
+        return self.async_show_form(
+            step_id="menu",
+            data_schema=vol.Schema({
+                vol.Required("menu_option", default="record_measurement"): vol.In({
+                    "record_measurement": "Record New Measurement",
+                    "update_members": "Update Family Members",
+                })
+            })
+        )
+
+    async def async_step_update_members(self, user_input=None):
+        """Handle the update members step."""
+        if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
         return self.async_show_form(
-            step_id="init",
-            data_schema=vol.Schema(
-                {
-                    vol.Required(
-                        CONF_MEMBERS,
-                        default=self.config_entry.data.get(CONF_MEMBERS, ""),
-                    ): str,
-                }
-            ),
+            step_id="update_members",
+            data_schema=vol.Schema({
+                vol.Required(
+                    CONF_MEMBERS,
+                    default=self.config_entry.data.get(CONF_MEMBERS, ""),
+                ): str,
+            })
+        )
+
+    async def async_step_record_measurement(self, user_input=None):
+        """Handle the record measurement step."""
+        errors = {}
+
+        if user_input is not None:
+            temperature = user_input[ATTR_TEMPERATURE]
+            # Validate temperature is in a reasonable range (35-42°C)
+            if temperature < 35 or temperature > 42:
+                errors[ATTR_TEMPERATURE] = "temperature_invalid"
+            else:
+                # Process the measurement
+                selected_member = user_input["selected_member"]
+                medication = user_input[ATTR_MEDICATION]
+
+                # Call our service to record the measurement
+                await self.hass.services.async_call(
+                    DOMAIN,
+                    "add_measurement",
+                    {
+                        CONF_NAME: selected_member,
+                        ATTR_TEMPERATURE: temperature,
+                        ATTR_MEDICATION: medication,
+                    },
+                )
+
+                # Show success and return to menu
+                return self.async_show_progress_done(next_step_id="menu")
+
+        members = [m.strip() for m in self.config_entry.data[CONF_MEMBERS].split(",")]
+        measurement_schema = vol.Schema({
+            vol.Required("selected_member"): vol.In(members),
+            vol.Required(ATTR_TEMPERATURE, description="Enter temperature between 35-42°C"): vol.Coerce(float),
+            vol.Required(ATTR_MEDICATION): vol.In({
+                "none": "No medication given",
+                "paracetamol": "Paracetamol administered",
+                "ibuprofen": "Ibuprofen administered",
+            }),
+        })
+
+        return self.async_show_form(
+            step_id="record_measurement",
+            data_schema=measurement_schema,
+            errors=errors,
         )

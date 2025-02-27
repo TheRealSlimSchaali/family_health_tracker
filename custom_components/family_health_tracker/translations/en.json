@@ -13,10 +13,30 @@
   },
   "options": {
     "step": {
-      "init": {
+      "menu": {
         "title": "Family Health Tracker Options",
+        "description": "What would you like to do?",
         "data": {
-          "members": "Family Members (comma-separated)"
+          "menu_option": "Choose an action"
+        }
+      },
+      "update_members": {
+        "title": "Update Family Members",
+        "description": "Add or remove family members (comma-separated list)",
+        "data": {
+          "members": "Family Members"
+        }
+      },
+      "record_measurement": {
+        "title": "Record Health Measurement",
+        "description": "Record temperature and medication for a family member",
+        "data": {
+          "selected_member": "Select Family Member",
+          "temperature": "Temperature (35-42°C)",
+          "medication": "Select Medication"
+        },
+        "error": {
+          "temperature_invalid": "Please enter a valid temperature between 35°C and 42°C"
         }
       }
     }

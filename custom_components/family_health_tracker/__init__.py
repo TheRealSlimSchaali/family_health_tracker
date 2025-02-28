@@ -77,63 +77,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             manufacturer="Family Health Tracker",
             model="Health Monitor",
             sw_version="1.0",
-            via_device=(DOMAIN, entry.entry_id),  # Link to the hub device
+            via_device=(DOMAIN, entry.entry_id),
+            entry_type="service",  # This is important for showing the configuration section
         )
 
     _LOGGER.debug("Starting platform setup for: %s", PLATFORMS)
-
-    # Set up device action handler
-    async def handle_device_action(call: ServiceCall) -> None:
-        """Handle device action for recording measurements."""
-        device_id = call.data[CONF_DEVICE_ID]
-        temperature = call.data[ATTR_TEMPERATURE]
-        medication = call.data[ATTR_MEDICATION]
-
-        device_registry = dr.async_get(hass)
-        device = device_registry.async_get(device_id)
-        if not device:
-            raise HomeAssistantError(f"Device {device_id} not found")
-
-        # Extract member name from device name
-        member_name = device.name
-        
-        # Call the measurement service
-        await hass.services.async_call(
-            DOMAIN,
-            "add_measurement",
-            {
-                CONF_NAME: member_name,
-                ATTR_TEMPERATURE: float(temperature),
-                ATTR_MEDICATION: medication,
-            },
-        )
-
-    # Register device action
-    try:
-        device_registry = dr.async_get(hass)
-        for member in members:
-            device = device_registry.async_get_device(
-                identifiers={(DOMAIN, f"{entry.entry_id}_{member.lower()}")}
-            )
-            if device:
-                device_registry.async_update_device(
-                    device.id,
-                    configuration_url="/config/integrations/device/" + device.id,
-                )
-    except Exception as ex:
-        _LOGGER.error("Error setting up device actions: %s", ex)
-
-    # Register the device action service
-    hass.services.async_register(
-        DOMAIN,
-        "device_action",
-        handle_device_action,
-        schema=vol.Schema({
-            vol.Required(CONF_DEVICE_ID): str,
-            vol.Required(ATTR_TEMPERATURE): vol.Coerce(float),
-            vol.Required(ATTR_MEDICATION): vol.In(MEDICATION_OPTIONS),
-        })
-    )
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 

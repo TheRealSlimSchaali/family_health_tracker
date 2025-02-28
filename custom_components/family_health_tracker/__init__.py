@@ -6,9 +6,11 @@ import voluptuous as vol
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, ServiceCall
-from homeassistant.const import CONF_NAME
-from homeassistant.helpers import device_registry as dr
+from homeassistant.const import CONF_NAME, CONF_DEVICE_ID
+from homeassistant.helpers import device_registry as dr, entity_registry as er
 from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers.device_registry import DeviceEntry
+from homeassistant.exceptions import HomeAssistantError
 
 from .const import (
     DOMAIN,
@@ -80,49 +82,57 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     _LOGGER.debug("Starting platform setup for: %s", PLATFORMS)
 
-    async def handle_add_measurement(call: ServiceCall) -> None:
-        """Handle the service call."""
-        name = call.data.get(CONF_NAME)
-        temperature = call.data.get(ATTR_TEMPERATURE)
-        medication = call.data.get(ATTR_MEDICATION)
+    # Set up device action handler
+    async def handle_device_action(call: ServiceCall) -> None:
+        """Handle device action for recording measurements."""
+        device_id = call.data[CONF_DEVICE_ID]
+        temperature = call.data[ATTR_TEMPERATURE]
+        medication = call.data[ATTR_MEDICATION]
 
-        # Convert name to lowercase for consistent matching
-        name_lower = name.lower()
-        temp_entity_id = f"sensor.{name_lower}_temperature"
-        med_entity_id = f"sensor.{name_lower}_medication"
+        device_registry = dr.async_get(hass)
+        device = device_registry.async_get(device_id)
+        if not device:
+            raise HomeAssistantError(f"Device {device_id} not found")
 
-        _LOGGER.debug("Looking for sensors: %s and %s", temp_entity_id, med_entity_id)
+        # Extract member name from device name
+        member_name = device.name
+        
+        # Call the measurement service
+        await hass.services.async_call(
+            DOMAIN,
+            "add_measurement",
+            {
+                CONF_NAME: member_name,
+                ATTR_TEMPERATURE: float(temperature),
+                ATTR_MEDICATION: medication,
+            },
+        )
 
-        # Search through all config entries
-        found = False
-        for entry_id, entry_data in hass.data[DOMAIN].items():
-            if temp_entity_id in entry_data and med_entity_id in entry_data:
-                temp_sensor = entry_data[temp_entity_id]
-                med_sensor = entry_data[med_entity_id]
-
-                await temp_sensor.update_temperature(temperature)
-                await med_sensor.update_medication(medication)
-
-                _LOGGER.debug(
-                    "Updated measurements for %s: temp=%f, med=%s",
-                    name, temperature, medication
-                )
-                found = True
-                break
-
-        if not found:
-            _LOGGER.error(
-                "No sensors found for %s. Available sensors: %s",
-                name,
-                str(hass.data[DOMAIN])
+    # Register device action
+    try:
+        device_registry = dr.async_get(hass)
+        for member in members:
+            device = device_registry.async_get_device(
+                identifiers={(DOMAIN, f"{entry.entry_id}_{member.lower()}")}
             )
+            if device:
+                device_registry.async_update_device(
+                    device.id,
+                    configuration_url="/config/integrations/device/" + device.id,
+                )
+    except Exception as ex:
+        _LOGGER.error("Error setting up device actions: %s", ex)
 
-    # Register the service
+    # Register the device action service
     hass.services.async_register(
         DOMAIN,
-        "add_measurement",
-        handle_add_measurement,
-        schema=MEASUREMENT_SERVICE_SCHEMA
+        "device_action",
+        handle_device_action,
+        schema=vol.Schema({
+            vol.Required(CONF_DEVICE_ID): str,
+            vol.Required(ATTR_TEMPERATURE): vol.Coerce(float),
+            vol.Required(ATTR_MEDICATION): vol.In(MEDICATION_OPTIONS),
+        })
     )
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)

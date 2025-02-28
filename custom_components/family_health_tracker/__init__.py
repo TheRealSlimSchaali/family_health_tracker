@@ -7,6 +7,7 @@ import voluptuous as vol
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.const import CONF_NAME
+from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers import config_validation as cv
 
 from .const import (
@@ -52,6 +53,20 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = {}
 
+    # Register devices for each family member
+    device_registry = dr.async_get(hass)
+    members = [m.strip() for m in entry.data[CONF_MEMBERS].split(",")]
+    
+    for member in members:
+        device_registry.async_get_or_create(
+            config_entry_id=entry.entry_id,
+            identifiers={(DOMAIN, f"{entry.entry_id}_{member.lower()}")},
+            name=f"{member}",
+            manufacturer="Family Health Tracker",
+            model="Health Monitor",
+            sw_version="1.0",
+        )
+
     _LOGGER.debug("Starting platform setup for: %s", PLATFORMS)
 
     async def handle_add_measurement(call: ServiceCall) -> None:
@@ -62,8 +77,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
         # Convert name to lowercase for consistent matching
         name_lower = name.lower()
-        temp_entity_id = f"sensor.health_tracker_{name_lower}_temperature"
-        med_entity_id = f"sensor.health_tracker_{name_lower}_medication"
+        temp_entity_id = f"sensor.{name_lower}_temperature"
+        med_entity_id = f"sensor.{name_lower}_medication"
 
         _LOGGER.debug("Looking for sensors: %s and %s", temp_entity_id, med_entity_id)
 
@@ -114,6 +129,14 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
 
     if unload_ok:
+        # Clean up devices
+        device_registry = dr.async_get(hass)
+        devices = dr.async_entries_for_config_entry(
+            device_registry, entry.entry_id
+        )
+        for device in devices:
+            device_registry.async_remove_device(device.id)
+
         hass.data[DOMAIN].pop(entry.entry_id)
         _LOGGER.debug("Successfully unloaded entry %s", entry.entry_id)
 

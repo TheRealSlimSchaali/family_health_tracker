@@ -11,6 +11,7 @@ from homeassistant.components.sensor import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.const import CONF_NAME, UnitOfTemperature
 
 from .const import (
@@ -30,57 +31,56 @@ async def async_setup_entry(
     """Set up the Family Health Tracker sensor."""
     _LOGGER.debug("Setting up sensors for config entry: %s", config_entry.data)
 
-    name = config_entry.data[CONF_NAME]
-    members_str = config_entry.data[CONF_MEMBERS]
-    members = [member.strip() for member in members_str.split(",")]
-
-    _LOGGER.debug("Creating sensors for members: %s", members)
+    members = [member.strip() for member in config_entry.data[CONF_MEMBERS].split(",")]
 
     sensors = []
     for member in members:
-        _LOGGER.debug("Creating sensors for member: %s", member)
+        member_lower = member.lower()
+        device_id = f"{config_entry.entry_id}_{member_lower}"
+        
+        device_info = DeviceInfo(
+            identifiers={(DOMAIN, device_id)},
+            name=member,
+            manufacturer="Family Health Tracker",
+            model="Health Monitor",
+            sw_version="1.0",
+        )
 
-        temp_sensor = TemperatureSensor(hass, member, config_entry.entry_id)
-        med_sensor = MedicationSensor(hass, member, config_entry.entry_id)
+        temp_sensor = TemperatureSensor(hass, member, device_info, config_entry.entry_id)
+        med_sensor = MedicationSensor(hass, member, device_info, config_entry.entry_id)
         sensors.extend([temp_sensor, med_sensor])
 
         # Store sensor references for service calls
-        entity_id_temp = f"sensor.health_tracker_{member.lower()}_temperature"
-        entity_id_med = f"sensor.health_tracker_{member.lower()}_medication"
-
-        _LOGGER.debug("Registering sensors with IDs: %s, %s", entity_id_temp, entity_id_med)
+        entity_id_temp = f"sensor.{member_lower}_temperature"
+        entity_id_med = f"sensor.{member_lower}_medication"
 
         hass.data[DOMAIN][config_entry.entry_id][entity_id_temp] = temp_sensor
         hass.data[DOMAIN][config_entry.entry_id][entity_id_med] = med_sensor
 
-    _LOGGER.debug("Adding %d sensors to Home Assistant", len(sensors))
     async_add_entities(sensors, True)
-    _LOGGER.debug("Sensor setup complete")
 
 class TemperatureSensor(SensorEntity):
     """Temperature sensor for a family member."""
 
-    def __init__(self, hass: HomeAssistant, name: str, entry_id: str) -> None:
+    def __init__(self, hass: HomeAssistant, name: str, device_info: DeviceInfo, entry_id: str) -> None:
         """Initialize the sensor."""
         self._hass = hass
         self._name = name
         self._entry_id = entry_id
         self._state = None
         self._last_updated = None
+        self._attr_device_info = device_info
 
-        # Set required attributes for proper entity setup
         self._attr_device_class = SensorDeviceClass.TEMPERATURE
         self._attr_state_class = SensorStateClass.MEASUREMENT
         self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
-        self._attr_unique_id = f"{DOMAIN}_{name.lower()}_temperature"
-        self._attr_has_entity_name = True
-        self._attr_name = f"{name} Temperature"
+        self._attr_unique_id = f"{self._entry_id}_{name.lower()}_temperature"
+        self._attr_name = "Temperature"
 
         self._attributes = {
             "last_measurement": None,
             "last_updated": None
         }
-        _LOGGER.debug("Initialized temperature sensor: %s", self._attr_unique_id)
 
     @property
     def state(self) -> Optional[float]:
@@ -99,35 +99,26 @@ class TemperatureSensor(SensorEntity):
         self._attributes["last_measurement"] = temperature
         self._attributes["last_updated"] = self._last_updated
         self.async_schedule_update_ha_state()
-        _LOGGER.debug(
-            "Updated temperature for %s: %f %s at %s",
-            self._name,
-            temperature,
-            self.native_unit_of_measurement,
-            self._last_updated
-        )
 
 class MedicationSensor(SensorEntity):
     """Medication sensor for a family member."""
 
-    def __init__(self, hass: HomeAssistant, name: str, entry_id: str) -> None:
+    def __init__(self, hass: HomeAssistant, name: str, device_info: DeviceInfo, entry_id: str) -> None:
         """Initialize the sensor."""
         self._hass = hass
         self._name = name
         self._entry_id = entry_id
         self._state = "none"
         self._last_updated = None
+        self._attr_device_info = device_info
 
-        # Set required attributes for proper entity setup
-        self._attr_unique_id = f"{DOMAIN}_{name.lower()}_medication"
-        self._attr_has_entity_name = True
-        self._attr_name = f"{name} Medication"
+        self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication"
+        self._attr_name = "Medication"
 
         self._attributes = {
             "last_medication": None,
             "last_updated": None
         }
-        _LOGGER.debug("Initialized medication sensor: %s", self._attr_unique_id)
 
     @property
     def state(self) -> str:
@@ -146,9 +137,3 @@ class MedicationSensor(SensorEntity):
         self._attributes["last_medication"] = medication
         self._attributes["last_updated"] = self._last_updated
         self.async_schedule_update_ha_state()
-        _LOGGER.debug(
-            "Updated medication for %s: %s at %s",
-            self._name,
-            medication,
-            self._last_updated
-        )

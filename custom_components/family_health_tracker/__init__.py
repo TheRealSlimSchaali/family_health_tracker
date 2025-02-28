@@ -53,8 +53,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = {}
 
-    # Register devices for each family member
+    # Create a hub device first
     device_registry = dr.async_get(hass)
+    device_registry.async_get_or_create(
+        config_entry_id=entry.entry_id,
+        identifiers={(DOMAIN, entry.entry_id)},
+        name="Family Health Tracker",
+        manufacturer="Family Health Tracker",
+        model="Hub",
+        sw_version="1.0",
+    )
+
+    # Register devices for each family member
     members = [m.strip() for m in entry.data[CONF_MEMBERS].split(",")]
     
     for member in members:
@@ -65,6 +75,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             manufacturer="Family Health Tracker",
             model="Health Monitor",
             sw_version="1.0",
+            via_device=(DOMAIN, entry.entry_id),  # Link to the hub device
         )
 
     _LOGGER.debug("Starting platform setup for: %s", PLATFORMS)

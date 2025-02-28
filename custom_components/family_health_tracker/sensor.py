@@ -69,7 +69,16 @@ class TemperatureSensor(SensorEntity):
         self._entry_id = entry_id
         self._state = None
         self._last_updated = None
-        self._attr_device_info = device_info
+        
+        # Make sure device info is properly set
+        self._attr_device_info = DeviceInfo(
+            identifiers={(DOMAIN, f"{entry_id}_{name.lower()}")},
+            name=name,
+            manufacturer="Family Health Tracker",
+            model="Health Monitor",
+            sw_version="1.0",
+            via_device=(DOMAIN, entry_id),
+        )
 
         self._attr_device_class = SensorDeviceClass.TEMPERATURE
         self._attr_state_class = SensorStateClass.MEASUREMENT
@@ -110,7 +119,16 @@ class MedicationSensor(SensorEntity):
         self._entry_id = entry_id
         self._state = "none"
         self._last_updated = None
-        self._attr_device_info = device_info
+
+        # Make sure device info is properly set
+        self._attr_device_info = DeviceInfo(
+            identifiers={(DOMAIN, f"{entry_id}_{name.lower()}")},
+            name=name,
+            manufacturer="Family Health Tracker",
+            model="Health Monitor",
+            sw_version="1.0",
+            via_device=(DOMAIN, entry_id),
+        )
 
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication"
         self._attr_name = "Medication"

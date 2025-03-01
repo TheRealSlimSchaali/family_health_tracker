@@ -60,8 +60,8 @@ class RecordMeasurementButton(ButtonEntity):
     async def async_press(self) -> None:
         """Handle the button press."""
         # Get the current values from the input entities
-        temp_input_entity_id = f"number.{self._name.lower()}_temperature_input"
-        med_input_entity_id = f"select.{self._name.lower()}_medication_input"
+        temp_input_entity_id = f"number.temperature_input_{self._name.lower()}"
+        med_input_entity_id = f"select.medication_input_{self._name.lower()}"
 
         temp_state = self._hass.states.get(temp_input_entity_id)
         med_state = self._hass.states.get(med_input_entity_id)
@@ -72,15 +72,18 @@ class RecordMeasurementButton(ButtonEntity):
         )
 
         if temp_state is not None and med_state is not None:
-            await self._hass.services.async_call(
-                DOMAIN,
-                "add_measurement",
-                {
-                    CONF_NAME: self._name,
-                    ATTR_TEMPERATURE: float(temp_state.state),
-                    ATTR_MEDICATION: med_state.state,
-                },
-            )
+            try:
+                await self._hass.services.async_call(
+                    DOMAIN,
+                    "add_measurement",
+                    {
+                        CONF_NAME: self._name,
+                        ATTR_TEMPERATURE: float(temp_state.state),
+                        ATTR_MEDICATION: med_state.state,
+                    },
+                )
+            except Exception as e:
+                _LOGGER.error("Failed to call service: %s", e)
         else:
             _LOGGER.warning(
                 "Missing input states for %s. Temperature: %s, Medication: %s",

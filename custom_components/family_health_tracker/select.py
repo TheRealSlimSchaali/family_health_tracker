@@ -69,7 +69,7 @@ class MedicationInput(SelectEntity):
         self.async_write_ha_state()
 
         # Get the current temperature value
-        temp_input_entity_id = f"number.{self._name.lower()}_temperature_input"
+        temp_input_entity_id = f"number.temperature_input_{self._name.lower()}"
         temp_state = self._hass.states.get(temp_input_entity_id)
 
         if temp_state is not None and temp_state.state != "unknown":

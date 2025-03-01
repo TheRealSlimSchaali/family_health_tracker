@@ -62,6 +62,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         temperature = call.data.get(ATTR_TEMPERATURE)
         medication = call.data.get(ATTR_MEDICATION)
 
+        _LOGGER.debug(
+            "Service called with name=%s, temp=%s, med=%s",
+            name, temperature, medication
+        )
+
         # Convert name to lowercase for consistent matching
         name_lower = name.lower()
         temp_entity_id = f"sensor.{name_lower}_temperature"

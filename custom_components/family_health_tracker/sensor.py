@@ -19,7 +19,6 @@ from .const import (
     CONF_MEMBERS,
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
-    MEDICATION_OPTIONS,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -48,7 +47,6 @@ async def async_setup_entry(
             via_device=(DOMAIN, config_entry.entry_id),
         )
 
-        # Create sensors
         temp_sensor = TemperatureSensor(hass, member, device_info, config_entry.entry_id)
         med_sensor = MedicationSensor(hass, member, device_info, config_entry.entry_id)
         entities.extend([temp_sensor, med_sensor])
@@ -73,16 +71,7 @@ class TemperatureSensor(SensorEntity):
         self._state = None
         self._last_updated = None
         
-        # Make sure device info is properly set
-        self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, f"{entry_id}_{name.lower()}")},
-            name=name,
-            manufacturer="Family Health Tracker",
-            model="Health Monitor",
-            sw_version="1.0",
-            via_device=(DOMAIN, entry_id),
-        )
-
+        self._attr_device_info = device_info
         self._attr_device_class = SensorDeviceClass.TEMPERATURE
         self._attr_state_class = SensorStateClass.MEASUREMENT
         self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
@@ -123,16 +112,7 @@ class MedicationSensor(SensorEntity):
         self._state = "none"
         self._last_updated = None
 
-        # Make sure device info is properly set
-        self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, f"{entry_id}_{name.lower()}")},
-            name=name,
-            manufacturer="Family Health Tracker",
-            model="Health Monitor",
-            sw_version="1.0",
-            via_device=(DOMAIN, entry_id),
-        )
-
+        self._attr_device_info = device_info
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication"
         self._attr_name = "Medication"
 
@@ -153,6 +133,7 @@ class MedicationSensor(SensorEntity):
 
     async def update_medication(self, medication: str) -> None:
         """Update medication status."""
+        _LOGGER.debug("Updating medication for %s to %s", self._name, medication)
         self._state = medication
         self._last_updated = datetime.now().isoformat()
         self._attributes["last_medication"] = medication

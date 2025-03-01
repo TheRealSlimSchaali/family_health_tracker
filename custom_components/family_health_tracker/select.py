@@ -63,6 +63,8 @@ class MedicationInput(SelectEntity):
     async def async_select_option(self, option: str) -> None:
         """Update the current value."""
         _LOGGER.debug("Medication selected: %s for %s", option, self._name)
+        
+        # Update our state first
         self._attr_current_option = option
         self.async_write_ha_state()
 
@@ -70,24 +72,28 @@ class MedicationInput(SelectEntity):
         temp_input_entity_id = f"number.{self._name.lower()}_temperature_input"
         temp_state = self._hass.states.get(temp_input_entity_id)
 
-        if temp_state is not None:
+        if temp_state is not None and temp_state.state != "unknown":
             _LOGGER.debug(
                 "Calling add_measurement service with temp=%s, med=%s for %s",
                 temp_state.state,
                 option,
                 self._name
             )
-            await self._hass.services.async_call(
-                DOMAIN,
-                "add_measurement",
-                {
-                    CONF_NAME: self._name,
-                    ATTR_TEMPERATURE: float(temp_state.state),
-                    ATTR_MEDICATION: option,
-                },
-            )
+            try:
+                await self._hass.services.async_call(
+                    DOMAIN,
+                    "add_measurement",
+                    {
+                        CONF_NAME: self._name,
+                        ATTR_TEMPERATURE: float(temp_state.state),
+                        ATTR_MEDICATION: option,
+                    },
+                )
+            except Exception as e:
+                _LOGGER.error("Failed to call service: %s", e)
         else:
             _LOGGER.warning(
-                "Temperature input not found: %s",
-                temp_input_entity_id
+                "Temperature input not found or invalid: %s = %s",
+                temp_input_entity_id,
+                temp_state.state if temp_state else None
             ) 

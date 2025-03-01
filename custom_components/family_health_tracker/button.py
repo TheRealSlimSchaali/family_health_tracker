@@ -66,6 +66,11 @@ class RecordMeasurementButton(ButtonEntity):
         temp_state = self._hass.states.get(temp_input_entity_id)
         med_state = self._hass.states.get(med_input_entity_id)
 
+        _LOGGER.debug(
+            "Button pressed for %s. Temperature state: %s, Medication state: %s",
+            self._name, temp_state, med_state
+        )
+
         if temp_state is not None and med_state is not None:
             await self._hass.services.async_call(
                 DOMAIN,
@@ -75,4 +80,11 @@ class RecordMeasurementButton(ButtonEntity):
                     ATTR_TEMPERATURE: float(temp_state.state),
                     ATTR_MEDICATION: med_state.state,
                 },
+            )
+        else:
+            _LOGGER.warning(
+                "Missing input states for %s. Temperature: %s, Medication: %s",
+                self._name,
+                temp_state,
+                med_state
             ) 

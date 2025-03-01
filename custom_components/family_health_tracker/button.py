@@ -60,8 +60,11 @@ class RecordMeasurementButton(ButtonEntity):
 
     async def async_press(self) -> None:
         """Handle the button press."""
-        temp_input_entity_id = f"number.temperature_input_{self._name.lower()}"
-        med_input_entity_id = f"select.medication_input_{self._name.lower()}"
+        # Update entity IDs to match the format used in number.py and select.py
+        temp_input_entity_id = f"number.{self._entry_id}_{self._name.lower()}_temperature_input"
+        med_input_entity_id = f"select.{self._entry_id}_{self._name.lower()}_medication_input"
+
+        _LOGGER.debug("Looking for entities: %s and %s", temp_input_entity_id, med_input_entity_id)
 
         temp_state = self._hass.states.get(temp_input_entity_id)
         med_state = self._hass.states.get(med_input_entity_id)
@@ -83,17 +86,14 @@ class RecordMeasurementButton(ButtonEntity):
             return
 
         try:
-            # Always record temperature, only include medication if not the default
+            # Always include both temperature and medication
             service_data = {
                 CONF_NAME: self._name,
                 ATTR_TEMPERATURE: float(temp_state.state),
+                ATTR_MEDICATION: med_state.state,
             }
 
-            if med_state.state != MEDICATION_OPTIONS[0]:
-                service_data[ATTR_MEDICATION] = med_state.state
-                _LOGGER.debug("Including medication in service call: %s", med_state.state)
-            else:
-                _LOGGER.debug("No medication selected, recording temperature only")
+            _LOGGER.debug("Calling service with data: %s", service_data)
 
             await self._hass.services.async_call(
                 DOMAIN,

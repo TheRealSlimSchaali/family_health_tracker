@@ -8,8 +8,6 @@ from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorStateClass,
 )
-from homeassistant.components.number import NumberEntity
-from homeassistant.components.select import SelectEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -53,12 +51,7 @@ async def async_setup_entry(
         # Create sensors
         temp_sensor = TemperatureSensor(hass, member, device_info, config_entry.entry_id)
         med_sensor = MedicationSensor(hass, member, device_info, config_entry.entry_id)
-        
-        # Create input entities
-        temp_input = TemperatureInput(hass, member, device_info, config_entry.entry_id)
-        med_input = MedicationInput(hass, member, device_info, config_entry.entry_id)
-        
-        entities.extend([temp_sensor, med_sensor, temp_input, med_input])
+        entities.extend([temp_sensor, med_sensor])
 
         # Store sensor references for service calls
         entity_id_temp = f"sensor.{member_lower}_temperature"
@@ -165,51 +158,3 @@ class MedicationSensor(SensorEntity):
         self._attributes["last_medication"] = medication
         self._attributes["last_updated"] = self._last_updated
         self.async_schedule_update_ha_state()
-
-class TemperatureInput(NumberEntity):
-    """Temperature input for a family member."""
-
-    def __init__(self, hass: HomeAssistant, name: str, device_info: DeviceInfo, entry_id: str) -> None:
-        """Initialize the input."""
-        self._hass = hass
-        self._name = name
-        self._entry_id = entry_id
-        self._attr_device_info = device_info
-        self._attr_unique_id = f"{self._entry_id}_{name.lower()}_temperature_input"
-        self._attr_name = "Temperature Input"
-        self._attr_native_min_value = 34.0
-        self._attr_native_max_value = 43.0
-        self._attr_native_step = 0.1
-        self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
-        self._attr_mode = "box"
-
-    async def async_set_native_value(self, value: float) -> None:
-        """Update the current value."""
-        await self._hass.services.async_call(
-            DOMAIN,
-            "add_measurement",
-            {
-                CONF_NAME: self._name,
-                ATTR_TEMPERATURE: value,
-                ATTR_MEDICATION: "none",  # Default value
-            },
-        )
-
-class MedicationInput(SelectEntity):
-    """Medication input for a family member."""
-
-    def __init__(self, hass: HomeAssistant, name: str, device_info: DeviceInfo, entry_id: str) -> None:
-        """Initialize the input."""
-        self._hass = hass
-        self._name = name
-        self._entry_id = entry_id
-        self._attr_device_info = device_info
-        self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication_input"
-        self._attr_name = "Medication Input"
-        self._attr_options = list(MEDICATION_OPTIONS)
-        self._attr_current_option = "none"
-
-    async def async_select_option(self, option: str) -> None:
-        """Update the current value."""
-        self._attr_current_option = option
-        self.async_write_ha_state()

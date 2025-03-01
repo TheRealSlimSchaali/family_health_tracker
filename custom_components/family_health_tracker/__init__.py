@@ -82,11 +82,15 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 med_sensor = entry_data[med_entity_id]
 
                 await temp_sensor.update_temperature(temperature)
-                await med_sensor.update_medication(medication)
+                
+                # Only update medication if provided
+                if medication is not None:
+                    await med_sensor.update_medication(medication)
+                    _LOGGER.debug("Updated medication to: %s", medication)
 
                 _LOGGER.debug(
                     "Updated measurements for %s: temp=%f, med=%s",
-                    name, temperature, medication
+                    name, temperature, medication if medication else "unchanged"
                 )
                 found = True
                 break

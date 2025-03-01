@@ -68,30 +68,39 @@ class RecordMeasurementButton(ButtonEntity):
 
         _LOGGER.debug(
             "Button pressed for %s. Temperature state: %s, Medication state: %s",
-            self._name, temp_state, med_state
+            self._name, 
+            temp_state.state if temp_state else None,
+            med_state.state if med_state else None
         )
 
-        if temp_state is not None and med_state is not None:
-            try:
-                # Check if the selected option is the first one (none/keine)
-                if med_state.state != MEDICATION_OPTIONS[0]:
-                    await self._hass.services.async_call(
-                        DOMAIN,
-                        "add_measurement",
-                        {
-                            CONF_NAME: self._name,
-                            ATTR_TEMPERATURE: float(temp_state.state),
-                            ATTR_MEDICATION: med_state.state,
-                        },
-                    )
-                else:
-                    _LOGGER.debug("Skipping service call for first medication option")
-            except Exception as e:
-                _LOGGER.error("Failed to call service: %s", e)
-        else:
+        if temp_state is None or med_state is None:
             _LOGGER.warning(
                 "Missing input states for %s. Temperature: %s, Medication: %s",
                 self._name,
                 temp_state,
                 med_state
-            ) 
+            )
+            return
+
+        try:
+            # Always record temperature, only include medication if not the default
+            service_data = {
+                CONF_NAME: self._name,
+                ATTR_TEMPERATURE: float(temp_state.state),
+            }
+
+            if med_state.state != MEDICATION_OPTIONS[0]:
+                service_data[ATTR_MEDICATION] = med_state.state
+                _LOGGER.debug("Including medication in service call: %s", med_state.state)
+            else:
+                _LOGGER.debug("No medication selected, recording temperature only")
+
+            await self._hass.services.async_call(
+                DOMAIN,
+                "add_measurement",
+                service_data,
+            )
+            _LOGGER.debug("Successfully recorded measurement: %s", service_data)
+
+        except Exception as e:
+            _LOGGER.error("Failed to call service: %s", e) 

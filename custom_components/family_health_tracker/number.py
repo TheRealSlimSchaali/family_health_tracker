@@ -2,7 +2,7 @@
 import logging
 from typing import Any
 
-from homeassistant.components.number import NumberEntity
+from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -56,20 +56,14 @@ class TemperatureInput(NumberEntity):
         self._attr_device_info = device_info
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_temperature_input"
         self._attr_name = "Temperature Input"
-        self._attr_native_min_value = 34.0
-        self._attr_native_max_value = 43.0
+        self._attr_native_min_value = 35.0
+        self._attr_native_max_value = 42.0
         self._attr_native_step = 0.1
         self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
-        self._attr_mode = "box"
+        self._attr_mode = NumberMode.BOX
 
     async def async_set_native_value(self, value: float) -> None:
         """Update the current value."""
-        await self._hass.services.async_call(
-            DOMAIN,
-            "add_measurement",
-            {
-                CONF_NAME: self._name,
-                ATTR_TEMPERATURE: value,
-                ATTR_MEDICATION: "none",  # Default value
-            },
-        ) 
+        self._attr_native_value = value
+        self.async_write_ha_state()
+        # Remove the automatic service call from here 

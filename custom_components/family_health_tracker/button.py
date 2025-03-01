@@ -1,18 +1,19 @@
-"""Select platform for Family Health Tracker."""
+"""Button platform for Family Health Tracker."""
 import logging
 from typing import Any
 
-from homeassistant.components.select import SelectEntity
+from homeassistant.components.button import ButtonEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.entity import DeviceInfo
-from homeassistant.const import CONF_NAME, ATTR_TEMPERATURE, ATTR_MEDICATION
+from homeassistant.const import CONF_NAME
 
 from .const import (
     DOMAIN,
     CONF_MEMBERS,
-    MEDICATION_OPTIONS,
+    ATTR_TEMPERATURE,
+    ATTR_MEDICATION,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -22,7 +23,7 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up the Family Health Tracker select inputs."""
+    """Set up the Family Health Tracker buttons."""
     members = [member.strip() for member in config_entry.data[CONF_MEMBERS].split(",")]
 
     entities = []
@@ -39,41 +40,39 @@ async def async_setup_entry(
             via_device=(DOMAIN, config_entry.entry_id),
         )
 
-        med_input = MedicationInput(hass, member, device_info, config_entry.entry_id)
-        entities.append(med_input)
+        record_button = RecordMeasurementButton(hass, member, device_info, config_entry.entry_id)
+        entities.append(record_button)
 
     async_add_entities(entities, True)
 
-class MedicationInput(SelectEntity):
-    """Medication input for a family member."""
+class RecordMeasurementButton(ButtonEntity):
+    """Button to record measurements."""
 
     def __init__(self, hass: HomeAssistant, name: str, device_info: DeviceInfo, entry_id: str) -> None:
-        """Initialize the input."""
+        """Initialize the button."""
         self._hass = hass
         self._name = name
         self._entry_id = entry_id
         self._attr_device_info = device_info
-        self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication_input"
-        self._attr_name = "Medication Input"
-        self._attr_options = list(MEDICATION_OPTIONS)
-        self._attr_current_option = "none"
+        self._attr_unique_id = f"{self._entry_id}_{name.lower()}_record_button"
+        self._attr_name = "Record Measurement"
 
-    async def async_select_option(self, option: str) -> None:
-        """Update the current value."""
-        self._attr_current_option = option
-        self.async_write_ha_state()
-
-        # Get the current temperature value
+    async def async_press(self) -> None:
+        """Handle the button press."""
+        # Get the current values from the input entities
         temp_input_entity_id = f"number.{self._name.lower()}_temperature_input"
-        temp_state = self._hass.states.get(temp_input_entity_id)
+        med_input_entity_id = f"select.{self._name.lower()}_medication_input"
 
-        if temp_state is not None:
+        temp_state = self._hass.states.get(temp_input_entity_id)
+        med_state = self._hass.states.get(med_input_entity_id)
+
+        if temp_state is not None and med_state is not None:
             await self._hass.services.async_call(
                 DOMAIN,
                 "add_measurement",
                 {
                     CONF_NAME: self._name,
                     ATTR_TEMPERATURE: float(temp_state.state),
-                    ATTR_MEDICATION: option,
+                    ATTR_MEDICATION: med_state.state,
                 },
             ) 

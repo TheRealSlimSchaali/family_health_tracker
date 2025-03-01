@@ -80,15 +80,19 @@ class MedicationInput(SelectEntity):
                 self._name
             )
             try:
-                await self._hass.services.async_call(
-                    DOMAIN,
-                    "add_measurement",
-                    {
-                        CONF_NAME: self._name,
-                        ATTR_TEMPERATURE: float(temp_state.state),
-                        ATTR_MEDICATION: option,
-                    },
-                )
+                # Only call service if medication is selected
+                if option != "none":
+                    await self._hass.services.async_call(
+                        DOMAIN,
+                        "add_measurement",
+                        {
+                            CONF_NAME: self._name,
+                            ATTR_TEMPERATURE: float(temp_state.state),
+                            ATTR_MEDICATION: option,
+                        },
+                    )
+                else:
+                    _LOGGER.debug("Skipping service call for 'none' medication")
             except Exception as e:
                 _LOGGER.error("Failed to call service: %s", e)
         else:

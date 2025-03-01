@@ -73,15 +73,19 @@ class RecordMeasurementButton(ButtonEntity):
 
         if temp_state is not None and med_state is not None:
             try:
-                await self._hass.services.async_call(
-                    DOMAIN,
-                    "add_measurement",
-                    {
-                        CONF_NAME: self._name,
-                        ATTR_TEMPERATURE: float(temp_state.state),
-                        ATTR_MEDICATION: med_state.state,
-                    },
-                )
+                # Only call service if medication is selected
+                if med_state.state != "none":
+                    await self._hass.services.async_call(
+                        DOMAIN,
+                        "add_measurement",
+                        {
+                            CONF_NAME: self._name,
+                            ATTR_TEMPERATURE: float(temp_state.state),
+                            ATTR_MEDICATION: med_state.state,
+                        },
+                    )
+                else:
+                    _LOGGER.debug("Skipping service call for 'none' medication")
             except Exception as e:
                 _LOGGER.error("Failed to call service: %s", e)
         else:

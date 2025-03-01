@@ -67,37 +67,3 @@ class MedicationInput(SelectEntity):
         # Update our state first
         self._attr_current_option = option
         self.async_write_ha_state()
-
-        # Get the current temperature value
-        temp_input_entity_id = f"number.temperature_input_{self._name.lower()}"
-        temp_state = self._hass.states.get(temp_input_entity_id)
-
-        if temp_state is not None and temp_state.state != "unknown":
-            _LOGGER.debug(
-                "Calling add_measurement service with temp=%s, med=%s for %s",
-                temp_state.state,
-                option,
-                self._name
-            )
-            try:
-                # Check if the selected option is the first one (none/keine)
-                if option != MEDICATION_OPTIONS[0]:
-                    await self._hass.services.async_call(
-                        DOMAIN,
-                        "add_measurement",
-                        {
-                            CONF_NAME: self._name,
-                            ATTR_TEMPERATURE: float(temp_state.state),
-                            ATTR_MEDICATION: option,
-                        },
-                    )
-                else:
-                    _LOGGER.debug("Skipping service call for first medication option")
-            except Exception as e:
-                _LOGGER.error("Failed to call service: %s", e)
-        else:
-            _LOGGER.warning(
-                "Temperature input not found or invalid: %s = %s",
-                temp_input_entity_id,
-                temp_state.state if temp_state else None
-            ) 

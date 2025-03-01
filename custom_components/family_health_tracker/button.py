@@ -14,6 +14,7 @@ from .const import (
     CONF_MEMBERS,
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
+    MEDICATION_OPTIONS,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -59,7 +60,6 @@ class RecordMeasurementButton(ButtonEntity):
 
     async def async_press(self) -> None:
         """Handle the button press."""
-        # Get the current values from the input entities
         temp_input_entity_id = f"number.temperature_input_{self._name.lower()}"
         med_input_entity_id = f"select.medication_input_{self._name.lower()}"
 
@@ -73,8 +73,8 @@ class RecordMeasurementButton(ButtonEntity):
 
         if temp_state is not None and med_state is not None:
             try:
-                # Only call service if medication is selected
-                if med_state.state != "none":
+                # Check if the selected option is the first one (none/keine)
+                if med_state.state != MEDICATION_OPTIONS[0]:
                     await self._hass.services.async_call(
                         DOMAIN,
                         "add_measurement",
@@ -85,7 +85,7 @@ class RecordMeasurementButton(ButtonEntity):
                         },
                     )
                 else:
-                    _LOGGER.debug("Skipping service call for 'none' medication")
+                    _LOGGER.debug("Skipping service call for first medication option")
             except Exception as e:
                 _LOGGER.error("Failed to call service: %s", e)
         else:

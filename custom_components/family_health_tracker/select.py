@@ -8,6 +8,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.const import CONF_NAME, UnitOfTemperature
+from homeassistant.util.translation import translate
 
 from .const import (
     DOMAIN,
@@ -58,7 +59,7 @@ class MedicationInput(SelectEntity):
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication_input"
         self._attr_name = "Medication Input"
         self._attr_options = list(MEDICATION_OPTIONS)
-        self._attr_current_option = "none"
+        self._attr_current_option = MEDICATION_OPTIONS[0]
 
     async def async_select_option(self, option: str) -> None:
         """Update the current value."""
@@ -80,8 +81,8 @@ class MedicationInput(SelectEntity):
                 self._name
             )
             try:
-                # Only call service if medication is selected
-                if option != "none":
+                # Check if the selected option is the first one (none/keine)
+                if option != MEDICATION_OPTIONS[0]:
                     await self._hass.services.async_call(
                         DOMAIN,
                         "add_measurement",
@@ -92,7 +93,7 @@ class MedicationInput(SelectEntity):
                         },
                     )
                 else:
-                    _LOGGER.debug("Skipping service call for 'none' medication")
+                    _LOGGER.debug("Skipping service call for first medication option")
             except Exception as e:
                 _LOGGER.error("Failed to call service: %s", e)
         else:

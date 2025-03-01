@@ -1,0 +1,33 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Family Health Tracker",
+                "description": "Geben Sie die Namen der Familienmitglieder ein, getrennt durch Kommas",
+                "data": {
+                    "members": "Familienmitglieder"
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Family Health Tracker Optionen",
+                "description": "Aktualisieren Sie die Namen der Familienmitglieder",
+                "data": {
+                    "members": "Familienmitglieder"
+                }
+            }
+        }
+    },
+    "selector": {
+        "medication": {
+            "options": {
+                "none": "Keine",
+                "ibuprofen": "Ibuprofen",
+                "paracetamol": "Paracetamol"
+            }
+        }
+    }
+} 

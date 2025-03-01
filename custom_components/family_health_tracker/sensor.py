@@ -52,8 +52,8 @@ async def async_setup_entry(
         entities.extend([temp_sensor, med_sensor])
 
         # Store sensor references for service calls
-        entity_id_temp = f"sensor.{member_lower}_temperature"
-        entity_id_med = f"sensor.{member_lower}_medication"
+        entity_id_temp = f"sensor.temperature_{member_lower}"
+        entity_id_med = f"sensor.medication_{member_lower}"
 
         hass.data[DOMAIN][config_entry.entry_id][entity_id_temp] = temp_sensor
         hass.data[DOMAIN][config_entry.entry_id][entity_id_med] = med_sensor
@@ -76,7 +76,8 @@ class TemperatureSensor(SensorEntity):
         self._attr_state_class = SensorStateClass.MEASUREMENT
         self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_temperature"
-        self._attr_name = "Temperature"
+        self.entity_id = f"sensor.temperature_{name.lower()}"
+        self._attr_name = f"{name} Temperature"
 
         self._attributes = {
             "last_measurement": None,
@@ -114,7 +115,8 @@ class MedicationSensor(SensorEntity):
 
         self._attr_device_info = device_info
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication"
-        self._attr_name = "Medication"
+        self.entity_id = f"sensor.medication_{name.lower()}"
+        self._attr_name = f"{name} Medication"
 
         self._attributes = {
             "last_medication": None,

@@ -86,10 +86,16 @@ class RecordMeasurementButton(ButtonEntity):
             return
 
         try:
+            # Get the actual value from the select entity
+            med_entity = self._hass.data[DOMAIN][self._entry_id].get(med_input_entity_id)
+            if med_entity is None:
+                _LOGGER.error("Could not find medication entity in registry")
+                return
+
             service_data = {
                 CONF_NAME: self._name,
                 ATTR_TEMPERATURE: float(temp_state.state),
-                ATTR_MEDICATION: med_state.state,
+                ATTR_MEDICATION: med_entity._attr_current_option,  # Use the value, not the label
             }
 
             _LOGGER.debug("Calling service with data: %s", service_data)

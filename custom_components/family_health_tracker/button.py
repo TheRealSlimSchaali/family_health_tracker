@@ -60,9 +60,14 @@ class RecordMeasurementButton(ButtonEntity):
 
     async def async_press(self) -> None:
         """Handle the button press."""
-        # Update entity IDs to match the format used in number.py and select.py
-        temp_input_entity_id = f"number.{self._entry_id}_{self._name.lower()}_temperature_input"
-        med_input_entity_id = f"select.{self._entry_id}_{self._name.lower()}_medication_input"
+        # Get all entities to help debug
+        all_entities = self._hass.states.async_all()
+        _LOGGER.debug("All available entities: %s", 
+                     [entity.entity_id for entity in all_entities])
+
+        # Use simpler entity IDs
+        temp_input_entity_id = f"number.temperature_input_{self._name.lower()}"
+        med_input_entity_id = f"select.medication_input_{self._name.lower()}"
 
         _LOGGER.debug("Looking for entities: %s and %s", temp_input_entity_id, med_input_entity_id)
 

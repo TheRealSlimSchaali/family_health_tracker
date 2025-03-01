@@ -42,6 +42,13 @@ async def async_setup_entry(
 
         temp_input = TemperatureInput(hass, member, device_info, config_entry.entry_id)
         entities.append(temp_input)
+        
+        # Debug log the entity ID being created
+        _LOGGER.debug(
+            "Creating temperature input entity with ID: number.%s_%s_temperature_input",
+            config_entry.entry_id,
+            member_lower
+        )
 
     async_add_entities(entities, True)
 
@@ -55,6 +62,7 @@ class TemperatureInput(NumberEntity):
         self._entry_id = entry_id
         self._attr_device_info = device_info
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_temperature_input"
+        self._attr_entity_id = f"number.temperature_input_{name.lower()}"
         self._attr_name = "Temperature Input"
         self._attr_native_min_value = 35.0
         self._attr_native_max_value = 42.0

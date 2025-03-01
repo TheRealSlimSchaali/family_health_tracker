@@ -43,6 +43,13 @@ async def async_setup_entry(
 
         med_input = MedicationInput(hass, member, device_info, config_entry.entry_id)
         entities.append(med_input)
+        
+        # Debug log the entity ID being created
+        _LOGGER.debug(
+            "Creating medication input entity with ID: select.%s_%s_medication_input",
+            config_entry.entry_id,
+            member_lower
+        )
 
     async_add_entities(entities, True)
 
@@ -56,6 +63,7 @@ class MedicationInput(SelectEntity):
         self._entry_id = entry_id
         self._attr_device_info = device_info
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication_input"
+        self._attr_entity_id = f"select.medication_input_{name.lower()}"
         self._attr_name = "Medication Input"
         self._attr_options = list(MEDICATION_OPTIONS)
         self._attr_current_option = MEDICATION_OPTIONS[0]

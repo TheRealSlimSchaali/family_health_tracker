@@ -8,7 +8,6 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.const import CONF_NAME, UnitOfTemperature
-from homeassistant.util.translation import translate
 
 from .const import (
     DOMAIN,

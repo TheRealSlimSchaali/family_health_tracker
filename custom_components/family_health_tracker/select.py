@@ -7,12 +7,14 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.entity import DeviceInfo
-from homeassistant.const import CONF_NAME, ATTR_TEMPERATURE, ATTR_MEDICATION
+from homeassistant.const import CONF_NAME
 
 from .const import (
     DOMAIN,
     CONF_MEMBERS,
     MEDICATION_OPTIONS,
+    ATTR_TEMPERATURE,
+    ATTR_MEDICATION,
 )
 
 _LOGGER = logging.getLogger(__name__)

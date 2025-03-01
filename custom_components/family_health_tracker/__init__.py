@@ -54,60 +54,35 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     _LOGGER.debug("Setting up config entry: %s", entry.data)
 
     hass.data.setdefault(DOMAIN, {})
+    # Initialize storage for this entry
     hass.data[DOMAIN][entry.entry_id] = {}
 
-    # Register the service
-    async def handle_add_measurement(call: ServiceCall) -> None:
-        """Handle the service call."""
-        name = call.data.get(CONF_NAME)
-        temperature = call.data.get(ATTR_TEMPERATURE)
-        medication = call.data.get(ATTR_MEDICATION)
+    # Register services
+    async def add_measurement(call: ServiceCall) -> None:
+        """Add a new measurement."""
+        name = call.data[CONF_NAME]
+        temperature = call.data[ATTR_TEMPERATURE]
+        medication = call.data[ATTR_MEDICATION]
 
-        _LOGGER.debug(
-            "Service called with name=%s, temp=%s, med=%s",
-            name, temperature, medication
-        )
-
-        # Convert name to lowercase for consistent matching
+        # Get the correct entities
         name_lower = name.lower()
-        temp_entity_id = f"sensor.{name_lower}_temperature"
-        med_entity_id = f"sensor.{name_lower}_medication"
+        temp_entity_id = f"sensor.temperature_{name_lower}"
+        med_entity_id = f"sensor.medication_{name_lower}"
 
-        _LOGGER.debug("Looking for sensors: %s and %s", temp_entity_id, med_entity_id)
+        temp_sensor = hass.data[DOMAIN][entry.entry_id].get(temp_entity_id)
+        med_sensor = hass.data[DOMAIN][entry.entry_id].get(med_entity_id)
 
-        # Search through all config entries
-        found = False
-        for entry_id, entry_data in hass.data[DOMAIN].items():
-            if temp_entity_id in entry_data and med_entity_id in entry_data:
-                temp_sensor = entry_data[temp_entity_id]
-                med_sensor = entry_data[med_entity_id]
+        if temp_sensor is None or med_sensor is None:
+            raise HomeAssistantError(f"Could not find sensors for {name}")
 
-                await temp_sensor.update_temperature(temperature)
-                
-                # Only update medication if provided
-                if medication is not None:
-                    await med_sensor.update_medication(medication)
-                    _LOGGER.debug("Updated medication to: %s", medication)
-
-                _LOGGER.debug(
-                    "Updated measurements for %s: temp=%f, med=%s",
-                    name, temperature, medication if medication else "unchanged"
-                )
-                found = True
-                break
-
-        if not found:
-            _LOGGER.error(
-                "No sensors found for %s. Available sensors: %s",
-                name,
-                str(hass.data[DOMAIN])
-            )
+        await temp_sensor.update_temperature(temperature)
+        await med_sensor.update_medication(medication)
 
     hass.services.async_register(
         DOMAIN,
         "add_measurement",
-        handle_add_measurement,
-        schema=MEASUREMENT_SERVICE_SCHEMA
+        add_measurement,
+        schema=MEASUREMENT_SERVICE_SCHEMA,
     )
 
     # Create a hub device first

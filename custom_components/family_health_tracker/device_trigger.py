@@ -9,7 +9,7 @@ from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.trigger import TriggerActionType, TriggerInfo
 from homeassistant.helpers.typing import ConfigType
 
-from .const import DOMAIN, ATTR_TEMPERATURE, ATTR_MEDICATION, MEDICATION_OPTIONS
+from .const import DOMAIN, ATTR_TEMPERATURE, ATTR_MEDICATION, MEDICATION_OPTIONS, MEDICATION_VALUES
 
 TRIGGER_TYPES = {"record_measurement"}
 
@@ -20,7 +20,7 @@ TRIGGER_SCHEMA = vol.Schema(
         vol.Required(CONF_DEVICE_ID): str,
         vol.Required(CONF_TYPE): vol.In(TRIGGER_TYPES),
         vol.Required(ATTR_TEMPERATURE): vol.Coerce(float),
-        vol.Required(ATTR_MEDICATION): vol.In(MEDICATION_OPTIONS),
+        vol.Required(ATTR_MEDICATION): vol.In(MEDICATION_VALUES),
     }
 )
 

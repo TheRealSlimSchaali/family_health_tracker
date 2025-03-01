@@ -17,7 +17,8 @@ from .const import (
     CONF_MEMBERS,
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
-    MEDICATION_OPTIONS
+    MEDICATION_OPTIONS,
+    MEDICATION_VALUES
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -34,7 +35,7 @@ PLATFORMS = ["sensor", "number", "select", "button"]
 MEASUREMENT_SERVICE_SCHEMA = vol.Schema({
     vol.Required(CONF_NAME): cv.string,
     vol.Required(ATTR_TEMPERATURE): vol.Coerce(float),
-    vol.Required(ATTR_MEDICATION): vol.In(MEDICATION_OPTIONS)
+    vol.Required(ATTR_MEDICATION): vol.In(MEDICATION_VALUES)
 })
 
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:

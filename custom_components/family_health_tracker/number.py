@@ -62,6 +62,7 @@ class TemperatureInput(NumberEntity):
         self._entry_id = entry_id
         self._attr_device_info = device_info
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_temperature_input"
+        self.entity_id = f"number.temperature_{name.lower()}"
         self._attr_name = f"{name} Temperature Input"
         self._attr_icon = "mdi:thermometer"
         self._attr_native_min_value = 35.0

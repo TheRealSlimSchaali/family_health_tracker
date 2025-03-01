@@ -63,10 +63,19 @@ class MedicationInput(SelectEntity):
         self._entry_id = entry_id
         self._attr_device_info = device_info
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication_input"
+        self.entity_id = f"select.medication_{name.lower()}"
         self._attr_name = f"{name} Medication Input"
         self._attr_icon = "mdi:pill"
-        self._attr_options = list(MEDICATION_OPTIONS)
-        self._attr_current_option = MEDICATION_OPTIONS[0]
+        # Store the full options for label lookup
+        self._options_map = {opt["value"]: opt["label"] for opt in MEDICATION_OPTIONS}
+        # Set options to just the values
+        self._attr_options = [opt["value"] for opt in MEDICATION_OPTIONS]
+        self._attr_current_option = self._attr_options[0]
+
+    @property
+    def state(self) -> str:
+        """Return the state - use the label instead of the value."""
+        return self._options_map.get(self._attr_current_option, self._attr_current_option)
 
     async def async_select_option(self, option: str) -> None:
         """Update the current value."""

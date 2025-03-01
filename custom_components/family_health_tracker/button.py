@@ -66,25 +66,12 @@ class RecordMeasurementButton(ButtonEntity):
         entity_ids = [entity.entity_id for entity in all_entities]
         _LOGGER.debug("All available entities: %s", entity_ids)
 
-        # Look for entities by their unique name
-        temp_input_entity_id = None
-        med_input_entity_id = None
-        
-        for entity_id in entity_ids:
-            if 'temperature_input' in entity_id and self._name.lower() in entity_id:
-                temp_input_entity_id = entity_id
-            if 'medication_input' in entity_id and self._name.lower() in entity_id:
-                med_input_entity_id = entity_id
+        # Use the new entity ID format
+        temp_input_entity_id = f"number.temperature_{self._name.lower()}"
+        med_input_entity_id = f"select.medication_{self._name.lower()}"
 
-        _LOGGER.debug("Found temperature entity: %s", temp_input_entity_id)
-        _LOGGER.debug("Found medication entity: %s", med_input_entity_id)
-
-        if not temp_input_entity_id or not med_input_entity_id:
-            _LOGGER.warning(
-                "Could not find input entities for %s",
-                self._name
-            )
-            return
+        _LOGGER.debug("Looking for temperature entity: %s", temp_input_entity_id)
+        _LOGGER.debug("Looking for medication entity: %s", med_input_entity_id)
 
         temp_state = self._hass.states.get(temp_input_entity_id)
         med_state = self._hass.states.get(med_input_entity_id)

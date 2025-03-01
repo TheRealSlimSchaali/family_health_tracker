@@ -66,36 +66,28 @@ class RecordMeasurementButton(ButtonEntity):
         entity_ids = [entity.entity_id for entity in all_entities]
         _LOGGER.debug("All available entities: %s", entity_ids)
 
-        # Look for our specific entities
-        temp_entities = [eid for eid in entity_ids if 'temperature_input' in eid]
-        med_entities = [eid for eid in entity_ids if 'medication_input' in eid]
-        _LOGGER.debug("Found temperature entities: %s", temp_entities)
-        _LOGGER.debug("Found medication entities: %s", med_entities)
+        # Look for entities by their unique name
+        temp_input_entity_id = None
+        med_input_entity_id = None
+        
+        for entity_id in entity_ids:
+            if 'temperature_input' in entity_id and self._name.lower() in entity_id:
+                temp_input_entity_id = entity_id
+            if 'medication_input' in entity_id and self._name.lower() in entity_id:
+                med_input_entity_id = entity_id
 
-        # Try both formats for entity IDs
-        temp_input_entity_id = f"number.temperature_input_{self._name.lower()}"
-        med_input_entity_id = f"select.medication_input_{self._name.lower()}"
+        _LOGGER.debug("Found temperature entity: %s", temp_input_entity_id)
+        _LOGGER.debug("Found medication entity: %s", med_input_entity_id)
 
-        alt_temp_input_entity_id = f"number.{self._entry_id}_{self._name.lower()}_temperature_input"
-        alt_med_input_entity_id = f"select.{self._entry_id}_{self._name.lower()}_medication_input"
+        if not temp_input_entity_id or not med_input_entity_id:
+            _LOGGER.warning(
+                "Could not find input entities for %s",
+                self._name
+            )
+            return
 
-        _LOGGER.debug("Looking for temperature entity: %s or %s", 
-                     temp_input_entity_id, alt_temp_input_entity_id)
-        _LOGGER.debug("Looking for medication entity: %s or %s", 
-                     med_input_entity_id, alt_med_input_entity_id)
-
-        # Try both formats
-        temp_state = (self._hass.states.get(temp_input_entity_id) or 
-                     self._hass.states.get(alt_temp_input_entity_id))
-        med_state = (self._hass.states.get(med_input_entity_id) or 
-                    self._hass.states.get(alt_med_input_entity_id))
-
-        _LOGGER.debug(
-            "Button pressed for %s. Temperature state: %s, Medication state: %s",
-            self._name, 
-            temp_state.state if temp_state else None,
-            med_state.state if med_state else None
-        )
+        temp_state = self._hass.states.get(temp_input_entity_id)
+        med_state = self._hass.states.get(med_input_entity_id)
 
         if temp_state is None or med_state is None:
             _LOGGER.warning(

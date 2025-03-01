@@ -29,7 +29,7 @@ CONFIG_SCHEMA = vol.Schema({
     })
 }, extra=vol.ALLOW_EXTRA)
 
-PLATFORMS = ["sensor"]
+PLATFORMS = ["sensor", "number", "select"]
 
 MEASUREMENT_SERVICE_SCHEMA = vol.Schema({
     vol.Required(CONF_NAME): cv.string,

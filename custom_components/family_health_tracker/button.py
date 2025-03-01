@@ -57,22 +57,38 @@ class RecordMeasurementButton(ButtonEntity):
         self._attr_device_info = device_info
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_record_button"
         self._attr_name = "Record Measurement"
+        self._attr_icon = "mdi:content-save-plus"  # Add icon
 
     async def async_press(self) -> None:
         """Handle the button press."""
         # Get all entities to help debug
         all_entities = self._hass.states.async_all()
-        _LOGGER.debug("All available entities: %s", 
-                     [entity.entity_id for entity in all_entities])
+        entity_ids = [entity.entity_id for entity in all_entities]
+        _LOGGER.debug("All available entities: %s", entity_ids)
 
-        # Use simpler entity IDs
+        # Look for our specific entities
+        temp_entities = [eid for eid in entity_ids if 'temperature_input' in eid]
+        med_entities = [eid for eid in entity_ids if 'medication_input' in eid]
+        _LOGGER.debug("Found temperature entities: %s", temp_entities)
+        _LOGGER.debug("Found medication entities: %s", med_entities)
+
+        # Try both formats for entity IDs
         temp_input_entity_id = f"number.temperature_input_{self._name.lower()}"
         med_input_entity_id = f"select.medication_input_{self._name.lower()}"
 
-        _LOGGER.debug("Looking for entities: %s and %s", temp_input_entity_id, med_input_entity_id)
+        alt_temp_input_entity_id = f"number.{self._entry_id}_{self._name.lower()}_temperature_input"
+        alt_med_input_entity_id = f"select.{self._entry_id}_{self._name.lower()}_medication_input"
 
-        temp_state = self._hass.states.get(temp_input_entity_id)
-        med_state = self._hass.states.get(med_input_entity_id)
+        _LOGGER.debug("Looking for temperature entity: %s or %s", 
+                     temp_input_entity_id, alt_temp_input_entity_id)
+        _LOGGER.debug("Looking for medication entity: %s or %s", 
+                     med_input_entity_id, alt_med_input_entity_id)
+
+        # Try both formats
+        temp_state = (self._hass.states.get(temp_input_entity_id) or 
+                     self._hass.states.get(alt_temp_input_entity_id))
+        med_state = (self._hass.states.get(med_input_entity_id) or 
+                    self._hass.states.get(alt_med_input_entity_id))
 
         _LOGGER.debug(
             "Button pressed for %s. Temperature state: %s, Medication state: %s",
@@ -91,7 +107,6 @@ class RecordMeasurementButton(ButtonEntity):
             return
 
         try:
-            # Always include both temperature and medication
             service_data = {
                 CONF_NAME: self._name,
                 ATTR_TEMPERATURE: float(temp_state.state),

@@ -65,6 +65,7 @@ class MedicationInput(SelectEntity):
         self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication_input"
         self._attr_entity_id = f"select.medication_input_{name.lower()}"
         self._attr_name = "Medication Input"
+        self._attr_icon = "mdi:pill"
         self._attr_options = list(MEDICATION_OPTIONS)
         self._attr_current_option = MEDICATION_OPTIONS[0]
 

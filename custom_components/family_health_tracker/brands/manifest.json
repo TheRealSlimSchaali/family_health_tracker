@@ -1,7 +1,0 @@
-{
-  "domain": "family_health_tracker",
-  "name": "Family Health Tracker",
-  "documentation": "https://github.com/TheRealSlimSchaali/family_health_tracker",
-  "codeowners": ["@TheRealSlimSchaali"],
-  "version": "0.3.5"
-} 

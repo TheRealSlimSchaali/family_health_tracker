@@ -1,6 +1,7 @@
 """The Family Health Tracker integration."""
 import logging
 from typing import Any
+from datetime import datetime
 
 import voluptuous as vol
 
@@ -105,6 +106,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         user_medications = hass.data[DOMAIN].get(CONF_MEDICATIONS, {})
         all_medications = get_combined_medications(user_medications)
         
+        # Create a persistent entity
+        entity_id = f"{DOMAIN}.medication_library"
+        
         # Format the response
         formatted_meds = {}
         for med_id, med_info in all_medications.items():
@@ -116,12 +120,24 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 "category": med_info.get("category", "other")
             }
         
-        hass.states.async_set(f"{DOMAIN}.medications", "available", formatted_meds)
+        # Set state with attributes
+        hass.states.async_set(
+            entity_id,
+            len(formatted_meds),  # Number of medications as state
+            {
+                "medications": formatted_meds,
+                "last_updated": datetime.now().isoformat()
+            }
+        )
+
+    # Register with schema
+    GET_MEDICATIONS_SCHEMA = vol.Schema({})
 
     hass.services.async_register(
         DOMAIN,
         "get_medications",
         get_medications,
+        schema=GET_MEDICATIONS_SCHEMA,
     )
 
     # Create a hub device first

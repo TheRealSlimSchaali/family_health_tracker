@@ -1,3 +1,27 @@
 get_medications:
   name: Get Medications
-  description: Get a list of all configured medications. 
+  description: >
+    Get a list of all configured medications. Creates or updates the entity
+    family_health_tracker.medication_library with the current medication library.
+  fields: {}
+  response:
+    fields:
+      medications:
+        description: Dictionary of all configured medications
+        example: >
+          {
+            "none": {
+              "name": "None",
+              "label": "No medication given",
+              "dosage": null,
+              "interval_hours": null,
+              "category": "none"
+            },
+            "ibuprofen_kids": {
+              "name": "Ibuprofen Kids",
+              "label": "Ibuprofen Kids administered",
+              "dosage": "100mg/5ml",
+              "interval_hours": 6,
+              "category": "nsaid"
+            }
+          } 

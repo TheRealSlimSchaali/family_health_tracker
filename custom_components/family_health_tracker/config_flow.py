@@ -56,9 +56,9 @@ class FamilyHealthTrackerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 class OptionsFlowHandler(config_entries.OptionsFlow):
     """Handle options flow for Family Health Tracker."""
 
-    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
+    def __init__(self, entry: config_entries.ConfigEntry) -> None:
         """Initialize options flow."""
-        self.config_entry = config_entry
+        super().__init__(entry)
 
     async def async_step_init(self, user_input: Optional[Dict[str, Any]] = None) -> FlowResult:
         """Manage the options."""
@@ -86,14 +86,14 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         return self.async_show_form(
             step_id="members",
             data_schema=vol.Schema({
-                vol.Required(CONF_MEMBERS, default=self.config_entry.data[CONF_MEMBERS]): str,
+                vol.Required(CONF_MEMBERS, default=self.entry.data[CONF_MEMBERS]): str,
             }),
         )
 
     async def async_step_medication(self, user_input: Optional[Dict[str, Any]] = None) -> FlowResult:
         """Handle medication configuration."""
         if user_input is not None:
-            medications = self.config_entry.options.get(CONF_MEDICATIONS, {})
+            medications = self.entry.options.get(CONF_MEDICATIONS, {})
             med_id = user_input.pop("id").lower().replace(" ", "_")
             medications[med_id] = {
                 "name": user_input["name"],

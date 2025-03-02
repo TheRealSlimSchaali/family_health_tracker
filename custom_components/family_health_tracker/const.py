@@ -1,7 +1,7 @@
 """Constants for the Family Health Tracker integration."""
 
 DOMAIN = "family_health_tracker"
-VERSION = "0.3.5"
+VERSION = "0.4.1"
 
 CONF_MEMBERS = "members"
 CONF_MEDICATIONS = "medications"

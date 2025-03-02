@@ -61,12 +61,30 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         self.config_entry = config_entry
 
     async def async_step_init(self, user_input: Optional[Dict[str, Any]] = None) -> FlowResult:
-        """Handle the initial step."""
+        """Manage the options."""
+        if user_input is not None:
+            if user_input["step"] == "members":
+                return await self.async_step_members()
+            else:
+                return await self.async_step_medication()
+
+        return self.async_show_form(
+            step_id="init",
+            data_schema=vol.Schema({
+                vol.Required("step", default="members"): vol.In({
+                    "members": "Manage Family Members",
+                    "medication": "Add Medication"
+                })
+            })
+        )
+
+    async def async_step_members(self, user_input: Optional[Dict[str, Any]] = None) -> FlowResult:
+        """Handle family members step."""
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
         return self.async_show_form(
-            step_id="init",
+            step_id="members",
             data_schema=vol.Schema({
                 vol.Required(CONF_MEMBERS, default=self.config_entry.data[CONF_MEMBERS]): str,
             }),

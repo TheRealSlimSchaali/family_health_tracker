@@ -29,10 +29,29 @@
   "options": {
     "step": {
       "init": {
+        "title": "Family Health Tracker Options",
+        "description": "Choose what to configure",
+        "data": {
+          "step": "Choose configuration step"
+        }
+      },
+      "members": {
         "title": "Update Family Members",
         "description": "Add or remove family members (comma-separated list)",
         "data": {
           "members": "Family Members"
+        }
+      },
+      "medication": {
+        "title": "Add Custom Medication",
+        "description": "Add a new medication to the library. {example}",
+        "data": {
+          "id": "Unique ID for the medication",
+          "name": "Display Name",
+          "label": "Label when administered",
+          "dosage": "Dosage (optional)",
+          "interval_hours": "Hours between doses (optional)",
+          "category": "Category (optional)"
         }
       }
     }

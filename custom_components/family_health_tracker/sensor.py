@@ -22,6 +22,7 @@ from .const import (
     VERSION,
     MEDICATION_NONE,
     TEMP_LEVELS,
+    DEFAULT_MEDICATIONS,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -147,7 +148,15 @@ class MedicationSensor(SensorEntity):
     @property
     def extra_state_attributes(self) -> Dict[str, Any]:
         """Return the state attributes."""
-        return self._attributes
+        attributes = self._attributes.copy()
+        if self._state != "none":
+            med_info = DEFAULT_MEDICATIONS.get(self._state, {})
+            attributes.update({
+                "dosage": med_info.get("dosage"),
+                "interval_hours": med_info.get("interval_hours"),
+                "category": med_info.get("category")
+            })
+        return attributes
 
     async def update_medication(self, medication: str) -> None:
         """Update medication status."""

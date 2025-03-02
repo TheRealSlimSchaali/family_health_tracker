@@ -19,7 +19,9 @@ from .const import (
     ATTR_MEDICATION,
     MEDICATION_OPTIONS,
     MEDICATION_VALUES,
-    VERSION
+    VERSION,
+    CONF_MEDICATIONS,
+    DEFAULT_MEDICATIONS
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -28,6 +30,15 @@ CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
         vol.Required(CONF_NAME): cv.string,
         vol.Required(CONF_MEMBERS): cv.string,
+        vol.Optional(CONF_MEDICATIONS, default=DEFAULT_MEDICATIONS): {
+            cv.string: {
+                vol.Required("name"): cv.string,
+                vol.Required("label"): cv.string,
+                vol.Optional("dosage"): cv.string,
+                vol.Optional("interval_hours"): cv.positive_int,
+                vol.Optional("category"): cv.string,
+            }
+        }
     })
 }, extra=vol.ALLOW_EXTRA)
 

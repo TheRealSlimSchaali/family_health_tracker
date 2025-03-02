@@ -28,3 +28,16 @@ DEFAULT_NAME = "Health Tracker"
 
 ATTR_TEMPERATURE = "temperature"
 ATTR_MEDICATION = "medication"
+
+# Temperature level ranges (in °C)
+TEMP_LEVELS = {
+    "low": {"min": 0, "max": 35.9},
+    "normal": {"min": 36.0, "max": 37.2},
+    "elevated": {"min": 37.3, "max": 38.0},
+    "medium": {"min": 38.1, "max": 39.0},
+    "high": {"min": 39.1, "max": 40.0},
+    "very_high": {"min": 40.1, "max": 43.0},
+}
+
+# Default config
+DEFAULT_TEMP_LEVELS = TEMP_LEVELS.copy()

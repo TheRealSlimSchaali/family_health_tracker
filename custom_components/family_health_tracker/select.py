@@ -72,12 +72,11 @@ class MedicationInput(SelectEntity):
         # Set options to just the values
         self._attr_options = [opt["value"] for opt in MEDICATION_OPTIONS]
         self._attr_current_option = self._attr_options[0]
-        self._attr_translation_key = "medication_input"  # Add this for sorting
 
     @property
     def state(self) -> str:
-        """Return the state - use the label instead of the value."""
-        return self._options_map.get(self._attr_current_option, self._attr_current_option)
+        """Return the state - use the value, not the label."""
+        return self._attr_current_option
 
     async def async_select_option(self, option: str) -> None:
         """Update the current value."""

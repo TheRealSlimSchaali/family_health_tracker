@@ -49,6 +49,18 @@
         "sensor": {
             "medication_duration": {
                 "name": "Zeit seit Medikation"
+            },
+            "temperature_level": {
+                "name": "Temperatur Niveau",
+                "state": {
+                    "low": "Niedrig",
+                    "normal": "Normal",
+                    "elevated": "Erhöht",
+                    "medium": "Mittel",
+                    "high": "Hoch",
+                    "very_high": "Sehr Hoch",
+                    "unknown": "Unbekannt"
+                }
             }
         }
     }

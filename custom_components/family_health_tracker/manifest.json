@@ -10,5 +10,5 @@
   "version": "0.3.0",
   "iot_class": "local_push",
   "homeassistant": "2023.12.1",
-  "icon": "icons/thermometer.png"
+  "icon": "custom_components/family_health_tracker/icons/thermometer.png"
 }

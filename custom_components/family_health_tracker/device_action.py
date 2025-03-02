@@ -12,15 +12,15 @@ from .const import (
     DOMAIN,
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
-    MEDICATION_OPTIONS,
-    MEDICATION_VALUES,
+    VERSION,
+    get_medication_values,
 )
 
 ACTION_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_DEVICE_ID): str,
         vol.Required(ATTR_TEMPERATURE): vol.Coerce(float),
-        vol.Required(ATTR_MEDICATION): vol.In(MEDICATION_VALUES),
+        vol.Required(ATTR_MEDICATION): vol.In(get_medication_values()),
     }
 )
 
@@ -55,7 +55,7 @@ async def async_setup_device_registry_entry_action(
                 "name": ATTR_MEDICATION,
                 "required": True,
                 "type": "select",
-                "options": MEDICATION_OPTIONS,
+                "options": get_medication_values(),
                 "description": "Select medication",
             },
         ],

@@ -94,5 +94,11 @@
                 }
             }
         }
+    },
+    "services": {
+        "get_medications": {
+            "name": "Medikamente abrufen",
+            "description": "Eine Liste aller konfigurierten Medikamente abrufen."
+        }
     }
 } 

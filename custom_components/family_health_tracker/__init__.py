@@ -20,7 +20,8 @@ from .const import (
     VERSION,
     get_medication_values,
     CONF_MEDICATIONS,
-    DEFAULT_MEDICATIONS
+    DEFAULT_MEDICATIONS,
+    get_combined_medications
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -97,6 +98,30 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         "add_measurement",
         add_measurement,
         schema=MEASUREMENT_SERVICE_SCHEMA,
+    )
+
+    async def get_medications(call: ServiceCall) -> None:
+        """Get all configured medications."""
+        user_medications = hass.data[DOMAIN].get(CONF_MEDICATIONS, {})
+        all_medications = get_combined_medications(user_medications)
+        
+        # Format the response
+        formatted_meds = {}
+        for med_id, med_info in all_medications.items():
+            formatted_meds[med_id] = {
+                "name": med_info["name"],
+                "label": med_info["label"],
+                "dosage": med_info.get("dosage"),
+                "interval_hours": med_info.get("interval_hours"),
+                "category": med_info.get("category", "other")
+            }
+        
+        hass.states.async_set(f"{DOMAIN}.medications", "available", formatted_meds)
+
+    hass.services.async_register(
+        DOMAIN,
+        "get_medications",
+        get_medications,
     )
 
     # Create a hub device first

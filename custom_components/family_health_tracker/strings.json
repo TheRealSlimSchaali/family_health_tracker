@@ -89,5 +89,11 @@
         }
       }
     }
+  },
+  "services": {
+    "get_medications": {
+      "name": "Get Medications",
+      "description": "Get a list of all configured medications."
+    }
   }
 }

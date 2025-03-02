@@ -14,6 +14,7 @@ from .const import (
     CONF_MEMBERS,
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
+    VERSION,
 )
 
 _LOGGER = logging.getLogger(__name__)

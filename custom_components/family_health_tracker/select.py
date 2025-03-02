@@ -15,6 +15,7 @@ from .const import (
     MEDICATION_OPTIONS,
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
+    VERSION,
 )
 
 _LOGGER = logging.getLogger(__name__)

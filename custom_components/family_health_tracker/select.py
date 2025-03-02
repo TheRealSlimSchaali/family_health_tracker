@@ -100,7 +100,7 @@ class MedicationInput(SelectEntity):
             self._attr_options = [opt["value"] for opt in medication_options]
             self.async_write_ha_state()
 
-        # Listen for medication updates
+        # Listen for config entry updates
         self.async_on_remove(
             self._hass.bus.async_listen(f"{DOMAIN}_medications_updated", _update_options)
         )

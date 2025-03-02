@@ -67,6 +67,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
     # Initialize storage for this entry
     hass.data[DOMAIN][entry.entry_id] = {}
+    
+    # Store medications in hass.data
+    hass.data[DOMAIN][CONF_MEDICATIONS] = entry.options.get(CONF_MEDICATIONS, {})
 
     # Register services
     async def add_measurement(call: ServiceCall) -> None:

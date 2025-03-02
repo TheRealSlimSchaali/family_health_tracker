@@ -102,6 +102,11 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                 "interval_hours": user_input.get("interval_hours"),
                 "category": user_input.get("category", "other")
             }
+            
+            # Update hass.data and fire event
+            self.hass.data[DOMAIN][CONF_MEDICATIONS] = medications
+            self.hass.bus.async_fire(f"{DOMAIN}_medications_updated")
+            
             return self.async_create_entry(
                 title="",
                 data={CONF_MEDICATIONS: medications}

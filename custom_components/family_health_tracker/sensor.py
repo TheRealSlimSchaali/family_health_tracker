@@ -43,7 +43,7 @@ async def async_setup_entry(
             name=member,
             manufacturer="Family Health Tracker",
             model="Health Monitor",
-            sw_version="0.2.1",
+            sw_version=VERSION,
             via_device=(DOMAIN, config_entry.entry_id),
         )
 

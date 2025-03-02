@@ -23,6 +23,7 @@ from .const import (
     TEMP_LEVELS,
     DEFAULT_MEDICATIONS,
     get_combined_medications,
+    CONF_MEDICATIONS
 )
 
 _LOGGER = logging.getLogger(__name__)

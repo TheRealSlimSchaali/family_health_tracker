@@ -15,6 +15,7 @@ from .const import (
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
     VERSION,
+    CONF_MEDICATIONS,
     get_medication_values,
 )
 

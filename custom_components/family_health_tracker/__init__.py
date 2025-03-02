@@ -18,7 +18,8 @@ from .const import (
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
     MEDICATION_OPTIONS,
-    MEDICATION_VALUES
+    MEDICATION_VALUES,
+    VERSION
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -93,7 +94,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         name="Family Health Tracker",
         manufacturer="Family Health Tracker",
         model="Hub",
-        sw_version="1.0",
+        sw_version=VERSION,
     )
 
     # Register devices for each family member
@@ -106,7 +107,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             name=f"{member}",
             manufacturer="Family Health Tracker",
             model="Health Monitor",
-            sw_version="1.0",
+            sw_version=VERSION,
             via_device=(DOMAIN, entry.entry_id),
             entry_type="service",  # This is important for showing the configuration section
         )

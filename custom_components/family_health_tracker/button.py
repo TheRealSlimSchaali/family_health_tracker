@@ -37,7 +37,7 @@ async def async_setup_entry(
             name=member,
             manufacturer="Family Health Tracker",
             model="Health Monitor",
-            sw_version="1.0",
+            sw_version="0.2.1",
             via_device=(DOMAIN, config_entry.entry_id),
         )
 
@@ -67,7 +67,7 @@ class RecordMeasurementButton(ButtonEntity):
         entity_ids = [entity.entity_id for entity in all_entities]
         _LOGGER.debug("All available entities: %s", entity_ids)
 
-        # Use the new entity ID format
+        # Get input states
         temp_input_entity_id = f"number.temperature_{self._name.lower()}"
         med_input_entity_id = f"select.medication_{self._name.lower()}"
 
@@ -87,26 +87,28 @@ class RecordMeasurementButton(ButtonEntity):
             return
 
         try:
-            # Get the actual value from the select entity
-            med_entity = self._hass.data[DOMAIN][self._entry_id].get(med_input_entity_id)
-            if med_entity is None:
-                _LOGGER.error("Could not find medication entity in registry")
+            # Get the sensor entities from the registry
+            name_lower = self._name.lower()
+            temp_sensor_id = f"sensor.temperature_{name_lower}"
+            med_sensor_id = f"sensor.medication_{name_lower}"
+
+            temp_sensor = self._hass.data[DOMAIN][self._entry_id].get(temp_sensor_id)
+            med_sensor = self._hass.data[DOMAIN][self._entry_id].get(med_sensor_id)
+
+            if temp_sensor is None or med_sensor is None:
+                _LOGGER.error("Could not find sensor entities in registry")
                 return
 
-            service_data = {
-                CONF_NAME: self._name,
-                ATTR_TEMPERATURE: float(temp_state.state),
-                ATTR_MEDICATION: med_entity._attr_current_option,  # Use the value, not the label
-            }
+            # Get the values from the input entities
+            temperature = float(temp_state.state)
+            medication = med_state.state
 
-            _LOGGER.debug("Calling service with data: %s", service_data)
+            # Update the sensor entities directly
+            await temp_sensor.update_temperature(temperature)
+            await med_sensor.update_medication(medication)
 
-            await self._hass.services.async_call(
-                DOMAIN,
-                "add_measurement",
-                service_data,
-            )
-            _LOGGER.debug("Successfully recorded measurement: %s", service_data)
+            _LOGGER.debug("Successfully recorded measurement - Temperature: %s, Medication: %s", 
+                         temperature, medication)
 
         except Exception as e:
-            _LOGGER.error("Failed to call service: %s", e) 
+            _LOGGER.error("Failed to record measurement: %s", e) 

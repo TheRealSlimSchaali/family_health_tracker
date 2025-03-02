@@ -45,6 +45,11 @@
             "record_button": {
                 "name": "Messung aufzeichnen"
             }
+        },
+        "sensor": {
+            "medication_duration": {
+                "name": "Zeit seit Medikation"
+            }
         }
     }
 } 

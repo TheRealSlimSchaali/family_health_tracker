@@ -40,6 +40,11 @@
       "record_button": {
         "name": "Record Measurement"
       }
+    },
+    "sensor": {
+      "medication_duration": {
+        "name": "Time Since Medication"
+      }
     }
   }
 }

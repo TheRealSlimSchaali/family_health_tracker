@@ -50,14 +50,17 @@ async def async_setup_entry(
 
         temp_sensor = TemperatureSensor(hass, member, device_info, config_entry.entry_id)
         med_sensor = MedicationSensor(hass, member, device_info, config_entry.entry_id)
-        entities.extend([temp_sensor, med_sensor])
+        duration_sensor = LastMedicationDurationSensor(hass, member, device_info, config_entry.entry_id)
+        entities.extend([temp_sensor, med_sensor, duration_sensor])
 
         # Store sensor references for service calls
         entity_id_temp = f"sensor.temperature_{member_lower}"
         entity_id_med = f"sensor.medication_{member_lower}"
+        entity_id_duration = f"sensor.medication_duration_{member_lower}"
 
         hass.data[DOMAIN][config_entry.entry_id][entity_id_temp] = temp_sensor
         hass.data[DOMAIN][config_entry.entry_id][entity_id_med] = med_sensor
+        hass.data[DOMAIN][config_entry.entry_id][entity_id_duration] = duration_sensor
 
     async_add_entities(entities, True)
 
@@ -142,3 +145,44 @@ class MedicationSensor(SensorEntity):
         self._attributes["last_medication"] = medication
         self._attributes["last_updated"] = self._last_updated
         self.async_schedule_update_ha_state()
+
+        # Update the duration sensor
+        name_lower = self._name.lower()
+        duration_sensor_id = f"sensor.medication_duration_{name_lower}"
+        duration_sensor = self._hass.data[DOMAIN][self._entry_id].get(duration_sensor_id)
+        if duration_sensor:
+            await duration_sensor.update_medication_time(medication)
+
+class LastMedicationDurationSensor(SensorEntity):
+    """Sensor tracking duration since last medication."""
+
+    def __init__(self, hass: HomeAssistant, name: str, device_info: DeviceInfo, entry_id: str) -> None:
+        """Initialize the sensor."""
+        self._hass = hass
+        self._name = name
+        self._entry_id = entry_id
+        self._state = None
+        self._last_medication_time = None
+
+        self._attr_device_info = device_info
+        self._attr_device_class = SensorDeviceClass.DURATION
+        self._attr_native_unit_of_measurement = "h"  # hours
+        self._attr_unique_id = f"{self._entry_id}_{name.lower()}_medication_duration"
+        self.entity_id = f"sensor.medication_duration_{name.lower()}"
+        self._attr_name = f"{name} Time Since Medication"
+        self._attr_translation_key = "medication_duration"
+
+    @property
+    def native_value(self) -> float | None:
+        """Return the duration in hours."""
+        if self._last_medication_time is None:
+            return None
+        now = datetime.now()
+        duration = now - self._last_medication_time
+        return round(duration.total_seconds() / 3600, 1)  # Convert to hours with 1 decimal
+
+    async def update_medication_time(self, medication: str) -> None:
+        """Update the last medication time."""
+        if medication != MEDICATION_NONE:  # Only update time if medication was given
+            self._last_medication_time = datetime.now()
+            self.async_schedule_update_ha_state()

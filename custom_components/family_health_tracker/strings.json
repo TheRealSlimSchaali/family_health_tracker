@@ -24,5 +24,22 @@
         }
       }
     }
+  },
+  "entity": {
+    "number": {
+      "temperature_input": {
+        "name": "Temperature Input"
+      }
+    },
+    "select": {
+      "medication_input": {
+        "name": "Medication Input"
+      }
+    },
+    "button": {
+      "record_button": {
+        "name": "Record Measurement"
+      }
+    }
   }
 }

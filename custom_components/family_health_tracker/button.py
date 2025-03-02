@@ -59,6 +59,7 @@ class RecordMeasurementButton(ButtonEntity):
         self.entity_id = f"button.record_measurement_{name.lower()}"
         self._attr_name = f"Record {name} Measurement"
         self._attr_icon = "mdi:content-save-plus"
+        self._attr_translation_key = "record_button"
 
     async def async_press(self) -> None:
         """Handle the button press."""

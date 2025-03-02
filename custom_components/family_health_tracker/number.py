@@ -70,6 +70,7 @@ class TemperatureInput(NumberEntity):
         self._attr_native_step = 0.1
         self._attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
         self._attr_mode = NumberMode.BOX
+        self._attr_translation_key = "temperature_input"
 
     async def async_set_native_value(self, value: float) -> None:
         """Update the current value."""

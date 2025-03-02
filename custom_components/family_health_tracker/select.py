@@ -71,6 +71,7 @@ class MedicationInput(SelectEntity):
         # Set options to just the values
         self._attr_options = [opt["value"] for opt in MEDICATION_OPTIONS]
         self._attr_current_option = self._attr_options[0]
+        self._attr_translation_key = "medication_input"  # Add this for sorting
 
     @property
     def state(self) -> str:

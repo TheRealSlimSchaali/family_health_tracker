@@ -29,5 +29,22 @@
                 "paracetamol": "Paracetamol"
             }
         }
+    },
+    "entity": {
+        "number": {
+            "temperature_input": {
+                "name": "Temperatur Eingabe"
+            }
+        },
+        "select": {
+            "medication_input": {
+                "name": "Medikament Eingabe"
+            }
+        },
+        "button": {
+            "record_button": {
+                "name": "Messung aufzeichnen"
+            }
+        }
     }
 } 

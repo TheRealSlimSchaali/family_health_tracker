@@ -17,9 +17,8 @@ from .const import (
     CONF_MEMBERS,
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
-    MEDICATION_OPTIONS,
-    MEDICATION_VALUES,
     VERSION,
+    get_medication_values,
     CONF_MEDICATIONS,
     DEFAULT_MEDICATIONS
 )
@@ -47,7 +46,7 @@ PLATFORMS = ["sensor", "number", "select", "button"]
 MEASUREMENT_SERVICE_SCHEMA = vol.Schema({
     vol.Required(CONF_NAME): cv.string,
     vol.Required(ATTR_TEMPERATURE): vol.Coerce(float),
-    vol.Required(ATTR_MEDICATION): vol.In(MEDICATION_VALUES)
+    vol.Required(ATTR_MEDICATION): vol.In(get_medication_values())
 })
 
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:

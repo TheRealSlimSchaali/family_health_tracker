@@ -12,10 +12,10 @@ from homeassistant.const import CONF_NAME, UnitOfTemperature
 from .const import (
     DOMAIN,
     CONF_MEMBERS,
-    MEDICATION_OPTIONS,
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
     VERSION,
+    get_medication_options,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -67,10 +67,11 @@ class MedicationInput(SelectEntity):
         self.entity_id = f"select.medication_{name.lower()}"
         self._attr_name = f"{name} Medication Input"
         self._attr_icon = "mdi:pill"
-        # Store the full options for label lookup
-        self._options_map = {opt["value"]: opt["label"] for opt in MEDICATION_OPTIONS}
-        # Set options to just the values
-        self._attr_options = [opt["value"] for opt in MEDICATION_OPTIONS]
+        
+        # Get medication options using the helper function
+        medication_options = get_medication_options()
+        self._options_map = {opt["value"]: opt["label"] for opt in medication_options}
+        self._attr_options = [opt["value"] for opt in medication_options]
         self._attr_current_option = self._attr_options[0]
 
     @property

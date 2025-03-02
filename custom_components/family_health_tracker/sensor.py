@@ -20,7 +20,6 @@ from .const import (
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
     VERSION,
-    MEDICATION_NONE,
     TEMP_LEVELS,
     DEFAULT_MEDICATIONS,
 )
@@ -213,7 +212,7 @@ class LastMedicationDurationSensor(SensorEntity):
             medication,
             datetime.now()
         )
-        if medication != MEDICATION_NONE:  # Only update time if medication was given
+        if medication != "none":  # Use string literal instead of constant
             self._last_medication_time = datetime.now()
             _LOGGER.debug("Updated last medication time to: %s", self._last_medication_time)
             self.async_schedule_update_ha_state()

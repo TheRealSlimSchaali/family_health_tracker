@@ -22,6 +22,7 @@ from .const import (
     VERSION,
     TEMP_LEVELS,
     DEFAULT_MEDICATIONS,
+    get_combined_medications,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -149,7 +150,8 @@ class MedicationSensor(SensorEntity):
         """Return the state attributes."""
         attributes = self._attributes.copy()
         if self._state != "none":
-            med_info = DEFAULT_MEDICATIONS.get(self._state, {})
+            user_medications = self._hass.data[DOMAIN].get(CONF_MEDICATIONS, {})
+            med_info = get_combined_medications(user_medications).get(self._state, {})
             attributes.update({
                 "dosage": med_info.get("dosage"),
                 "interval_hours": med_info.get("interval_hours"),

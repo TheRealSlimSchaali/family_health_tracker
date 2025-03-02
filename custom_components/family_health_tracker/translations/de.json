@@ -7,6 +7,18 @@
                 "data": {
                     "members": "Familienmitglieder"
                 }
+            },
+            "medication": {
+                "title": "Medikament hinzufügen",
+                "description": "Fügen Sie ein neues Medikament zur Bibliothek hinzu. {example}",
+                "data": {
+                    "id": "Eindeutige ID für das Medikament",
+                    "name": "Anzeigename",
+                    "label": "Bezeichnung bei Verabreichung",
+                    "dosage": "Dosierung (optional)",
+                    "interval_hours": "Stunden zwischen Dosen (optional)",
+                    "category": "Kategorie (optional)"
+                }
             }
         }
     },

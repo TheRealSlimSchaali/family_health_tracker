@@ -12,6 +12,7 @@ from homeassistant.const import CONF_NAME, UnitOfTemperature
 from .const import (
     DOMAIN,
     CONF_MEMBERS,
+    CONF_MEDICATIONS,
     ATTR_TEMPERATURE,
     ATTR_MEDICATION,
     VERSION,
@@ -69,7 +70,8 @@ class MedicationInput(SelectEntity):
         self._attr_icon = "mdi:pill"
         
         # Get medication options using the helper function
-        medication_options = get_medication_options()
+        user_medications = self._hass.data[DOMAIN].get(CONF_MEDICATIONS, {})
+        medication_options = get_medication_options(user_medications)
         self._options_map = {opt["value"]: opt["label"] for opt in medication_options}
         self._attr_options = [opt["value"] for opt in medication_options]
         self._attr_current_option = self._attr_options[0]
@@ -86,3 +88,19 @@ class MedicationInput(SelectEntity):
         # Update our state first
         self._attr_current_option = option
         self.async_write_ha_state()
+
+    async def async_added_to_hass(self) -> None:
+        """Run when entity about to be added to hass."""
+        # Update options when medications change
+        async def _update_options(event=None):
+            """Update options from current medications."""
+            user_medications = self._hass.data[DOMAIN].get(CONF_MEDICATIONS, {})
+            medication_options = get_medication_options(user_medications)
+            self._options_map = {opt["value"]: opt["label"] for opt in medication_options}
+            self._attr_options = [opt["value"] for opt in medication_options]
+            self.async_write_ha_state()
+
+        # Listen for medication updates
+        self.async_on_remove(
+            self._hass.bus.async_listen(f"{DOMAIN}_medications_updated", _update_options)
+        )

@@ -11,6 +11,18 @@
         "error": {
           "no_members": "At least one family member must be specified"
         }
+      },
+      "medication": {
+        "title": "Add Custom Medication",
+        "description": "Add a new medication to the library. {example}",
+        "data": {
+          "id": "Unique ID for the medication",
+          "name": "Display Name",
+          "label": "Label when administered",
+          "dosage": "Dosage (optional)",
+          "interval_hours": "Hours between doses (optional)",
+          "category": "Category (optional)"
+        }
       }
     }
   },
